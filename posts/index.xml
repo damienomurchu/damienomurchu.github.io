@@ -56,14 +56,5 @@ Follow the following steps:
 ▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://blog.murchu.dev/posts/test_file/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.murchu.dev/posts/test_file/</guid>
-      <description>test-file abcdef ghijkl</description>
-    </item>
-    
   </channel>
 </rss>
