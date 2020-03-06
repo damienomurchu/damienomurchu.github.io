@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>apps on Damien</title>
+    <link>https://blog.murchu.dev/tags/apps/</link>
+    <description>Recent content in apps on Damien</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.murchu.dev/tags/apps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adding a linux Desktop app entry</title>
+      <link>https://blog.murchu.dev/posts/add-desktop-entry-linux/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.murchu.dev/posts/add-desktop-entry-linux/</guid>
+      <description> Adding a linux Desktop app entry Adding a desktop entry for an application can be useful. Package managers tend to do this automatically for you but what about when you install an application manually?
+Simply create the following desktop entry for your application:
+# $HOME/.local/share/applications/&amp;lt;application&amp;gt;.desktop [Desktop Entry] Encoding=UTF-8 Version=1.0 Type=Application Terminal=false Exec=/path/to/executable Name=Name-of-Application Icon=/path/to/icon  </description>
+    </item>
+    
+  </channel>
+</rss>
