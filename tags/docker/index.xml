@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on tech_damo</title>
+    <link>https://example.com/tags/docker/</link>
+    <description>Recent content in Docker on tech_damo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 01 Apr 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker in 30 mins</title>
+      <link>https://example.com/blog/2017/04/01/docker-in-30-mins/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/blog/2017/04/01/docker-in-30-mins/</guid>
+      <description>Docker in 30 mins with a Node.JS application To start using Docker for your application(s), you will need Docker installed on your machine, a node.js app you wish to containerise with Docker, and optionally a Docker Hub account to host your docker image.
+Prerequisites Install docker. A list of the supported platforms and instructions for installing docker on those platforms are located here.
+Before you continue, ensure you can run the docker hello-world example by running docker run hello-world in a terminal.</description>
+    </item>
+    
+  </channel>
+</rss>

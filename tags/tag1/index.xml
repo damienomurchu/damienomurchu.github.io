@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tag1 on tech_damo</title>
+    <link>https://example.com/tags/tag1/</link>
+    <description>Recent content in Tag1 on tech_damo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git for devs</title>
+      <link>https://example.com/blog/yyyy/mm/dd/blog-post-title/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/blog/yyyy/mm/dd/blog-post-title/</guid>
+      <description>Git for devs I have many friends entering the software industry. None use version control. They will need to, probably before anything else. This is an article for them, and also the article I wish I&amp;rsquo;d found when starting out.
+Git? Git is a version control system. Effectively it means history - you can save the state of your code at any point, and navigate back to it at a later point.</description>
+    </item>
+    
+    <item>
+      <title>blogPostTitle</title>
+      <link>https://example.com/blog/yyyy/mm/dd/blog-post-title/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/blog/yyyy/mm/dd/blog-post-title/</guid>
+      <description>Get started with Git &amp;amp; GitHub Install Git Git may already be installed on your system - check by:
+$ git --version If git is not already installed install it via the instructions for your system here.
+Configure Git </description>
+    </item>
+    
+    <item>
+      <title>blogPostTitle</title>
+      <link>https://example.com/blog/yyyy/mm/dd/blog-post-title/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/blog/yyyy/mm/dd/blog-post-title/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

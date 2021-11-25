@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node.js on tech_damo</title>
+    <link>https://example.com/tags/node.js/</link>
+    <description>Recent content in Node.js on tech_damo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 27 Apr 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/node.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenShift in 30 mins</title>
+      <link>https://example.com/blog/2017/04/27/openshift-in-30-mins/</link>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/blog/2017/04/27/openshift-in-30-mins/</guid>
+      <description>Openshift in 30 mins with a Node.JS application Prerequisites These steps presume you already have Docker installed. If you don&amp;rsquo;t, look at this quickstart docker guide, or install Docker from here. Before you proceed any further confirm you can run docker process commands by trying docker ps
+Installing Openshift Installing the oc cli tool Download the Linux oc binary and place it in your path.
+Bring your cluster up Bring up your cluster for the first time by running:</description>
+    </item>
+    
+    <item>
+      <title>Docker in 30 mins</title>
+      <link>https://example.com/blog/2017/04/01/docker-in-30-mins/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/blog/2017/04/01/docker-in-30-mins/</guid>
+      <description>Docker in 30 mins with a Node.JS application To start using Docker for your application(s), you will need Docker installed on your machine, a node.js app you wish to containerise with Docker, and optionally a Docker Hub account to host your docker image.
+Prerequisites Install docker. A list of the supported platforms and instructions for installing docker on those platforms are located here.
+Before you continue, ensure you can run the docker hello-world example by running docker run hello-world in a terminal.</description>
+    </item>
+    
+  </channel>
+</rss>
