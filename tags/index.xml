@@ -2,106 +2,106 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on tech_damo</title>
-    <link>https://example.com/tags/</link>
+    <link>https://damienomurchu.github.io/tags/</link>
     <description>Recent content in Tags on tech_damo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://damienomurchu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Agile</title>
-      <link>https://example.com/tags/agile/</link>
+      <link>https://damienomurchu.github.io/tags/agile/</link>
       <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/agile/</guid>
+      <guid>https://damienomurchu.github.io/tags/agile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Scrum</title>
-      <link>https://example.com/tags/scrum/</link>
+      <link>https://damienomurchu.github.io/tags/scrum/</link>
       <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/scrum/</guid>
+      <guid>https://damienomurchu.github.io/tags/scrum/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Software Development Process</title>
-      <link>https://example.com/tags/software-development-process/</link>
+      <link>https://damienomurchu.github.io/tags/software-development-process/</link>
       <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/software-development-process/</guid>
+      <guid>https://damienomurchu.github.io/tags/software-development-process/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mobile</title>
-      <link>https://example.com/tags/mobile/</link>
+      <link>https://damienomurchu.github.io/tags/mobile/</link>
       <pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/mobile/</guid>
+      <guid>https://damienomurchu.github.io/tags/mobile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OpenShift</title>
-      <link>https://example.com/tags/openshift/</link>
+      <link>https://damienomurchu.github.io/tags/openshift/</link>
       <pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/openshift/</guid>
+      <guid>https://damienomurchu.github.io/tags/openshift/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Push Notifications</title>
-      <link>https://example.com/tags/push-notifications/</link>
+      <link>https://damienomurchu.github.io/tags/push-notifications/</link>
       <pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/push-notifications/</guid>
+      <guid>https://damienomurchu.github.io/tags/push-notifications/</guid>
       <description></description>
     </item>
     
     <item>
       <title>UPS</title>
-      <link>https://example.com/tags/ups/</link>
+      <link>https://damienomurchu.github.io/tags/ups/</link>
       <pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/ups/</guid>
+      <guid>https://damienomurchu.github.io/tags/ups/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Containers</title>
-      <link>https://example.com/tags/containers/</link>
+      <link>https://damienomurchu.github.io/tags/containers/</link>
       <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/containers/</guid>
+      <guid>https://damienomurchu.github.io/tags/containers/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Dev Ops</title>
-      <link>https://example.com/tags/dev-ops/</link>
+      <link>https://damienomurchu.github.io/tags/dev-ops/</link>
       <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/dev-ops/</guid>
+      <guid>https://damienomurchu.github.io/tags/dev-ops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Node.js</title>
-      <link>https://example.com/tags/node.js/</link>
+      <link>https://damienomurchu.github.io/tags/node.js/</link>
       <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/node.js/</guid>
+      <guid>https://damienomurchu.github.io/tags/node.js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>https://example.com/tags/docker/</link>
+      <link>https://damienomurchu.github.io/tags/docker/</link>
       <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/docker/</guid>
+      <guid>https://damienomurchu.github.io/tags/docker/</guid>
       <description></description>
     </item>
     

@@ -1,117 +1,67 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>https://example.com/tags/agile/</loc>
+    <loc>https://damienomurchu.github.io/tags/agile/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/categories/articles/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/categories/articles/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/categories/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/categories/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/published/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/published/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/scrum/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/scrum/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/blog/2017/09/17/scrum-for-two/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/blog/2017/09/17/scrum-for-two/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/software-development-process/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/software-development-process/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/mobile/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/mobile/</loc>
     <lastmod>2017-05-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/openshift/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/openshift/</loc>
     <lastmod>2017-05-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/push-notifications/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/push-notifications/</loc>
     <lastmod>2017-05-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/ups/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/ups/</loc>
     <lastmod>2017-05-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/blog/2017/05/03/ups-on-openshift/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/blog/2017/05/03/ups-on-openshift/</loc>
     <lastmod>2017-05-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/containers/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/containers/</loc>
     <lastmod>2017-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/dev-ops/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/dev-ops/</loc>
     <lastmod>2017-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/node.js/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/node.js/</loc>
     <lastmod>2017-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/blog/2017/04/27/openshift-in-30-mins/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/blog/2017/04/27/openshift-in-30-mins/</loc>
     <lastmod>2017-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/docker/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/tags/docker/</loc>
     <lastmod>2017-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/blog/2017/04/01/docker-in-30-mins/</loc>
+  </url><url>
+    <loc>https://damienomurchu.github.io/blog/2017/04/01/docker-in-30-mins/</loc>
     <lastmod>2017-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://damienomurchu.github.io/about/</loc>
   </url>
-  
-  <url>
-    <loc>https://example.com/drafts/readme/</loc>
-  </url>
-  
-  <url>
-    <loc>https://example.com/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://example.com/drafts/</loc>
-  </url>
-  
 </urlset>
