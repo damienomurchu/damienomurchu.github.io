@@ -1,33 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>OpenShift on tech_damo</title>
-    <link>https://damienomurchu.github.io/tags/openshift/</link>
-    <description>Recent content in OpenShift on tech_damo</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 03 May 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://damienomurchu.github.io/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>UPS on OpenShift</title>
-      <link>https://damienomurchu.github.io/blog/2017/05/03/ups-on-openshift/</link>
-      <pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://damienomurchu.github.io/blog/2017/05/03/ups-on-openshift/</guid>
-      <description>Unified Push Server (UPS) on OpenShift Prerequisites You should have a locally installed version of OpenShift, or access to an OpenShift cluster. If you don&amp;rsquo;t have either, you can set up your own OpenShift local cluster by reading this [document]({{ &amp;ldquo;/hero-openshift&amp;rdquo; | relative_url }}).
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OpenShift on tech_damo</title><link>https://damienomurchu.github.io/tags/openshift/</link><description>Recent content in OpenShift on tech_damo</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 03 May 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://damienomurchu.github.io/tags/openshift/index.xml" rel="self" type="application/rss+xml"/><item><title>UPS on OpenShift</title><link>https://damienomurchu.github.io/blog/2017/05/03/ups-on-openshift/</link><pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate><guid>https://damienomurchu.github.io/blog/2017/05/03/ups-on-openshift/</guid><description>Unified Push Server (UPS) on OpenShift Prerequisites You should have a locally installed version of OpenShift, or access to an OpenShift cluster. If you don&amp;rsquo;t have either, you can set up your own OpenShift local cluster by reading this [document]({{ &amp;ldquo;/hero-openshift&amp;rdquo; | relative_url }}).
 Bringing up your cluster Bring up your cluster with:
 oc cluster up --public-hostname=127.0.0.1 --host-data-dir=$HOME/os/data-dir --host-config-dir=$HOME/os/config-dir
-Log into your cluster Log into your cluster via oc login</description>
-    </item>
-    
-    <item>
-      <title>OpenShift in 30 mins</title>
-      <link>https://damienomurchu.github.io/blog/2017/04/27/openshift-in-30-mins/</link>
-      <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://damienomurchu.github.io/blog/2017/04/27/openshift-in-30-mins/</guid>
-      <description>Openshift in 30 mins with a Node.JS application Prerequisites These steps presume you already have Docker installed. If you don&amp;rsquo;t, look at this quickstart docker guide, or install Docker from here. Before you proceed any further confirm you can run docker process commands by trying docker ps
+Log into your cluster Log into your cluster via oc login</description></item><item><title>OpenShift in 30 mins</title><link>https://damienomurchu.github.io/blog/2017/04/27/openshift-in-30-mins/</link><pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate><guid>https://damienomurchu.github.io/blog/2017/04/27/openshift-in-30-mins/</guid><description>Openshift in 30 mins with a Node.JS application Prerequisites These steps presume you already have Docker installed. If you don&amp;rsquo;t, look at this quickstart docker guide, or install Docker from here. Before you proceed any further confirm you can run docker process commands by trying docker ps
 Installing Openshift Installing the oc cli tool Download the Linux oc binary and place it in your path.
-Bring your cluster up Bring up your cluster for the first time by running:</description>
-    </item>
-    
-  </channel>
-</rss>
+Bring your cluster up Bring up your cluster for the first time by running:</description></item></channel></rss>

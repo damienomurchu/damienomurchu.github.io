@@ -1,20 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Scrum on tech_damo</title>
-    <link>https://damienomurchu.github.io/tags/scrum/</link>
-    <description>Recent content in Scrum on tech_damo</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://damienomurchu.github.io/tags/scrum/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Scrum for two</title>
-      <link>https://damienomurchu.github.io/blog/2017/09/17/scrum-for-two/</link>
-      <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://damienomurchu.github.io/blog/2017/09/17/scrum-for-two/</guid>
-      <description>Scrum for two? No, the title isn’t a misnomer, what follows are my experiences using scrum methodologies within a two-person team for a final year college project.
-Some personal background In 2016 I found myself back in full-time education, in the midst of an aggressively paced computer science conversion course. Targeted towards existing graduates from non-computing disciplines, my classmates were a motley bunch ranging from musicians and fine artists to engineering and even agricultural graduates.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Scrum on tech_damo</title><link>https://damienomurchu.github.io/tags/scrum/</link><description>Recent content in Scrum on tech_damo</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 17 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://damienomurchu.github.io/tags/scrum/index.xml" rel="self" type="application/rss+xml"/><item><title>Scrum for two</title><link>https://damienomurchu.github.io/blog/2017/09/17/scrum-for-two/</link><pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate><guid>https://damienomurchu.github.io/blog/2017/09/17/scrum-for-two/</guid><description>Scrum for two? No, the title isn’t a misnomer, what follows are my experiences using scrum methodologies within a two-person team for a final year college project.
+Some personal background In 2016 I found myself back in full-time education, in the midst of an aggressively paced computer science conversion course. Targeted towards existing graduates from non-computing disciplines, my classmates were a motley bunch ranging from musicians and fine artists to engineering and even agricultural graduates.</description></item></channel></rss>
