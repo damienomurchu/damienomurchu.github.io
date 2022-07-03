@@ -1,76 +1,12 @@
-<!doctype html><html lang=en-us>
-<head>
-<title>Docker in 30 mins // {{ Damien }}</title>
-<link rel="shortcut icon" href=/favicon.ico>
-<meta charset=utf-8>
-<meta name=generator content="Hugo 0.89.4">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=author content="Damien Murphy">
-<meta name=description content>
-<link rel=stylesheet href=https://damienomurchu.github.io/css/main.min.618218f721675a07d298c369f6da919dfeb0ed7c881571a5b54181927056282e.css>
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Docker in 30 mins">
-<meta name=twitter:description content="Docker in 30 mins with a Node.JS application To start using Docker for your application(s), you will need Docker installed on your machine, a node.js app you wish to containerise with Docker, and optionally a Docker Hub account to host your docker image.
+<!doctype html><html lang=en-us><head><title>Docker in 30 mins @damien</title><link rel="shortcut icon" href=/favicon.ico><meta charset=utf-8><meta name=generator content="Hugo 0.101.0"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Damien Murphy"><meta name=description content><link rel=stylesheet href=https://damienomurchu.github.io/css/main.min.618218f721675a07d298c369f6da919dfeb0ed7c881571a5b54181927056282e.css><meta name=twitter:card content="summary"><meta name=twitter:title content="Docker in 30 mins"><meta name=twitter:description content="Docker in 30 mins with a Node.JS application To start using Docker for your application(s), you will need Docker installed on your machine, a node.js app you wish to containerise with Docker, and optionally a Docker Hub account to host your docker image.
 Prerequisites Install docker. A list of the supported platforms and instructions for installing docker on those platforms are located here.
-Before you continue, ensure you can run the docker hello-world example by running docker run hello-world in a terminal.">
-<meta property="og:title" content="Docker in 30 mins">
-<meta property="og:description" content="Docker in 30 mins with a Node.JS application To start using Docker for your application(s), you will need Docker installed on your machine, a node.js app you wish to containerise with Docker, and optionally a Docker Hub account to host your docker image.
+Before you continue, ensure you can run the docker hello-world example by running docker run hello-world in a terminal."><meta property="og:title" content="Docker in 30 mins"><meta property="og:description" content="Docker in 30 mins with a Node.JS application To start using Docker for your application(s), you will need Docker installed on your machine, a node.js app you wish to containerise with Docker, and optionally a Docker Hub account to host your docker image.
 Prerequisites Install docker. A list of the supported platforms and instructions for installing docker on those platforms are located here.
-Before you continue, ensure you can run the docker hello-world example by running docker run hello-world in a terminal.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://damienomurchu.github.io/blog/2017/04/01/docker-in-30-mins/"><meta property="article:section" content="published">
-<meta property="article:published_time" content="2017-04-01T00:00:00+00:00">
-<meta property="article:modified_time" content="2017-04-01T00:00:00+00:00">
-</head>
-<body>
-<header class=app-header>
-<a href=https://damienomurchu.github.io><img class=app-header-avatar src=/img/profile-2.jpg alt="Damien Murphy"></a>
-<h1>{{ Damien }}</h1>
-<nav class=app-header-menu>
-<a class=app-header-menu-item href=/>Home</a>
-~
-<a class=app-header-menu-item href=/tags/>Tags</a>
-~
-<a class=app-header-menu-item href=/about/>About</a>
-</nav>
-<p>Software Engineer</p>
-<div class=app-header-social>
-<a href=https://twitter.com/tech_damo target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter"><title>Twitter</title><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg>
-</a>
-<a href=https://github.com/damienomurchu target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><title>Github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
-</a>
-<a href=https://www.linkedin.com/in/damienomurchu/ target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin"><title>LinkedIn</title><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-</a>
-</div>
-</header>
-<main class=app-container>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title>Docker in 30 mins</h1>
-<div class=post-meta>
-<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-Apr 1, 2017
+Before you continue, ensure you can run the docker hello-world example by running docker run hello-world in a terminal."><meta property="og:type" content="article"><meta property="og:url" content="https://damienomurchu.github.io/blog/2017/04/01/docker-in-30-mins/"><meta property="article:section" content="published"><meta property="article:published_time" content="2017-04-01T00:00:00+00:00"><meta property="article:modified_time" content="2017-04-01T00:00:00+00:00"></head><body><header class=app-header><a href=https://damienomurchu.github.io><img class=app-header-avatar src=/img/profile-2.jpg alt="Damien Murphy"></a>
+<a href=https://damienomurchu.github.io/about><h1>@damien</h1></a><p>Thoughts and technical content from a diverse software engineer.</p><nav class=app-header-menu><a class=app-header-menu-item href=/categories/>#categories</a>
+<a class=app-header-menu-item href=/tags/>#tags</a></nav><p></p><div class=app-header-social><a href=https://github.com/damienomurchu target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><title>Github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a><a href=https://www.linkedin.com/in/damienomurchu/ target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin"><title>LinkedIn</title><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></header><main class=app-container><article class=post><header class=post-header><h1 class=post-title>Docker in 30 mins</h1><div class=post-meta><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Apr 1, 2017
 -<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-3 min read
-</div>
-<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-<a class=tag href=https://damienomurchu.github.io/tags/docker/>Docker</a>
-<a class=tag href=https://damienomurchu.github.io/tags/containers/>Containers</a>
-<a class=tag href=https://damienomurchu.github.io/tags/node.js/>Node.js</a>
-</div>
-</div>
-</header>
-<div class=post-content>
-<h1 id=docker-in-30-mins-with-a-nodejs-application>Docker in 30 mins with a Node.JS application</h1>
-<p>To start using Docker for your application(s), you will need Docker installed on your machine, a node.js app you wish to containerise with Docker, and optionally a Docker Hub account to host your docker image.</p>
-<h2 id=prerequisites>Prerequisites</h2>
-<p>Install docker. A list of the supported platforms and instructions for installing docker on those platforms are located <a href=https://docs.docker.com/engine/installation/#supported-platforms>here</a>.</p>
-<p>Before you continue, ensure you can run the docker hello-world example by running <code>docker run hello-world</code> in a terminal. You should see an output like the below:</p>
-<p><img src=/assets/images/hero-docker/hero-docker-hw.png alt=hello-world-output title="docker helloworld output"></p>
-<h2 id=containerising-your-app>Containerising your app</h2>
-<h3 id=dockerfile>Dockerfile</h3>
-<p>To containerise your app you will need a Dockerfile for your app. Create a file named &lsquo;Dockerfile&rsquo; in the root of your app directory with the following content:</p>
-<pre><code>FROM node:6.10.2-alpine
+3 min read</div><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><a class=tag href=https://damienomurchu.github.io/tags/containers/>Containers</a></div></div></header><div class=post-content><h1 id=docker-in-30-mins-with-a-nodejs-application>Docker in 30 mins with a Node.JS application</h1><p>To start using Docker for your application(s), you will need Docker installed on your machine, a node.js app you wish to containerise with Docker, and optionally a Docker Hub account to host your docker image.</p><h2 id=prerequisites>Prerequisites</h2><p>Install docker. A list of the supported platforms and instructions for installing docker on those platforms are located <a href=https://docs.docker.com/engine/installation/#supported-platforms>here</a>.</p><p>Before you continue, ensure you can run the docker hello-world example by running <code>docker run hello-world</code> in a terminal. You should see an output like the below:</p><p><img src=/assets/images/hero-docker/hero-docker-hw.png alt=hello-world-output title="docker helloworld output"></p><h2 id=containerising-your-app>Containerising your app</h2><h3 id=dockerfile>Dockerfile</h3><p>To containerise your app you will need a Dockerfile for your app. Create a file named &lsquo;Dockerfile&rsquo; in the root of your app directory with the following content:</p><pre><code>FROM node:6.10.2-alpine
 
 \# Create app directory
 RUN mkdir -p /usr/src/app
@@ -86,81 +22,7 @@ COPY . /usr/src/app
 EXPOSE 8000
 
 CMD [ &quot;npm&quot;, &quot;start&quot; ] # make sure start script in package.json
-</code></pre>
-<p>** the above presumes your app listens on port 8000, and that you have a start script in your package.json:</p>
-<pre><code>&quot;scripts&quot;: {
+</code></pre><p>** the above presumes your app listens on port 8000, and that you have a start script in your package.json:</p><pre><code>&quot;scripts&quot;: {
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&quot;start&quot;: &quot;node app.js&quot;
 },
-</code></pre>
-<h2 id=build-your-app-docker-container>Build your app docker container</h2>
-<p>Run the following from the root of your app directory:</p>
-<ul>
-<li><code>docker build -t &lt;your-app-name> .</code></li>
-</ul>
-<p>Or if you wish to tag the image with your username:</p>
-<ul>
-<li><code>docker build -t &lt;your-username>/&lt;your-app-name> .</code></li>
-</ul>
-<p>If you have any errors regarding the location of your DockerFile, you may need to specify the path to your DockerFile:</p>
-<ul>
-<li><code>docker build -t &lt;your-app-name> -f &lt;location-and-path-of-dockerfile> .</code></li>
-</ul>
-<p>You should see an output like the following:</p>
-<p><img src=/assets/images/hero-docker/hero-docker-build.png alt=build-output title="docker build output"></p>
-<h3 id=run-your-container-app>Run your container app</h3>
-<p>Once your docker container is built run it with:</p>
-<ul>
-<li><code>docker run -p 49160:8000 &lt;your-username>/&lt;your-app-name></code></li>
-</ul>
-<p>Sample output should resemble:</p>
-<p><img src=/assets/images/hero-docker/hero-docker-run.png alt=running-your-container title="docker run output"></p>
-<p>** the above presumes 8000 is the port number your nodejs app runs on, and that you wish to map it to port 49160 on your local machine.</p>
-<p>If you have been successful, you will now be able to access your app through port 49160 - congratulations, you have just built and run your first containerised app!</p>
-<h3 id=check-your-containers>Check your containers</h3>
-<p>To return a list of all running docker containers (and retrieve the id of your container):</p>
-<ul>
-<li><code>docker ps</code></li>
-</ul>
-<p><img src=/assets/images/hero-docker/hero-docker-ps.png alt=docker-ps-output title="docker ps output"></p>
-<h3 id=checking-your-container-logs>Checking your container logs</h3>
-<p>To check the logs from your container run:</p>
-<ul>
-<li><code>docker logs -f &lt;container-id></code></li>
-</ul>
-<p><img src=/assets/images/hero-docker/hero-docker-logs.png alt=docker-logs-output title="docker logs output"></p>
-<h3 id=getting-inside-your-container>Getting inside your container</h3>
-<p>To access a bash terminal within the container run:</p>
-<ul>
-<li><code>docker exec -it &lt;container id> /bin/bash</code></li>
-</ul>
-<h3 id=stopping-your-docker-container>Stopping your docker container</h3>
-<p>To stop a docker container run:</p>
-<ul>
-<li><code>docker stop &lt;container-id></code></li>
-</ul>
-<p>To delete a docker container image once stopped run:</p>
-<ul>
-<li><code>docker rm &lt;container-id></code></li>
-</ul>
-<h2 id=optional-docker-hub>(Optional) Docker Hub</h2>
-<p>To host your container images on <a href=https://hub.docker.com/>Docker Hub</a>, ensure you have an account, then:</p>
-<ul>
-<li><code>docker login</code></li>
-<li><code>docker tag &lt;container-id> &lt;dockerhub-username>/&lt;repo-name></code></li>
-<li><code>docker push &lt;dockerhub-username>/&lt;repo-name></code></li>
-</ul>
-<p><img src=/assets/images/hero-docker/hero-docker-hub.png alt=dockerhub-login title="docker hub terminal login"></p>
-<h2 id=troubleshooting-tips>Troubleshooting tips</h2>
-<p>If you encounter any errors the docker error messages are generally helpful enough to diagnose and resolve the issue. Some issues that were encountered included:</p>
-<ul>
-<li>the need to pass in an insecure registry flag when running the docker service daemon</li>
-<li>the need to disable SELinux when running the docker service daemon</li>
-<li>the need to change the permissions of the UNIX socket the docker daemon is listening to</li>
-</ul>
-</div>
-<div class=post-footer>
-</div>
-</article>
-</main>
-</body>
-</html>
+</code></pre><h2 id=build-your-app-docker-container>Build your app docker container</h2><p>Run the following from the root of your app directory:</p><ul><li><code>docker build -t &lt;your-app-name> .</code></li></ul><p>Or if you wish to tag the image with your username:</p><ul><li><code>docker build -t &lt;your-username>/&lt;your-app-name> .</code></li></ul><p>If you have any errors regarding the location of your DockerFile, you may need to specify the path to your DockerFile:</p><ul><li><code>docker build -t &lt;your-app-name> -f &lt;location-and-path-of-dockerfile> .</code></li></ul><p>You should see an output like the following:</p><p><img src=/assets/images/hero-docker/hero-docker-build.png alt=build-output title="docker build output"></p><h3 id=run-your-container-app>Run your container app</h3><p>Once your docker container is built run it with:</p><ul><li><code>docker run -p 49160:8000 &lt;your-username>/&lt;your-app-name></code></li></ul><p>Sample output should resemble:</p><p><img src=/assets/images/hero-docker/hero-docker-run.png alt=running-your-container title="docker run output"></p><p>** the above presumes 8000 is the port number your nodejs app runs on, and that you wish to map it to port 49160 on your local machine.</p><p>If you have been successful, you will now be able to access your app through port 49160 - congratulations, you have just built and run your first containerised app!</p><h3 id=check-your-containers>Check your containers</h3><p>To return a list of all running docker containers (and retrieve the id of your container):</p><ul><li><code>docker ps</code></li></ul><p><img src=/assets/images/hero-docker/hero-docker-ps.png alt=docker-ps-output title="docker ps output"></p><h3 id=checking-your-container-logs>Checking your container logs</h3><p>To check the logs from your container run:</p><ul><li><code>docker logs -f &lt;container-id></code></li></ul><p><img src=/assets/images/hero-docker/hero-docker-logs.png alt=docker-logs-output title="docker logs output"></p><h3 id=getting-inside-your-container>Getting inside your container</h3><p>To access a bash terminal within the container run:</p><ul><li><code>docker exec -it &lt;container id> /bin/bash</code></li></ul><h3 id=stopping-your-docker-container>Stopping your docker container</h3><p>To stop a docker container run:</p><ul><li><code>docker stop &lt;container-id></code></li></ul><p>To delete a docker container image once stopped run:</p><ul><li><code>docker rm &lt;container-id></code></li></ul><h2 id=optional-docker-hub>(Optional) Docker Hub</h2><p>To host your container images on <a href=https://hub.docker.com/>Docker Hub</a>, ensure you have an account, then:</p><ul><li><code>docker login</code></li><li><code>docker tag &lt;container-id> &lt;dockerhub-username>/&lt;repo-name></code></li><li><code>docker push &lt;dockerhub-username>/&lt;repo-name></code></li></ul><p><img src=/assets/images/hero-docker/hero-docker-hub.png alt=dockerhub-login title="docker hub terminal login"></p><h2 id=troubleshooting-tips>Troubleshooting tips</h2><p>If you encounter any errors the docker error messages are generally helpful enough to diagnose and resolve the issue. Some issues that were encountered included:</p><ul><li>the need to pass in an insecure registry flag when running the docker service daemon</li><li>the need to disable SELinux when running the docker service daemon</li><li>the need to change the permissions of the UNIX socket the docker daemon is listening to</li></ul></div><div class=post-footer></div></article></main></body></html>
