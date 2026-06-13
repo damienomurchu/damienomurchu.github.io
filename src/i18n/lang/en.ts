@@ -29,8 +29,8 @@ export default {
   },
   home: {
     socialLinks: "Social Links",
-    featured: "Featured",
-    recentPosts: "Recent Posts",
+    featured: "Ground Zero",
+    recentPosts: "Latest Posts",
     allPosts: "All Posts",
   },
   footer: {
