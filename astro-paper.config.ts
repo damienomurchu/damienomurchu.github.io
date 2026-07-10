@@ -2,8 +2,8 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://astro-paper.pages.dev/",
-    title: "stress-tested",
+    url: "https://forged.damienmurphy.net/",
+    title: "Damien Murphy",
     description: "A minimal, responsive and SEO-friendly Astro blog theme.",
     author: "Damien Murphy",
     profile: "https://satna.ing",
