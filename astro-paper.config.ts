@@ -3,13 +3,14 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://forged.damienmurphy.net/",
-    title: "Damien Murphy",
-    description: "A minimal, responsive and SEO-friendly Astro blog theme.",
+    title: "Forged",
+    description:
+      "Field notes on DevSecOps, platform engineering, secure delivery, internal tooling, and the space between design and production.",
     author: "Damien Murphy",
-    profile: "https://satna.ing",
+    profile: "https://www.linkedin.com/in/damienmurphy/",
     ogImage: "default-og.jpg",
     lang: "en",
-    timezone: "Asia/Bangkok",
+    timezone: "Europe/Dublin",
     dir: "ltr",
   },
   posts: {
@@ -24,14 +25,14 @@ export default defineAstroPaperConfig({
     showBackButton: true,
     editPost: {
       enabled: true,
-      url: "https://github.com/satnaing/astro-paper/edit/main/",
+      url: "https://github.com/damienomurchu/damienomurchu.github.io/edit/main/",
     },
     search: "pagefind",
   },
   socials: [
     { name: "github",   url: "https://github.com/damienomurchu" },
-    { name: "linkedin", url: "https://www.linkedin.com/in/damienomurchu/" },
-    { name: "mail",     url: "mailto:yourmail@gmail.com" },
+    { name: "linkedin", url: "https://www.linkedin.com/in/damienmurphy/" },
+    { name: "mail",     url: "mailto:forged@damienmurphy.net" },
   ],
   shareLinks: [
     { name: "whatsapp", url: "https://wa.me/?text=" },
