@@ -1,6 +1,6 @@
 # Repo Context Pack
 
-This repo is Damien Murphy's personal Astro blog, based on AstroPaper and branded as "forged". It is a static site focused on DevSecOps, platform engineering, CI/CD, containers, security, automation, local tooling, and field notes.
+This repo is Damien Murphy's personal Astro blog, based on AstroPaper and branded as "Forged". It is a static GitHub Pages site at `https://forged.damienmurphy.net/`, focused on DevSecOps, platform engineering, CI/CD, containers, security, automation, local tooling, and field notes.
 
 ## Stack
 
@@ -51,8 +51,11 @@ Draft posts are always excluded. Scheduled posts are excluded in production unti
 
 ## Site Identity
 
-- Site title: `stress-tested`.
+- Site title: `Forged · Damien Murphy`.
+- Public URL: `https://forged.damienmurphy.net/`.
 - Author: Damien Murphy.
+- Author profile: `https://www.linkedin.com/in/damienmurphy/`.
+- Contact email: `forged@damienmurphy.net`.
 - Tone: practical, technical, reflective, field-note style.
 - About page themes: engineering, security, automation, developer productivity, curiosity, leverage, continuous improvement.
 - Avoid generic upstream AstroPaper wording unless explicitly editing theme docs.
@@ -68,6 +71,7 @@ Draft posts are always excluded. Scheduled posts are excluded in production unti
 
 ## Important Gotchas
 
-- The upstream README is not fully project-specific; prefer local config and source files over README claims.
+- The README is project-specific and can be used for high-level repo orientation.
 - The post template is `src/content/posts/_template.md` and should stay aligned with `src/content.config.ts`.
-- `astro-paper.config.ts` may still contain upstream-ish values that need project-specific correction, including `site.url`, `site.description`, `site.timezone`, the mail social URL, and the edit-post GitHub URL.
+- `astro-paper.config.ts` is the source of truth for public site identity, social links, edit-post links, timezone, and metadata.
+- The default OG image is still the inherited AstroPaper image until replacement artwork is provided.
