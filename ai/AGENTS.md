@@ -1,6 +1,6 @@
 # Repo Context Pack
 
-This repo is Damien Murphy's personal Astro blog, based on AstroPaper and branded as "stress-tested". It is a static site focused on DevSecOps, platform engineering, CI/CD, containers, security, automation, local tooling, and field notes.
+This repo is Damien Murphy's personal Astro blog, based on AstroPaper and branded as "forged". It is a static site focused on DevSecOps, platform engineering, CI/CD, containers, security, automation, local tooling, and field notes.
 
 ## Stack
 
