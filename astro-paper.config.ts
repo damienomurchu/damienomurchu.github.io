@@ -3,7 +3,7 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://forged.damienmurphy.net/",
-    title: "Forged",
+    title: "Forged · Damien Murphy",
     description:
       "Field notes on DevSecOps, platform engineering, secure delivery, internal tooling, and the space between design and production.",
     author: "Damien Murphy",
