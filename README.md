@@ -54,3 +54,11 @@ pnpm preview
 ## Content
 
 New posts belong in `src/content/posts/`. Use `src/content/posts/_template.md` as the starting point for frontmatter.
+
+Validate every post's frontmatter against the schema in `src/content.config.ts`:
+
+```sh
+pnpm run validate:posts
+```
+
+This validation also runs in CI, so missing required fields, incorrectly typed values, and invalid dates fail before the site is built.
