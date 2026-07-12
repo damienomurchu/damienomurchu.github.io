@@ -2,8 +2,8 @@
 title: Designing the conditions
 description: Environment is an underappreciated lever for shaping how we think, work, and behave
 slug: 
-pubDatetime: 2026-07-12T09:00:01Z
-modDatetime: 2026-07-12T09:00:01Z
+pubDatetime: 2026-07-12T07:00:01Z
+modDatetime: 2026-07-12T07:00:01Z
 draft: false
 
 category: engineering
