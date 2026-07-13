@@ -29,7 +29,7 @@ export default {
   },
   home: {
     socialLinks: "Social Links",
-    featured: "Ground Zero",
+    featured: "Selected Writing",
     recentPosts: "Latest Posts",
     allPosts: "All Posts",
   },
