@@ -29,7 +29,7 @@ export default defineAstroPaperConfig({
   socials: [
     { name: "github",   url: "https://github.com/damienomurchu" },
     { name: "linkedin", url: "https://www.linkedin.com/in/damienmurphy/" },
-    { name: "mail",     url: "mailto:forged@damienmurphy.net" },
+    // { name: "mail",     url: "mailto:forged@damienmurphy.net" },
   ],
   shareLinks: [
     { name: "whatsapp", url: "https://wa.me/?text=" },
