@@ -1,6 +1,6 @@
 ---
-title: Stop stealing peoples failure
-description: How failure can be managed for growth
+title: Stop stealing people's failure
+description: Why recoverable failure is essential for developing judgement, capability, and resilient teams.
 slug: 
 pubDatetime: 2026-07-10T00:00:01Z
 modDatetime: 2026-07-10T00:00:01Z
@@ -15,7 +15,7 @@ series:
 featured: false
 ---
 
-## Managing failure for growth
+<p class="standfirst">Recoverable failure is one of the ways people build judgement, capability, and resilience.</p>
 
 There is a kind of help that looks generous in the moment but quietly weakens people over time.
 

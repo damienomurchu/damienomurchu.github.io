@@ -17,7 +17,7 @@ export default {
     sharePostViaEmail: "Share this post via email",
     tagLabel: "Tags",
     backToTop: "Back to top",
-    goBack: "Go back",
+    goBack: "Back to posts",
     editPage: "Edit page",
     previousPost: "Previous Post",
     nextPost: "Next Post",

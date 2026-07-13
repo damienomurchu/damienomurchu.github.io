@@ -1,6 +1,6 @@
 ---
 title: Personal systems == production systems 
-description: Treat Your Personal Systems Like Production Systems
+description: Applying production engineering principles to the systems that support everyday life.
 slug: 
 pubDatetime: 2026-07-11T00:00:01Z
 modDatetime: 2026-07-11T00:00:01Z
@@ -15,7 +15,7 @@ series:
 featured: true
 ---
 
-## Treat Personal Systems Like Production
+<p class="standfirst">Personal systems work best when they are designed with the same care as production systems.</p>
 
 One of the unexpected things I've learned from software engineering is that the best personal systems often look remarkably similar to production systems. Not because life should become over-engineered, but because good systems solve the same kinds of problems regardless of the domain. They reduce friction, make progress visible, remove unnecessary decisions, and make consistent execution easier than relying on motivation alone.
 

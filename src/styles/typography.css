@@ -24,6 +24,10 @@
       @apply mt-8 mb-3 text-lg leading-snug font-semibold;
     }
 
+    .standfirst {
+      @apply text-foreground mt-0 mb-8 text-xl leading-relaxed font-semibold;
+    }
+
     strong,
     code {
       @apply text-foreground;
