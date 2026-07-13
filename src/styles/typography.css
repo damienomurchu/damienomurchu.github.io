@@ -3,18 +3,25 @@
 @layer base {
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
-    @apply prose;
+    @apply prose font-prose text-[1.125rem] leading-[1.72] font-normal;
 
     h1,
     h2,
     h3,
-    h4,
-    th {
-      @apply text-foreground mb-3;
+    h4 {
+      @apply font-prose text-foreground tracking-tight;
+    }
+
+    h2 {
+      @apply mt-12 mb-4 text-[1.7rem] leading-[1.2] font-semibold;
     }
 
     h3 {
-      @apply italic;
+      @apply mt-10 mb-3 text-[1.35rem] leading-snug font-semibold italic;
+    }
+
+    h4 {
+      @apply mt-8 mb-3 text-lg leading-snug font-semibold;
     }
 
     p,
@@ -25,6 +32,12 @@
     table,
     code {
       @apply text-foreground;
+    }
+
+    p,
+    ol,
+    ul {
+      @apply font-normal;
     }
 
     a {
@@ -66,12 +79,12 @@
       }
 
       th {
-        @apply py-1.5;
+        @apply font-app py-1.5;
       }
     }
 
     code {
-      @apply bg-muted/75 text-foreground rounded p-1 wrap-break-word before:content-none after:content-none;
+      @apply font-app bg-muted/75 text-foreground rounded p-1 wrap-break-word before:content-none after:content-none;
     }
 
     .astro-code code {

@@ -22,10 +22,17 @@ const { title, description, ...props } = data;
       "focus-visible:no-underline focus-visible:underline-offset-0",
     ]}
   >
-    <Heading transition:name={toTransitionName(title)}>
+    <Heading
+      class="font-prose leading-tight font-semibold tracking-tight"
+      transition:name={toTransitionName(title)}
+    >
       {title}
     </Heading>
   </a>
   <Datetime {...props} />
-  <p>{description}</p>
+  <p
+    class="font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal"
+  >
+    {description}
+  </p>
 </li>

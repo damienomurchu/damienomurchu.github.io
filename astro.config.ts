@@ -60,11 +60,20 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "Google Sans Code",
-      cssVariable: "--font-google-sans-code",
+      name: "IBM Plex Mono",
+      cssVariable: "--font-ibm-plex-mono",
       provider: fontProviders.google(),
       fallbacks: ["monospace"],
       weights: [300, 400, 500, 600, 700],
+      styles: ["normal", "italic"],
+      formats: ["woff", "ttf"],
+    },
+    {
+      name: "Source Serif 4",
+      cssVariable: "--font-source-serif",
+      provider: fontProviders.google(),
+      fallbacks: ["Georgia", "serif"],
+      weights: [400, 600, 700],
       styles: ["normal", "italic"],
       formats: ["woff", "ttf"],
     },

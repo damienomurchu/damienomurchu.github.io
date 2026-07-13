@@ -46,7 +46,11 @@ const rssHref = getRelativeLocaleUrl(
 
     <!-- Font -->
     <Font
-      cssVariable="--font-google-sans-code"
+      cssVariable="--font-ibm-plex-mono"
+      preload={[{ subset: "latin", weight: 400, style: "normal" }]}
+    />
+    <Font
+      cssVariable="--font-source-serif"
       preload={[{ subset: "latin", weight: 400, style: "normal" }]}
     />
 
