@@ -15,7 +15,7 @@ series:
 featured: true
 ---
 
-# Treat Your Personal Systems Like Production Systems
+## Treat Personal Systems Like Production
 
 One of the unexpected things I've learned from software engineering is that the best personal systems often look remarkably similar to production systems. Not because life should become over-engineered, but because good systems solve the same kinds of problems regardless of the domain. They reduce friction, make progress visible, remove unnecessary decisions, and make consistent execution easier than relying on motivation alone.
 

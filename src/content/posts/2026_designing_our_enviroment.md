@@ -15,7 +15,7 @@ series:
 featured: true
 ---
 
-# Designing The Conditions
+## Environment - an underappreciated lever
 
 We tend to think of our behaviour as the product of deliberate choices. We decide to focus, exercise, write, rest, or become more organised, and then judge ourselves according to whether we follow through.
 

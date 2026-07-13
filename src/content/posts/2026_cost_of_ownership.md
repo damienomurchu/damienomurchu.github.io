@@ -15,7 +15,7 @@ series:
 featured: false
 ---
 
-# The Hidden Costs of Ownership
+## Initial cost != true cost
 
 The price of acquiring something is rarely its true cost. The purchase price is merely the most visible part: a number that appears on a receipt, an invoice, or a budget request. It is concrete, immediate, and easy to compare. The rest of the cost is distributed across the future, where it becomes much harder to see.
 

@@ -15,7 +15,7 @@ series:
 featured: false
 ---
 
-## Engineering Durability
+## Engineering for long term success
 
 Every system fails eventually.
 

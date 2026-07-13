@@ -15,8 +15,7 @@ series:
 featured: true
 ---
 
-
-# The Dashboard Is Not The Work
+## Observing developer productivity
 
 There is a growing temptation in software organisations to make developer productivity more visible. On the surface, this sounds reasonable. Software is expensive, engineering teams are hard to understand from the outside, and leaders want to know whether investment is turning into progress. Developer experience matters. Friction matters. Delivery health matters.
 

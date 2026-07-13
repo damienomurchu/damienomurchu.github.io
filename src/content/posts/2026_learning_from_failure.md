@@ -15,8 +15,7 @@ series:
 featured: false
 ---
 
-
-# Stop Stealing People’s Failure
+## Failure can be managed for growth
 
 There is a kind of help that looks generous in the moment but quietly weakens people over time.
 
