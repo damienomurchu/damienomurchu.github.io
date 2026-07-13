@@ -5,27 +5,23 @@ description: "Writing about complex systems, secure engineering, leverage, and t
 
 Hi, I’m Damien.
 
-I’m a software engineer based in Ireland, who is interested in how complex systems behave—especially under pressure.
+I’m a software engineer based in Ireland. My work sits at the intersection of security, automation, platform reliability, and developer productivity.
 
-My career has taken me across software development, quality engineering, cloud platforms, DevOps, and technical leadership. Much of my work now sits at the intersection of security, automation, platform reliability, and developer productivity.
+I’m interested in how complex systems behave, especially under pressure. That includes technical systems, but also teams, organisations, habits, environments, careers, and lives. Across them, the same forces often recur: incentives, constraints, feedback loops, trade-offs, and hidden points of failure.
 
-I’m drawn to problems with multiple layers: architecture, operations, security, human behaviour, and the trade-offs between them.
+This blog is where I explore those patterns and look for connections across domains.
 
-Technology, however, is only one kind of system. Teams, habits, organisations, environments, careers, and lives are shaped by many of the same forces: incentives, constraints, feedback loops, accumulated decisions, and hidden points of failure.
+Some posts are technical. Others are field notes from work and life. Together, they examine what works, what breaks, and what can be made better.
 
-This blog is where I explore those patterns.
+I’m less interested in optimisation for its own sake than in leverage: useful tools, better systems, and small changes that produce disproportionate results.
 
-Some posts are technical deep dives into infrastructure, DevOps, security, AI, automation, and software engineering. Others are field notes from work and life: observations, experiments, failures, and lessons that connect ideas across disciplines.
+These posts are snapshots of my thinking, not final statements.
 
-I’m less interested in optimisation for its own sake than in leverage: small changes, useful tools, and well-designed systems that reduce friction and make difficult things easier.
+The philosophy behind this site is simple:  
 
-These posts are snapshots of my thinking, not final statements. I expect some of it to change.
-
-The philosophy behind this site is simple:
-
-* Stay curious.
-* Keep learning.
-* Build useful things.
-* Look for patterns across domains.
+Stay curious.  
+Keep learning.  
+Build useful things.  
+Look for patterns across domains.  
 
 Everything else is detail.
