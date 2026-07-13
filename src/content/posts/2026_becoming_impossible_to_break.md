@@ -9,8 +9,7 @@ draft: false
 category: engineering
 
 tags:
-  - tag-1
-  - tag-2
+  - Resilience
 
 series: 
 featured: false
