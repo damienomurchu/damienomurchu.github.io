@@ -12,7 +12,7 @@ tags:
   - Work & Organisations
 
 series: 
-featured: false
+featured: true
 ---
 
 

@@ -12,7 +12,7 @@ tags:
   - Personal Systems
 
 series: 
-featured: false
+featured: true
 ---
 
 # Treat Your Personal Systems Like Production Systems

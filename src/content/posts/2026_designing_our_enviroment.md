@@ -1,5 +1,5 @@
 ---
-title: Designing the conditions
+title: Design the conditions
 description: Environment is an underappreciated lever for shaping how we think, work, and behave
 slug: 
 pubDatetime: 2026-07-12T07:00:01Z
@@ -12,7 +12,7 @@ tags:
   - Personal Systems
 
 series: 
-featured: false
+featured: true
 ---
 
 # Designing The Conditions
