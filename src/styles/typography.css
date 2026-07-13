@@ -3,7 +3,7 @@
 @layer base {
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
-    @apply prose font-prose text-[1.125rem] leading-[1.72] font-normal;
+    @apply prose font-prose text-[1.0625rem] leading-[1.75] font-normal;
 
     h1,
     h2,
@@ -13,7 +13,7 @@
     }
 
     h2 {
-      @apply mt-12 mb-4 text-[1.7rem] leading-[1.2] font-semibold;
+      @apply mt-12 mb-5 text-[1.7rem] leading-[1.2] font-semibold;
     }
 
     h3 {
@@ -24,20 +24,17 @@
       @apply mt-8 mb-3 text-lg leading-snug font-semibold;
     }
 
-    p,
     strong,
-    ol,
-    ul,
-    figcaption,
-    table,
     code {
       @apply text-foreground;
     }
 
     p,
     ol,
-    ul {
-      @apply font-normal;
+    ul,
+    figcaption,
+    table {
+      @apply text-foreground/90 font-normal;
     }
 
     a {
