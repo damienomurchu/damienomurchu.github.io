@@ -15,7 +15,7 @@ series:
 featured: false
 ---
 
-## Engineering for long term success
+## Designing for sustained success
 
 Every system fails eventually.
 

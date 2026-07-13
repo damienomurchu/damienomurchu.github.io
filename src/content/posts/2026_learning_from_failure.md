@@ -15,7 +15,7 @@ series:
 featured: false
 ---
 
-## Failure can be managed for growth
+## Managing failure for growth
 
 There is a kind of help that looks generous in the moment but quietly weakens people over time.
 
