@@ -32,6 +32,17 @@ const { title, description, ...props } = data;
       <Datetime {...props} />
       <span aria-hidden="true" class="text-muted-foreground">·</span>
       <ReadingTime {body} />
+      {data.tags.length > 0 && (
+        <>
+          <span aria-hidden="true" class="text-muted-foreground">·</span>
+          <span
+            class="text-muted-foreground flex flex-wrap gap-x-2 text-sm"
+            aria-label={`Topics: ${data.tags.join(", ")}`}
+          >
+            {data.tags.map(tag => <span aria-hidden="true">#{tag}</span>)}
+          </span>
+        </>
+      )}
     </div>
     <p
       class="font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal"
