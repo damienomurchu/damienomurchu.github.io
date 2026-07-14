@@ -18,6 +18,9 @@ export default defineAstroPaperConfig({
     perIndex: 6,
     scheduledPostMargin: 15 * 60 * 1000,
   },
+  tags: {
+    minimumPosts: 3,
+  },
   features: {
     lightAndDarkMode: true,
     dynamicOgImage: true,

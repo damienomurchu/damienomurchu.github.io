@@ -33,6 +33,11 @@ interface PostsConfig {
   scheduledPostMargin?: number;
 }
 
+interface TagsConfig {
+  /** Minimum published posts required for a tag to appear in the tag directory. */
+  minimumPosts?: number;
+}
+
 interface FeaturesConfig {
   /** Enable light/dark mode toggle. Defaults to true. */
   lightAndDarkMode?: boolean;
@@ -95,6 +100,7 @@ interface ShareLink {
 interface AstroPaperConfig {
   site: SiteConfig;
   posts?: PostsConfig;
+  tags?: TagsConfig;
   features?: FeaturesConfig;
   /** Social profile links shown in header/footer */
   socials?: SocialLink[];
@@ -120,6 +126,7 @@ type ResolvedSiteConfig = Required<
 export interface ResolvedAstroPaperConfig {
   site: ResolvedSiteConfig;
   posts: Required<PostsConfig>;
+  tags: Required<TagsConfig>;
   features: Required<FeaturesConfig>;
   socials: SocialLink[];
   shareLinks: ShareLink[];

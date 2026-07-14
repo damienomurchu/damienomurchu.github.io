@@ -77,4 +77,5 @@ Draft posts are always excluded. Scheduled posts are excluded in production unti
 - The README is project-specific and can be used for high-level repo orientation.
 - The post template is `src/content/posts/_template.md` and should stay aligned with `src/content.config.ts`.
 - `astro-paper.config.ts` is the source of truth for public site identity, social links, edit-post links, timezone, and metadata.
+- `tags.minimumPosts` controls how many published posts a tag needs before it appears in the tag directory.
 - The default OG image is still the inherited AstroPaper image until replacement artwork is provided.
