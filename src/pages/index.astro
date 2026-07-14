@@ -8,6 +8,7 @@ import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
+import { slugifyStr } from "@/utils/slugify";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -21,6 +22,13 @@ const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
+const heroTopics = [
+  "Engineering",
+  "Personal Systems",
+  "Work & Organisations",
+  "Resilience",
+  "Tools & Automation",
+];
 ---
 
 <Layout>
@@ -44,8 +52,23 @@ const homePath = getRelativeLocaleUrl(locale, "");
         reality, from software platforms and tools to the ways we work and
         organise.
       </p>
-      <p class="mt-3 text-sm">
-        Engineering · Personal Systems · Work & Organisations · Resilience · Tools & Automation
+      <p class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm">
+        {
+          heroTopics.map((topic, index) => (
+            <>
+              {index > 0 && <span aria-hidden="true">·</span>}
+              <a
+                href={getRelativeLocaleUrl(
+                  locale,
+                  `tags/${slugifyStr(topic)}/`
+                )}
+                class="hover:text-accent focus-visible:text-accent underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+              >
+                {topic}
+              </a>
+            </>
+          ))
+        }
       </p>
     </section>
 

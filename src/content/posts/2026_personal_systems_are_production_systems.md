@@ -9,7 +9,9 @@ draft: false
 category: engineering
 
 tags:
+  - Engineering
   - Personal Systems
+  - Tools & Automation
 
 series: 
 featured: true
