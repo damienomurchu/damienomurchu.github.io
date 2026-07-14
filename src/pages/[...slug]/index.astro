@@ -15,10 +15,12 @@ import BackButton from "./_components/BackButton.astro";
 import BackToTopButton from "./_components/BackToTopButton.astro";
 import AdjacentPostNav from "./_components/AdjacentPostNav.astro";
 import config from "@/config";
+import { validatePostSlugs } from "@/utils/getPostPaths";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   const sortedPosts = getSortedPosts(posts);
+  validatePostSlugs(sortedPosts);
 
   return sortedPosts.map((post, index) => ({
     params: { slug: getPostSlug(post.id, post.filePath, post.data.slug) },

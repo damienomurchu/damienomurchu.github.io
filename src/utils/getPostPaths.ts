@@ -3,6 +3,17 @@ import { BLOG_PATH } from "@/content.config";
 import { slugifyStr } from "./slugify";
 import config from "@/config";
 
+const RESERVED_TOP_LEVEL_ROUTES = new Set([
+  "404",
+  "about",
+  "archives",
+  "posts",
+  "robots.txt",
+  "rss.xml",
+  "search",
+  "tags",
+]);
+
 function getPostPathSegments(filePath: string | undefined): string[] {
   return (
     filePath
@@ -40,6 +51,37 @@ function getPostSlugPath(
     : String(slug);
 }
 
+type RoutablePost = {
+  id: string;
+  filePath?: string;
+  data: { slug?: string | null };
+};
+
+/** Fail the build when a post would shadow a site route or another post. */
+export function validatePostSlugs(posts: RoutablePost[]): void {
+  const slugs = new Map<string, string>();
+
+  for (const post of posts) {
+    const slug = getPostSlugPath(post.id, post.filePath, post.data.slug);
+    const topLevelSegment = slug.split("/")[0];
+
+    if (RESERVED_TOP_LEVEL_ROUTES.has(topLevelSegment)) {
+      throw new Error(
+        `Post "${post.id}" uses reserved top-level route "${topLevelSegment}".`
+      );
+    }
+
+    const existingPost = slugs.get(slug);
+    if (existingPost) {
+      throw new Error(
+        `Posts "${existingPost}" and "${post.id}" resolve to the same slug "${slug}".`
+      );
+    }
+
+    slugs.set(slug, post.id);
+  }
+}
+
 /**
  * Returns the slug-only path for use as a route param in `getStaticPaths`.
  * No base prefix, no locale — Astro handles those at a higher level.
@@ -57,7 +99,7 @@ export function getPostSlug(
  * Returns a fully navigable URL for use in `<a href>` and RSS links.
  * Applies both locale routing and the configured Astro base via
  * `getRelativeLocaleUrl`.
- * e.g. `/posts/my-post` or `/en/posts/my-post`
+ * e.g. `/my-post` or `/en/my-post`
  */
 export function getPostUrl(
   id: string,
@@ -67,6 +109,6 @@ export function getPostUrl(
 ): string {
   return getRelativeLocaleUrl(
     locale,
-    `posts/${getPostSlugPath(id, filePath, customSlug)}`
+    getPostSlugPath(id, filePath, customSlug)
   );
 }
