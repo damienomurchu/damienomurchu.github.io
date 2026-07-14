@@ -1,6 +1,6 @@
 ---
 title: Design the conditions
-description: Environment is an underappreciated lever for shaping how we think, work, and behave
+description: How our surroundings, defaults, and tools quietly shape the way we think, work, and behave.
 slug: design-your-environment
 pubDatetime: 2026-07-12T07:00:01Z
 modDatetime: 2026-07-12T07:00:01Z

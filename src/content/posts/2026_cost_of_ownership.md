@@ -1,6 +1,6 @@
 ---
 title: Hidden costs of ownership
-description: The initial cost is never the true cost
+description: The obligations, friction, and opportunity costs hidden behind acquiring and keeping things.
 slug: cost-of-ownership
 pubDatetime: 2026-07-12T00:00:01Z
 modDatetime: 2026-07-12T00:00:01Z

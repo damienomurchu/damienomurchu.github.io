@@ -1,6 +1,6 @@
 ---
 title: Becoming impossible to break
-description: Engineering for long term success
+description: Why durable systems, recovery capacity, and consistency matter more than peak performance.
 slug: engineer-for-durability 
 pubDatetime: 2026-01-01T00:00:01Z
 modDatetime: 2026-01-01T00:00:01Z

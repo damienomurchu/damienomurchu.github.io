@@ -1,6 +1,6 @@
 ---
 title: The dashboard is not the work
-description: Observations and fallacies of developer metrics
+description: Why visible developer activity is a poor substitute for engineering value and system health.
 slug: developer-activity
 pubDatetime: 2026-07-10T00:00:01Z
 modDatetime: 2026-07-10T00:00:01Z

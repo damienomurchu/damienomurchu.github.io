@@ -1,6 +1,6 @@
 ---
 title: Personal systems == production systems 
-description: Treat Your Personal Systems Like Production Systems
+description: Applying production engineering principles to the systems that support everyday life.
 slug: personal-production-systems
 pubDatetime: 2026-07-11T00:00:01Z
 modDatetime: 2026-07-11T00:00:01Z
