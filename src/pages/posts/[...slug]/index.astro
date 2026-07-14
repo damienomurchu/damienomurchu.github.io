@@ -21,7 +21,7 @@ export async function getStaticPaths() {
   const sortedPosts = getSortedPosts(posts);
 
   return sortedPosts.map((post, index) => ({
-    params: { slug: getPostSlug(post.id, post.filePath) },
+    params: { slug: getPostSlug(post.id, post.filePath, post.data.slug) },
     props: {
       post,
       prevPost:
@@ -29,6 +29,7 @@ export async function getStaticPaths() {
           ? {
               id: sortedPosts[index - 1].id,
               title: sortedPosts[index - 1].data.title,
+              slug: sortedPosts[index - 1].data.slug,
               filePath: sortedPosts[index - 1].filePath,
             }
           : null,
@@ -37,6 +38,7 @@ export async function getStaticPaths() {
           ? {
               id: sortedPosts[index + 1].id,
               title: sortedPosts[index + 1].data.title,
+              slug: sortedPosts[index + 1].data.slug,
               filePath: sortedPosts[index + 1].filePath,
             }
           : null,
@@ -47,6 +49,7 @@ export async function getStaticPaths() {
 type AdjacentPost = {
   id: string;
   title: string;
+  slug?: string | null;
   filePath: string | undefined;
 } | null;
 
@@ -82,10 +85,12 @@ if (typeof initOgImage === "string") {
 }
 
 if (!ogImageUrl && config.features.dynamicOgImage) {
-  const postUrl = getPostUrl(post.id, post.filePath, locale).replace(
-    /\/+$/,
-    ""
-  );
+  const postUrl = getPostUrl(
+    post.id,
+    post.filePath,
+    locale,
+    post.data.slug
+  ).replace(/\/+$/, "");
   ogImageUrl = `${postUrl}/index.png`;
 }
 

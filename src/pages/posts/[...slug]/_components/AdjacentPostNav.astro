@@ -8,6 +8,7 @@ import config from "@/config";
 type AdjacentPost = {
   id: string;
   title: string;
+  slug?: string | null;
   filePath: string | undefined;
 } | null;
 
@@ -28,7 +29,7 @@ const t = useTranslations(locale);
   {
     prevPost && (
       <a
-        href={getPostUrl(prevPost.id, prevPost.filePath, locale)}
+        href={getPostUrl(prevPost.id, prevPost.filePath, locale, prevPost.slug)}
         class="group flex w-full items-start gap-3"
       >
         <IconArrowLeft class="mt-0.5 inline-block size-5 flex-none rtl:rotate-180" />
@@ -46,7 +47,7 @@ const t = useTranslations(locale);
   {
     nextPost && (
       <a
-        href={getPostUrl(nextPost.id, nextPost.filePath, locale)}
+        href={getPostUrl(nextPost.id, nextPost.filePath, locale, nextPost.slug)}
         class="group flex w-full items-start justify-end gap-3 text-end sm:col-start-2"
       >
         <div class="flex min-w-0 flex-col items-end gap-1.5">

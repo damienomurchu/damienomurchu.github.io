@@ -13,7 +13,7 @@ export async function GET() {
     description: config.site.description,
     site: config.site.url,
     items: sortedPosts.map(({ data, id, filePath }) => ({
-      link: getPostUrl(id, filePath, config.site.lang),
+      link: getPostUrl(id, filePath, config.site.lang, data.slug),
       title: data.title,
       description: data.description,
       pubDate: new Date(data.modDatetime ?? data.pubDatetime),
