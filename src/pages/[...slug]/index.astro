@@ -130,6 +130,28 @@ const ogImage = ogImageUrl
       <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
       <span aria-hidden="true" class="text-muted-foreground">·</span>
       <ReadingTime body={post.body} class="sm:text-base" />
+      {
+        tags.length > 0 && (
+          <>
+            <span aria-hidden="true" class="text-muted-foreground">
+              ·
+            </span>
+            <ul
+              class="flex flex-wrap gap-x-2 gap-y-1"
+              aria-label="Topics"
+            >
+              {tags.map(tag => (
+                <Tag
+                  tag={slugifyStr(tag)}
+                  tagName={tag}
+                  size="sm"
+                  variant="metadata"
+                />
+              ))}
+            </ul>
+          </>
+        )
+      }
       <span
         aria-hidden="true"
         class:list={[
@@ -158,10 +180,6 @@ const ogImage = ogImageUrl
     <EditPost class="sm:hidden" {hideEditPost} {post} />
 
     <BackToTopButton />
-
-    <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8">
-      {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
-    </ul>
 
     <ShareLinks />
 
