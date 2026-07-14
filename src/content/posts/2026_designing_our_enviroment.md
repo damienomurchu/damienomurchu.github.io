@@ -1,7 +1,7 @@
 ---
 title: Design the conditions
-description: How our surroundings, defaults, and tools quietly shape the way we think, work, and behave.
-slug: 
+description: Environment is an underappreciated lever for shaping how we think, work, and behave
+slug: design-your-environment
 pubDatetime: 2026-07-12T07:00:01Z
 modDatetime: 2026-07-12T07:00:01Z
 draft: false
@@ -15,7 +15,7 @@ series:
 featured: true
 ---
 
-<p class="standfirst">Environment is an underappreciated lever for shaping how we think, work, and behave.</p>
+## Environment - an underappreciated lever
 
 We tend to think of our behaviour as the product of deliberate choices. We decide to focus, exercise, write, rest, or become more organised, and then judge ourselves according to whether we follow through.
 

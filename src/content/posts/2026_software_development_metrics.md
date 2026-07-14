@@ -1,7 +1,7 @@
 ---
 title: The dashboard is not the work
-description: Why visible developer activity is a poor substitute for engineering value and system health.
-slug: 
+description: Observations and fallacies of developer metrics
+slug: developer-activity
 pubDatetime: 2026-07-10T00:00:01Z
 modDatetime: 2026-07-10T00:00:01Z
 draft: false
@@ -15,7 +15,7 @@ series:
 featured: true
 ---
 
-<p class="standfirst">Developer productivity cannot be understood through visible activity alone.</p>
+## Observing developer productivity
 
 There is a growing temptation in software organisations to make developer productivity more visible. On the surface, this sounds reasonable. Software is expensive, engineering teams are hard to understand from the outside, and leaders want to know whether investment is turning into progress. Developer experience matters. Friction matters. Delivery health matters.
 

@@ -1,7 +1,7 @@
 ---
 title: Hidden costs of ownership
-description: The obligations, friction, and opportunity costs hidden behind acquiring and keeping things.
-slug: 
+description: The initial cost is never the true cost
+slug: cost-of-ownership
 pubDatetime: 2026-07-12T00:00:01Z
 modDatetime: 2026-07-12T00:00:01Z
 draft: false
@@ -15,7 +15,7 @@ series:
 featured: false
 ---
 
-<p class="standfirst">The price of acquiring something is only the most visible part of what it will cost to own.</p>
+## Initial cost != total cost
 
 The price of acquiring something is rarely its true cost. The purchase price is merely the most visible part: a number that appears on a receipt, an invoice, or a budget request. It is concrete, immediate, and easy to compare. The rest of the cost is distributed across the future, where it becomes much harder to see.
 

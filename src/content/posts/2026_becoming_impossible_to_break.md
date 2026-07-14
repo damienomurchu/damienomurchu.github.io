@@ -1,7 +1,7 @@
 ---
 title: Becoming impossible to break
-description: Why durable systems, recovery capacity, and consistency matter more than peak performance.
-slug: 
+description: Engineering for long term success
+slug: engineer-for-durability 
 pubDatetime: 2026-01-01T00:00:01Z
 modDatetime: 2026-01-01T00:00:01Z
 draft: false
@@ -15,7 +15,7 @@ series:
 featured: false
 ---
 
-<p class="standfirst">Durability, not peak performance, is the foundation of sustained success.</p>
+## Designing for sustained success
 
 Every system fails eventually.
 
