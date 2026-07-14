@@ -3,36 +3,40 @@ import type { CollectionEntry } from "astro:content";
 import { getPostUrl } from "@/utils/getPostPaths";
 import { toTransitionName } from "@/utils/toTransitionName";
 import Datetime from "./Datetime.astro";
+import ReadingTime from "./ReadingTime.astro";
 
 type Props = {
   variant?: "h2" | "h3";
 } & CollectionEntry<"posts">;
 
-const { variant: Heading = "h2", id, data, filePath } = Astro.props;
+const { variant: Heading = "h2", id, data, filePath, body } = Astro.props;
 
 const { title, description, ...props } = data;
 ---
 
-<li class="my-6">
+<li class="my-3">
   <a
     href={getPostUrl(id, filePath, Astro.currentLocale, data.slug)}
     class:list={[
-      "text-accent inline-block text-lg font-medium",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
+      "group -mx-3 block rounded px-3 py-3",
+      "hover:bg-muted/50 focus-visible:bg-muted/50",
     ]}
   >
     <Heading
-      class="font-prose leading-tight font-semibold tracking-tight"
+      class="font-prose text-accent text-lg leading-tight font-semibold tracking-tight decoration-dashed underline-offset-4 group-hover:underline"
       transition:name={toTransitionName(title)}
     >
       {title}
     </Heading>
+    <div class="mt-1 flex flex-wrap items-center gap-x-2">
+      <Datetime {...props} />
+      <span aria-hidden="true" class="text-muted-foreground">·</span>
+      <ReadingTime {body} />
+    </div>
+    <p
+      class="font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal"
+    >
+      {description}
+    </p>
   </a>
-  <Datetime {...props} />
-  <p
-    class="font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal"
-  >
-    {description}
-  </p>
 </li>

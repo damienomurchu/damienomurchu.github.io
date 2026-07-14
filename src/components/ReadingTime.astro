@@ -1,0 +1,17 @@
+---
+import { tplStr, useTranslations } from "@/i18n";
+import { getReadingTime } from "@/utils/getReadingTime";
+
+type Props = {
+  body?: string;
+  class?: string;
+};
+
+const { body = "", class: className = "" } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const minutes = getReadingTime(body);
+---
+
+<span class:list={["text-muted-foreground text-sm", className]}>
+  {tplStr(t.post.readingTime, { minutes })}
+</span>

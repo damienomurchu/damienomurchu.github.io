@@ -19,7 +19,7 @@ export default defineAstroPaperConfig({
     scheduledPostMargin: 15 * 60 * 1000,
   },
   tags: {
-    minimumPosts: 3,
+    minimumPosts: 0,
   },
   features: {
     lightAndDarkMode: true,
