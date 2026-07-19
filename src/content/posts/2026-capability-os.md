@@ -32,7 +32,7 @@ Over the last few years I’ve started thinking about this differently.
 
 Instead of asking, “What should I learn next?”, I increasingly ask a higher-level question.
 
-What capabilities do I want to build, and how should they reinforce one another over the next decade?
+> What capabilities do I want to build, and how should they reinforce one another over the next decade?
 
 That question gradually led me to what I now think of as a Capability Operating System.
 
@@ -68,14 +68,13 @@ Each capability reinforces several others.
 
 The interesting question isn’t simply:
 
-What should I learn?
+> What should I learn?
 
 It’s:
 
-Which capability will create the greatest positive spillover into everything else?
+> Which capability will create the greatest positive spillover into everything else?
 
 Those are unusually good investments because the return extends far beyond the original project.
-
 ## Capability ROI
 
 That way of thinking has quietly changed how I choose projects.
@@ -117,10 +116,11 @@ Viewed together, they’re all strengthening the same operating system.
 
 Each one develops capabilities that make the next project easier, more ambitious and ultimately more valuable.
 
-## Every capability has a lifecycle
+Every capability has a lifecycle
 
 Although the projects differ, I’ve found that capabilities develop through remarkably similar cycles.
 
+```
 Orient
 ↓
 Build mental models
@@ -138,6 +138,7 @@ Capture what matters
 Teach
 ↓
 Capability strengthened
+```
 
 The technology changes.
 
