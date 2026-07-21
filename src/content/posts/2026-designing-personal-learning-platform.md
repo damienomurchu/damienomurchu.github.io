@@ -16,6 +16,7 @@ series:
 featured: false
 ---
 
+## Reframing learning
 
 For years, I approached learning the same way most engineers do.
 
@@ -31,9 +32,9 @@ Why wasn’t I doing the same thing for myself?
 
 That question fundamentally changed how I think about learning.
 
-From projects to platforms
+## From projects to platforms
 
-## Imagine two organisations.
+Imagine two organisations.
 
 The first solves every problem independently. Every new team builds its own CI/CD pipeline, monitoring solution, authentication system and deployment process. The same problems are solved over and over again.
 
