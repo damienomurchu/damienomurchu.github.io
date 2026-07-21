@@ -2,8 +2,8 @@
 title: Design the conditions
 description: How our surroundings, defaults, and tools quietly shape the way we think, work, and behave.
 slug: design-your-environment
-pubDatetime: 2026-07-12T07:00:01Z
-modDatetime: 2026-07-12T07:00:01Z
+pubDatetime: 2026-06-13T07:00:01Z
+modDatetime: 2026-06-13T07:00:01Z
 draft: false
 
 category: engineering
@@ -13,7 +13,7 @@ tags:
   - Work & Organisations
 
 series: 
-featured: true
+featured: false
 ---
 
 ## Environment - an underappreciated lever

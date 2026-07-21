@@ -2,8 +2,8 @@
 title: Personal systems are production systems 
 description: Applying production engineering principles to the systems that support everyday life.
 slug: personal-production-systems
-pubDatetime: 2026-07-11T00:00:01Z
-modDatetime: 2026-07-11T00:00:01Z
+pubDatetime: 2026-06-06T00:00:01Z
+modDatetime: 2026-06-06T00:00:01Z
 draft: false
 
 category: engineering
@@ -12,7 +12,7 @@ tags:
   - Personal Systems
 
 series: 
-featured: true
+featured: false
 ---
 
 ## Treat Personal Systems Like Production

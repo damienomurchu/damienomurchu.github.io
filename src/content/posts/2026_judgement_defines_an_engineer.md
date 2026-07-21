@@ -2,8 +2,8 @@
 title: "How judgement, not technical skill, defines a senior engineer"
 description: Why technical ability is only the foundation of seniority, and sound judgement determines who can be trusted with consequential engineering decisions.
 slug: "judgement-defines-a-senior-engineer"
-pubDatetime: 2026-07-15T00:00:01Z
-modDatetime: 2026-07-15T00:00:01Z
+pubDatetime: 2026-07-20T00:00:01Z
+modDatetime: 2026-07-20T00:00:01Z
 draft: false
 
 category: engineering
@@ -13,7 +13,7 @@ tags:
   - Work & Organisations
 
 series: 
-featured: false
+featured: true
 ---
 
 ## Seniority begins where certainty ends

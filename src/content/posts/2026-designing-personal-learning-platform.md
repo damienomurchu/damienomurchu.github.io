@@ -2,8 +2,8 @@
 title: Designing a personal learning platform 
 description: What if you approached learning like a platform engineer—building a system that makes every future capability easier to acquire?
 slug: personal-learning-platform 
-pubDatetime: 2026-07-18T00:00:01Z
-modDatetime: 2026-07-18T00:00:01Z
+pubDatetime: 2026-07-15T00:00:01Z
+modDatetime: 2026-07-15T00:00:01Z
 draft: false
 
 category: engineering
@@ -13,7 +13,7 @@ tags:
   - Engineering 
 
 series: 
-featured: false
+featured: true
 ---
 
 ## Reframing learning
