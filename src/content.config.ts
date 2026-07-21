@@ -10,8 +10,8 @@ const posts = defineCollection({
   schema: ({ image }) =>
     z.object({
       author: z.string().default(config.site.author),
-      pubDatetime: z.date(),
-      modDatetime: z.date().optional().nullable(),
+      pubDate: z.date(),
+      modDate: z.date().optional().nullable(),
       title: z.string(),
       slug: z.string().trim().min(1).optional().nullable(),
       featured: z.boolean().optional(),
@@ -21,7 +21,6 @@ const posts = defineCollection({
       description: z.string(),
       canonicalURL: z.string().optional(),
       hideEditPost: z.boolean().optional(),
-      timezone: z.string().optional(),
     }),
 });
 

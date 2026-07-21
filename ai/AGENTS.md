@@ -23,24 +23,23 @@ Required post frontmatter:
 
 - `title`
 - `description`
-- `pubDatetime`
+- `pubDate`
 - `tags`
 
 Optional post frontmatter:
 
 - `author`
-- `modDatetime`
+- `modDate`
 - `slug`
 - `featured`
 - `draft`
 - `ogImage`
 - `canonicalURL`
 - `hideEditPost`
-- `timezone`
 
-Use `pubDatetime` and `modDatetime` exactly. Do not use `pubDateTime`, `pubDate`, `updateddatetime`, or similar variants.
+Use `pubDate` and `modDate` exactly, with date-only `YYYY-MM-DD` values.
 
-Draft posts are always excluded. Scheduled posts are excluded in production until `pubDatetime - config.posts.scheduledPostMargin`.
+Draft posts are always excluded. Future-dated posts are excluded in production until `pubDate`.
 
 ## Routing
 
@@ -50,7 +49,7 @@ Draft posts are always excluded. Scheduled posts are excluded in production unti
 - A post's optional `slug` overrides its filename-derived root-level path.
 - `/posts/` is retained for the paginated post listing only.
 - Home page shows featured posts first, then recent posts from `getSortedPosts`.
-- Sorting uses `modDatetime` when present, otherwise `pubDatetime`.
+- Sorting uses `modDate` when present, otherwise `pubDate`.
 
 ## Site Identity
 

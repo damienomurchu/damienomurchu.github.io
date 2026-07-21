@@ -2,8 +2,8 @@
 title: Don't steal peoples failure
 description: Why recoverable failure is essential for developing judgement, capability, and resilient teams.
 slug: managed-failure
-pubDatetime: 2026-07-01T00:00:01Z
-modDatetime: 2026-07-01T00:00:01Z
+pubDate: 2026-07-01
+modDate: 2026-07-01
 draft: false
 
 category: engineering

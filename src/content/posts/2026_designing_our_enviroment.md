@@ -2,8 +2,8 @@
 title: Design the conditions
 description: How our surroundings, defaults, and tools quietly shape the way we think, work, and behave.
 slug: design-your-environment
-pubDatetime: 2026-06-13T07:00:01Z
-modDatetime: 2026-06-13T07:00:01Z
+pubDate: 2026-06-13
+modDate: 2026-06-13
 draft: false
 
 category: engineering

@@ -70,9 +70,8 @@ const {
   description,
   ogImage: initOgImage,
   canonicalURL,
-  pubDatetime,
-  modDatetime,
-  timezone,
+  pubDate,
+  modDate,
   tags,
   hideEditPost,
 } = post.data;
@@ -107,8 +106,8 @@ const ogImage = ogImageUrl
   description={description}
   ogImage={ogImage}
   canonicalURL={canonicalURL}
-  pubDatetime={pubDatetime}
-  modDatetime={modDatetime}
+  pubDate={pubDate}
+  modDate={modDate}
 >
   <Header />
 
@@ -127,7 +126,7 @@ const ogImage = ogImageUrl
     </h1>
 
     <div class="my-2 flex flex-wrap items-center gap-2">
-      <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
+      <Datetime {pubDate} {modDate} size="lg" />
       <span aria-hidden="true" class="text-muted-foreground">·</span>
       <ReadingTime body={post.body} class="sm:text-base" />
       {
@@ -136,10 +135,7 @@ const ogImage = ogImageUrl
             <span aria-hidden="true" class="text-muted-foreground">
               ·
             </span>
-            <ul
-              class="flex flex-wrap gap-x-2 gap-y-1"
-              aria-label="Topics"
-            >
+            <ul class="flex flex-wrap gap-x-2 gap-y-1" aria-label="Topics">
               {tags.map(tag => (
                 <Tag
                   tag={slugifyStr(tag)}

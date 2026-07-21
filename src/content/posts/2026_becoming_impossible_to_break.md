@@ -2,8 +2,8 @@
 title: Becoming impossible to break
 description: Why durable systems, recovery capacity, and consistency matter more than peak performance.
 slug: engineer-for-durability 
-pubDatetime: 2026-05-28T00:00:01Z
-modDatetime: 2026-05-28T00:00:01Z
+pubDate: 2026-05-28
+modDate: 2026-05-28
 draft: false
 
 category: engineering

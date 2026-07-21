@@ -2,8 +2,8 @@
 title: Hidden costs of ownership
 description: The obligations, friction, and opportunity costs hidden behind acquiring and keeping things.
 slug: cost-of-ownership
-pubDatetime: 2026-06-22T00:00:01Z
-modDatetime: 2026-06-22T00:00:01Z
+pubDate: 2026-06-22
+modDate: 2026-06-22
 draft: false
 
 category: engineering
