@@ -39,7 +39,7 @@ const heroTopics = [
     data-home-path={homePath}
     class="app-layout"
   >
-    <section id="hero" class="border-border border-b pt-8 pb-6">
+    <section id="hero" class="border-border border-b pt-4 pb-6">
       <h2
         class="font-prose my-4 inline-block text-4xl leading-tight font-bold tracking-tight sm:my-8 sm:text-5xl"
       >
@@ -48,9 +48,7 @@ const heroTopics = [
       <p
         class="font-prose text-foreground/90 max-w-[68ch] text-lg leading-relaxed font-normal"
       >
-        Field notes on designing, building, and improving systems that survive
-        reality, from software platforms and tools to the ways we work and
-        organise.
+        {config.site.description}
       </p>
       <p class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm">
         {

@@ -5,7 +5,7 @@ export default defineAstroPaperConfig({
     url: "https://forged.damienmurphy.net/",
     title: "Forged · Damien Murphy",
     description:
-      "Field notes on DevSecOps, platform engineering, secure delivery, internal tooling, and the space between design and production.",
+      "Field notes on building systems that hold up under pressure — from software platforms and engineering practices to the ways we work and organise.",
     author: "Damien Murphy",
     profile: "https://www.linkedin.com/in/damienmurphy/",
     ogImage: "default-og.jpg",
