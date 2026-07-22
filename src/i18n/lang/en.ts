@@ -7,6 +7,7 @@ export default {
     tags: "Topics",
     about: "About",
     archives: "Archives",
+    rss: "RSS feed",
     search: "Search",
   },
   post: {

@@ -4,10 +4,11 @@ import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
+import IconRss from "@/assets/icons/IconRss.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconX from "@/assets/icons/IconX.svg";
 import LinkButton from "./LinkButton.astro";
-import { stripBase, stripLocale } from "@/utils/withBase";
+import { getAssetPath, stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -135,6 +136,19 @@ const isActive = (path: string) => {
             </li>
           )
         }
+        <li class="col-span-2 flex items-center justify-center sm:col-span-1">
+          <LinkButton
+            href={getAssetPath("rss.xml")}
+            class="focus-outline text-muted-foreground hover:text-accent flex w-full items-center justify-center gap-2 p-3 sm:relative sm:size-8 sm:p-0"
+            title={t.nav.rss}
+            aria-label={t.nav.rss}
+          >
+            <IconRss
+              class="size-5 sm:absolute sm:top-1/2 sm:left-1/2 sm:size-6 sm:-translate-x-1/2 sm:-translate-y-1/2"
+            />
+            <span class="sm:sr-only">{t.nav.rss}</span>
+          </LinkButton>
+        </li>
         {
           features.search !== false && (
             <li class="col-span-1 flex items-center justify-center">
