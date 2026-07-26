@@ -2,8 +2,8 @@
 title: The runner was easy. The platform was the real engineering
 description: Self-hosting a GitHub Actions runner is easy. Turning runners into a secure, scalable, self-service organisational capability is a platform-engineering problem.
 slug: building-a-runner-platform
-pubDate: 2026-07-28
-modDate: 2026-07-28
+pubDate: 2026-07-26
+modDate: 2026-07-26
 draft: false
 
 category: engineering
