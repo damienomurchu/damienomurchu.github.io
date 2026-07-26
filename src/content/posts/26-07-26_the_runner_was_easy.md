@@ -13,7 +13,7 @@ tags:
   - Tools & Automation
 
 series: 
-featured: false
+featured: true
 ---
 
 ## Simplicity can be deceptive
