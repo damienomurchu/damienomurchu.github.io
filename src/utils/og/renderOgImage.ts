@@ -8,7 +8,7 @@ const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
 
 const colors = {
-  background: "#1b2024",
+  background: "#20262a",
   foreground: "#cbd0cd",
   accent: "#c98968",
   muted: "#98a3a8",
@@ -90,6 +90,8 @@ export async function renderPostOgImage(data: PostOgData, url: URL) {
           justifyContent: "space-between",
           padding: "72px 80px 62px",
           background: colors.background,
+          border: `2px solid ${colors.border}`,
+          boxSizing: "border-box",
           color: colors.foreground,
         },
         children: [
@@ -203,6 +205,8 @@ export async function renderSiteOgImage(url: URL) {
           justifyContent: "space-between",
           padding: "72px 80px 62px",
           background: colors.background,
+          border: `2px solid ${colors.border}`,
+          boxSizing: "border-box",
           color: colors.foreground,
         },
         children: [
