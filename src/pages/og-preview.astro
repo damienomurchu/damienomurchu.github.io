@@ -1,0 +1,90 @@
+---
+import { getCollection } from "astro:content";
+import Header from "@/components/Header.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getPostSlug, validatePostSlugs } from "@/utils/getPostPaths";
+import { postFilter } from "@/utils/postFilter";
+
+const posts = await getCollection("posts").then(items =>
+  items.filter(postFilter).filter(({ data }) => !data.ogImage)
+);
+validatePostSlugs(posts);
+
+const previews = posts
+  .map(post => {
+    const slug = getPostSlug(post.id, post.filePath, post.data.slug);
+    return {
+      title: post.data.title,
+      src: `${slug.replace(/\/+$/, "")}/index.png`,
+    };
+  })
+  .sort((a, b) => b.title.length - a.title.length);
+---
+
+<Layout
+  title="Open Graph previews | Forged"
+  description="Development gallery for generated Open Graph images."
+  noindex
+>
+  <Header />
+
+  <main id="main-content" class="app-layout py-10">
+    <header class="mb-12">
+      <h1 class="font-prose text-4xl font-bold">Open Graph previews</h1>
+      <p class="text-muted-foreground mt-4">
+        Generated cards ordered by title length. Compare the full image with the
+        compact link-preview rendering.
+      </p>
+    </header>
+
+    <div class="space-y-16">
+      {
+        previews.map(preview => (
+          <section>
+            <h2 class="font-prose mb-5 text-2xl font-bold">{preview.title}</h2>
+
+            <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
+              <figure>
+                <img
+                  src={preview.src}
+                  alt={`Open Graph artwork for ${preview.title}`}
+                  width="1200"
+                  height="630"
+                  loading="lazy"
+                  class="border-border w-full border"
+                />
+                <figcaption class="text-muted-foreground mt-2 text-sm">
+                  1200 × 630 source image
+                </figcaption>
+              </figure>
+
+              <figure>
+                <div class="social-preview border-border overflow-hidden rounded-lg border bg-white text-[#1f2328]">
+                  <img
+                    src={preview.src}
+                    alt=""
+                    width="360"
+                    height="189"
+                    loading="lazy"
+                    class="block aspect-[1200/630] w-full object-cover"
+                  />
+                  <div class="border-t border-[#d8dee4] p-3">
+                    <div class="line-clamp-2 font-sans text-sm font-semibold">
+                      {preview.title} | Forged · Damien Murphy
+                    </div>
+                    <div class="mt-1 font-sans text-xs text-[#656d76]">
+                      forged.damienmurphy.net
+                    </div>
+                  </div>
+                </div>
+                <figcaption class="text-muted-foreground mt-2 text-sm">
+                  Compact social-card simulation
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</Layout>
