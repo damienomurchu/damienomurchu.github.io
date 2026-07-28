@@ -2,8 +2,8 @@
 title: "I Never Meant to Build a Personal Cloud"
 description: "What began as a home AI lab gradually became something larger: a personal platform for experimentation, self-hosting, learning, and building future projects."
 slug: "i-never-meant-to-build-a-personal-cloud"
-pubDate: 2026-08-09
-modDate: 2026-08-09
+pubDate: 2026-07-31
+modDate: 2026-07-31
 draft: false
 
 category: engineering
