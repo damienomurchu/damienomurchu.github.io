@@ -29,24 +29,10 @@ const t = useTranslations(locale);
   <Breadcrumb />
 
   <Main pageTitle={t.pages.tagsTitle} pageDesc={t.pages.tagsDesc}>
-    {
-      series.length > 0 && (
-        <section aria-labelledby="series-heading" class="mb-10">
-          <h2
-            id="series-heading"
-            class="font-prose mb-4 text-xl font-semibold tracking-tight"
-          >
-            Series
-          </h2>
-          <ul class="grid max-w-3xl grid-cols-1 gap-4">
-            {series.map(item => (
-              <SeriesCard series={item} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-    <section aria-labelledby="topics-heading">
+    <section
+      aria-labelledby="topics-heading"
+      class:list={{ "mb-10": series.length > 0 }}
+    >
       <h2
         id="topics-heading"
         class="font-prose mb-4 text-xl font-semibold tracking-tight"
@@ -61,6 +47,23 @@ const t = useTranslations(locale);
         }
       </ul>
     </section>
+    {
+      series.length > 0 && (
+        <section aria-labelledby="series-heading">
+          <h2
+            id="series-heading"
+            class="font-prose mb-4 text-xl font-semibold tracking-tight"
+          >
+            Series
+          </h2>
+          <ul class="grid max-w-3xl grid-cols-1 gap-4">
+            {series.map(item => (
+              <SeriesCard series={item} />
+            ))}
+          </ul>
+        </section>
+      )
+    }
   </Main>
 
   <Footer />
