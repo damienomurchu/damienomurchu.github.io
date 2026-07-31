@@ -9,6 +9,7 @@ import Card from "@/components/Card.astro";
 import Footer from "@/components/Footer.astro";
 import Pagination from "@/components/Pagination.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
+import { getSeriesMap } from "@/utils/getSeries";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -18,6 +19,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+const seriesById = getSeriesMap(getSortedPosts(await getCollection("posts")));
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
@@ -30,7 +32,18 @@ const t = useTranslations(locale);
 
   <Main pageTitle={t.pages.postsTitle} pageDesc={t.pages.postsDesc}>
     <ul>
-      {page.data.map(data => <Card {...data} />)}
+      {
+        page.data.map(data => (
+          <Card
+            {...data}
+            seriesTitle={
+              data.data.series
+                ? seriesById.get(data.data.series.id)?.title
+                : undefined
+            }
+          />
+        ))
+      }
     </ul>
   </Main>
 

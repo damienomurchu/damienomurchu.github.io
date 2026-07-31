@@ -43,6 +43,7 @@ Optional post frontmatter:
 - `slug`
 - `featured`
 - `draft`
+- `series`
 - `ogImage`
 - `canonicalURL`
 - `hideEditPost`
@@ -52,10 +53,15 @@ Use `pubDate` and `modDate` exactly, with date-only `YYYY-MM-DD` values.
 Draft posts are always excluded. Future-dated non-draft posts are visible in
 development but excluded from production until `pubDate`.
 
-Tags drive the site's taxonomy and tag pages. Keep tag spelling and casing
+Tags drive the site's topic taxonomy and tag pages. Keep tag spelling and casing
 consistent: differently cased or slug-like values may be treated as separate
-tags. Legacy `category` and `series` fields appear in some posts but are not
-part of the collection schema and are not used by the site.
+tags.
+
+Series are derived entirely from post frontmatter. The post with `series.order:
+1` must provide the stable lowercase-hyphenated `id`, `title`, and
+`description`. Later posts provide `id` and a unique positive integer `order`.
+Series are ongoing by default; the highest-order post may set `complete: true`.
+The build rejects incomplete or conflicting series metadata.
 
 ## Routing
 
@@ -68,6 +74,8 @@ part of the collection schema and are not used by the site.
 - Builds fail when posts resolve to duplicate URLs or use reserved top-level
   routes such as `/about`, `/archives`, `/posts`, `/search`, or `/tags`.
 - `/posts/` is retained for the paginated post listing only.
+- `/tags/` is presented as Explore and contains both series and topics.
+- Series indexes are generated at `/series/[id]/`.
 - Home page shows featured posts first, then recent posts from `getSortedPosts`.
 - Sorting uses `modDate` when present, otherwise `pubDate`.
 

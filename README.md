@@ -101,12 +101,26 @@ tags:
 ```
 
 Optional fields are `author`, `modDate`, `slug`, `featured`, `draft`,
-`ogImage`, `canonicalURL`, and `hideEditPost`. Use `pubDate` and `modDate`
-exactly, with `YYYY-MM-DD` values.
+`series`, `ogImage`, `canonicalURL`, and `hideEditPost`. Use `pubDate` and
+`modDate` exactly, with `YYYY-MM-DD` values.
 
-Tags provide the site's taxonomy, so their spelling and casing should remain
-consistent. Some older posts contain `category` and `series`, but the site does
-not use those fields.
+Tags provide the site's topic taxonomy, so their spelling and casing should
+remain consistent.
+
+The first post in a series defines its shared metadata and reading order:
+
+```yaml
+series:
+  id: personal-cloud
+  title: Building a Personal Cloud
+  description: Field notes from building a private platform.
+  order: 1
+```
+
+Later posts need only `id` and `order`. A series is ongoing unless its
+highest-order post sets `complete: true`. Builds reject missing first-post
+metadata, duplicate order values, conflicting metadata, and invalid completion
+markers.
 
 Drafts are never published. Future-dated non-draft posts are visible during
 local development and excluded from production until their publication date.
@@ -117,6 +131,8 @@ local development and excluded from production until their publication date.
 - A post's `slug` overrides its filename-derived path and may contain nested
   segments.
 - `/posts/` is the paginated listing; individual posts do not live beneath it.
+- Series pages are derived from post frontmatter at `/series/[id]/`.
+- `/tags/` is the Explore directory for both series and topics.
 - Builds reject duplicate post URLs and reserved top-level routes.
 - Pagefind powers static search.
 - RSS is available at `/rss.xml`.

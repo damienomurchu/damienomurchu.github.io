@@ -4,7 +4,7 @@ export default {
   nav: {
     home: "Home",
     posts: "Posts",
-    tags: "Topics",
+    tags: "Explore",
     about: "About",
     archives: "Archives",
     rss: "RSS feed",
@@ -43,8 +43,8 @@ export default {
     tagTitle: "Topic",
     tagDesc: "All posts filed under this topic.",
 
-    tagsTitle: "Topics",
-    tagsDesc: "Browse posts by topic.",
+    tagsTitle: "Explore",
+    tagsDesc: "Browse writing by subject or follow a series.",
 
     postsTitle: "Posts",
     postsDesc: "All the articles I've posted.",

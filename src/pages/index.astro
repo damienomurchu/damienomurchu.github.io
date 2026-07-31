@@ -8,6 +8,7 @@ import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
+import { getSeriesMap } from "@/utils/getSeries";
 import { slugifyStr } from "@/utils/slugify";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
@@ -19,6 +20,7 @@ const t = useTranslations(locale);
 
 const posts = await getCollection("posts");
 const sortedPosts = getSortedPosts(posts);
+const seriesById = getSeriesMap(sortedPosts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
@@ -84,7 +86,15 @@ const heroTopics = [
           </h2>
           <ul>
             {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
+              <Card
+                variant="h3"
+                {...data}
+                seriesTitle={
+                  data.data.series
+                    ? seriesById.get(data.data.series.id)?.title
+                    : undefined
+                }
+              />
             ))}
           </ul>
         </section>
@@ -99,7 +109,15 @@ const heroTopics = [
           </h2>
           <ul>
             {recentPosts.slice(0, postsConfig.perIndex).map(data => (
-              <Card variant="h3" {...data} />
+              <Card
+                variant="h3"
+                {...data}
+                seriesTitle={
+                  data.data.series
+                    ? seriesById.get(data.data.series.id)?.title
+                    : undefined
+                }
+              />
             ))}
           </ul>
         </section>

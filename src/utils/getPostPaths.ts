@@ -11,6 +11,7 @@ const RESERVED_TOP_LEVEL_ROUTES = new Set([
   "robots.txt",
   "rss.xml",
   "search",
+  "series",
   "tags",
 ]);
 

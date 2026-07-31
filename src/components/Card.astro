@@ -7,9 +7,17 @@ import ReadingTime from "./ReadingTime.astro";
 
 type Props = {
   variant?: "h2" | "h3";
+  seriesTitle?: string;
 } & CollectionEntry<"posts">;
 
-const { variant: Heading = "h2", id, data, filePath, body } = Astro.props;
+const {
+  variant: Heading = "h2",
+  seriesTitle,
+  id,
+  data,
+  filePath,
+  body,
+} = Astro.props;
 
 const { title, description, ...props } = data;
 ---
@@ -22,6 +30,13 @@ const { title, description, ...props } = data;
       "hover:bg-muted/50 focus-visible:bg-muted/50",
     ]}
   >
+    {
+      data.series && seriesTitle && (
+        <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
+          {seriesTitle} · Part {data.series.order}
+        </p>
+      )
+    }
     <Heading
       class="font-prose text-accent text-lg leading-tight font-semibold tracking-tight"
       transition:name={toTransitionName(title)}
@@ -32,17 +47,23 @@ const { title, description, ...props } = data;
       <Datetime {...props} />
       <span aria-hidden="true" class="text-muted-foreground">·</span>
       <ReadingTime {body} />
-      {data.tags.length > 0 && (
-        <>
-          <span aria-hidden="true" class="text-muted-foreground">·</span>
-          <span
-            class="text-muted-foreground flex flex-wrap gap-x-2 text-sm"
-            aria-label={`Topics: ${data.tags.join(", ")}`}
-          >
-            {data.tags.map(tag => <span aria-hidden="true">#{tag}</span>)}
-          </span>
-        </>
-      )}
+      {
+        data.tags.length > 0 && (
+          <>
+            <span aria-hidden="true" class="text-muted-foreground">
+              ·
+            </span>
+            <span
+              class="text-muted-foreground flex flex-wrap gap-x-2 text-sm"
+              aria-label={`Topics: ${data.tags.join(", ")}`}
+            >
+              {data.tags.map(tag => (
+                <span aria-hidden="true">#{tag}</span>
+              ))}
+            </span>
+          </>
+        )
+      }
     </div>
     <p
       class="font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal"
