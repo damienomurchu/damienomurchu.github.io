@@ -1,6 +1,6 @@
 ---
 title: "I Never Meant to Build a Personal Cloud"
-description: "What began as a home AI lab gradually became something larger: a personal platform for experimentation, self-hosting, learning, and building future projects."
+description: "What began as a home AI lab became a personal platform for experimentation, self-hosting, learning, and building future capabilities."
 slug: "i-never-meant-to-build-a-personal-cloud"
 pubDate: 2026-07-31
 modDate: 2026-07-31
@@ -16,7 +16,7 @@ series:
   title: "Building a Personal Cloud"
   description: "Field notes from building a private platform for local AI, experimentation, and self-hosting."
   order: 1
-featured: false
+featured: true
 ---
 
 ## It Started With Local AI

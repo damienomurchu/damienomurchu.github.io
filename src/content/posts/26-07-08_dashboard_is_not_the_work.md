@@ -12,7 +12,7 @@ tags:
   - Work & Organisations
 
 series: 
-featured: true
+featured: false
 ---
 
 ## Observing developer productivity
