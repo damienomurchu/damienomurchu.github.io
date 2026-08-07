@@ -389,31 +389,14 @@ Each of those controls can be useful.
 
 None is sufficient.
 
-GitHub Actions security spans at least six connected layers.
+GitHub Actions security spans at least six connected layers:
 
-### 1. Publisher trust
-
-Who controls the Action and its release process?
-
-### 2. Dependency integrity
-
-What exact code, container and transitive components will execute?
-
-### 3. Workflow design
-
-Which events and untrusted inputs can reach privileged operations?
-
-### 4. Identity and permissions
-
-What credentials and capabilities are available to the job?
-
-### 5. Runner security
-
-Where does the job execute, and what can that environment reach?
-
-### 6. Enterprise governance
-
-How are usage, exceptions, upgrades and incidents managed at scale?
+1. Publisher trust - who controls the Action and its release process?
+2. Dependency integrity - what exact code, container and transitive components will execute?
+3. Workflow design - which events and untrusted inputs can reach privileged operations?
+4. Identity and permissions - what credentials and capabilities are available to the job?
+5. Runner security - where does the job execute, and what can that environment reach?
+6. Enterprise governance - how are usage, exceptions, upgrades and incidents managed at scale?
 
 A weakness in any one layer can undermine controls in another.
 
