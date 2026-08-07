@@ -13,7 +13,7 @@ tags:
   - Tools & Automation
 
 series: 
-featured: false
+featured: true
 ---
 
 ## Small teams force better platform decisions
