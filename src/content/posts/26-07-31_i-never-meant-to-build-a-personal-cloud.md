@@ -16,7 +16,7 @@ series:
   title: "Building a Personal Cloud"
   description: "Field notes from building a private platform for local AI, experimentation, and self-hosting."
   order: 1
-featured: true
+featured: false
 ---
 
 ## It Started With Local AI
