@@ -50,8 +50,9 @@ Optional post frontmatter:
 
 Use `pubDate` and `modDate` exactly, with date-only `YYYY-MM-DD` values.
 
-Draft posts are always excluded. Future-dated non-draft posts are visible in
-development but excluded from production until `pubDate`.
+Draft posts are excluded by default and can be previewed locally with
+`pnpm dev:drafts`. Future-dated non-draft posts are visible in development but
+excluded from production until `pubDate`.
 
 Tags drive the site's topic taxonomy and tag pages. Keep tag spelling and casing
 consistent: differently cased or slug-like values may be treated as separate

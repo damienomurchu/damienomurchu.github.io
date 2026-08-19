@@ -8,6 +8,7 @@
   "packageManager": "pnpm@10.13.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:drafts": "SHOW_DRAFTS=true astro dev",
     "build": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/ && node scripts/validate-rss.mjs",
     "validate:rss": "node scripts/validate-rss.mjs",
     "preview": "astro preview",

@@ -122,7 +122,8 @@ highest-order post sets `complete: true`. Builds reject missing first-post
 metadata, duplicate order values, conflicting metadata, and invalid completion
 markers.
 
-Drafts are never published. Future-dated non-draft posts are visible during
+Drafts are never published. Preview them locally with `pnpm dev:drafts`.
+Future-dated non-draft posts are visible during
 local development and excluded from production until their publication date.
 
 ## Routes and Features
