@@ -13,7 +13,7 @@ tags:
   - Work & Organisations
 
 series: 
-featured: true
+featured: false
 ---
 
 ## Environment - an underappreciated lever

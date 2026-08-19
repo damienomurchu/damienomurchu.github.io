@@ -11,6 +11,9 @@ category: engineering
 tags:
   - Personal Systems
   - Work & Organisations
+
+series: 
+featured: true
 ---
 
 # Designing the Engineering Conditions
