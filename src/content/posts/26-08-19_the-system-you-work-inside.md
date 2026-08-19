@@ -4,7 +4,7 @@ description: "Transforming my working environment from a collection of tools int
 slug: "the-system-you-work-inside"
 pubDate: 2026-08-19
 modDate: 2026-08-19
-draft: true
+draft: false
 
 category: engineering
 
