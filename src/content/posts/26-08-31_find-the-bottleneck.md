@@ -2,8 +2,8 @@
 title: "Find the Bottleneck"
 description: "Personal systems are not really about productivity. They are about identifying and removing the constraints that limit our ability to turn effort into impact, influence and results."
 slug: "find-the-bottleneck"
-pubDate: 2026-08-31
-modDate: 2026-08-31
+pubDate: 2026-09-01
+modDate: 2026-09-01
 draft: false
 
 category: engineering
