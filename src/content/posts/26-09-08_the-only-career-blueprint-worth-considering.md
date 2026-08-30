@@ -214,23 +214,35 @@ All of those things compound slowly.
 
 Which means the best time to build career optionality is usually when you don't currently need it.
 
-## Automation wasn't the enemy. AI isn't either.
+## Technology changes the ground underneath us too
 
-I think AI is simply the latest and most powerful example of another type of change engineers will need to absorb.
+Organisational change isn't the only thing capable of changing the ground underneath us. Technology does the same thing.
 
-We've been automating our own work for as long as software engineering has existed. Compilers replaced work programmers once performed manually. CI/CD automated integration and deployment. Infrastructure as code automated infrastructure management. Cloud services removed entire categories of operational work.
+Software engineering has always evolved by automating and abstracting away parts of the work that came before. Compilers removed work programmers once performed manually. CI/CD changed how we integrated and released software. Infrastructure as code changed how we managed infrastructure. Cloud platforms and managed services removed entire categories of operational work.
 
-Each abstraction changed what was valuable for the engineer underneath it. AI is doing the same thing at a much larger scale.
+None of those changes made engineering stop mattering. They changed where the valuable engineering work was.
 
-It will almost certainly make some things we currently spend time doing much less valuable. It will change where the bottlenecks in software engineering sit and therefore where engineers can create the most leverage. Fighting that seems about as useful as fighting automation generally.
+The capabilities that mattered moved upwards.
 
-The opportunity is to use it to move upwards.
+AI looks like another significant step in that process. Exactly where it leads is much harder to predict, and I don't think building a career strategy around confidently forecasting that future is particularly useful either.
 
-If AI removes more of the mundane implementation work, use that leverage to understand bigger systems, explore alternatives more quickly, solve harder problems, exercise better judgement, and produce more valuable outcomes.
+What seems much more durable is recognising the pattern.
 
-Our value as engineers was never fundamentally our ability to type code faster than somebody else. It is our ability to understand a problem well enough to make something useful happen.
+When technology makes one part of engineering cheaper or easier, the bottleneck moves somewhere else. Implementation may become faster, while understanding the right problem, choosing between alternatives, integrating systems, managing complexity, exercising judgement, communicating trade-offs, or understanding the wider organisational context becomes relatively more important.
 
-The tools available to us are changing. We should too.
+The useful response isn't to become emotionally attached to whichever tasks currently make us valuable.
+
+It is to keep following the value.
+
+If tools allow us to spend less time on repetitive implementation, use that leverage to understand larger systems, explore alternatives faster, solve harder problems, make better decisions, and produce more useful outcomes.
+
+That applies to AI today, but the broader pattern is much older: as technology changes, the valuable work shifts with it. Our job is to recognise where that value is moving and keep developing accordingly.
+
+Projects change. Organisations change. Technologies change. The particular work we are paid to do changes with them.
+
+Our career resilience comes from continually developing the capabilities that remain useful as those changes happen.
+
+Our value as engineers was never fundamentally our ability to perform one particular task faster than somebody else. It is our ability to understand problems well enough to make useful things happen.
 
 ## The blueprint
 
