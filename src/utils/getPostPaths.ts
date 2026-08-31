@@ -8,6 +8,7 @@ const RESERVED_TOP_LEVEL_ROUTES = new Set([
   "about",
   "archives",
   "posts",
+  "privacy",
   "robots.txt",
   "rss.xml",
   "search",

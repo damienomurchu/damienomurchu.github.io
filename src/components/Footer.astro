@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import type { HTMLAttributes } from "astro/types";
 import Socials from "./Socials.astro";
 import config from "@/config";
@@ -10,6 +11,7 @@ type Props = {
 const { noMarginTop = false, class: className, ...attrs } = Astro.props;
 
 const currentYear = new Date().getFullYear();
+const locale = Astro.currentLocale ?? config.site.lang;
 ---
 
 <footer
@@ -24,6 +26,13 @@ const currentYear = new Date().getFullYear();
       class="text-muted-foreground my-2 flex flex-col items-center text-sm whitespace-nowrap sm:flex-row"
     >
       <span>&#169; {currentYear} {config.site.author}</span>
+      <span class="mx-2 hidden sm:inline" aria-hidden="true">·</span>
+      <a
+        href={getRelativeLocaleUrl(locale, "privacy")}
+        class="hover:text-accent focus-outline"
+      >
+        Privacy
+      </a>
     </div>
   </div>
 </footer>
