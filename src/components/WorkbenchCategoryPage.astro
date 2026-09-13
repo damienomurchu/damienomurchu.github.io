@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import WorkbenchCard from "@/components/WorkbenchCard.astro";
+import {
+  getWorkbenchCategory,
+  type WorkbenchCategory,
+} from "@/utils/workbench";
+import config from "@/config";
+
+type Props = {
+  category: WorkbenchCategory;
+  entries: CollectionEntry<"workbench">[];
+};
+
+const { category, entries } = Astro.props;
+const details = getWorkbenchCategory(category);
+---
+
+<Layout
+  title={`${details.label} | Workbench | ${config.site.title}`}
+  description={details.description}
+>
+  <Header />
+  <Breadcrumb />
+
+  <Main pageTitle={details.label} pageDesc={details.description}>
+    <p
+      class="text-muted-foreground border-border border-b pb-3 text-end text-xs"
+    >
+      {entries.length}
+      {entries.length === 1 ? "entry" : "entries"}
+    </p>
+    {
+      entries.length > 0 ? (
+        <ul class="mt-2">
+          {entries.map(entry => (
+            <WorkbenchCard {...entry} />
+          ))}
+        </ul>
+      ) : (
+        <p class="text-muted-foreground py-5 text-sm">
+          No published entries yet.
+        </p>
+      )
+    }
+  </Main>
+
+  <Footer />
+</Layout>
