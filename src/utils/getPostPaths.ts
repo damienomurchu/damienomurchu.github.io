@@ -14,6 +14,7 @@ const RESERVED_TOP_LEVEL_ROUTES = new Set([
   "search",
   "series",
   "tags",
+  "workbench",
 ]);
 
 function getPostPathSegments(filePath: string | undefined): string[] {

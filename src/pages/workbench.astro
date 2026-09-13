@@ -1,0 +1,52 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import { useTranslations } from "@/i18n";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const t = useTranslations(locale);
+---
+
+<Layout
+  title={`${t.pages.workbenchTitle} | ${config.site.title}`}
+  description={t.pages.workbenchDesc}
+>
+  <Header />
+
+  <Breadcrumb />
+
+  <Main pageTitle={t.pages.workbenchTitle} pageDesc={t.pages.workbenchDesc}>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <section class="border-border rounded border p-5">
+        <h2 class="font-prose text-xl font-semibold tracking-tight">
+          Experiments
+        </h2>
+        <p class="text-muted-foreground mt-2 leading-relaxed">
+          Bounded investigations, prototypes, observations, and results.
+        </p>
+      </section>
+      <section class="border-border rounded border p-5">
+        <h2 class="font-prose text-xl font-semibold tracking-tight">
+          Tool Notes
+        </h2>
+        <p class="text-muted-foreground mt-2 leading-relaxed">
+          Practical write-ups on the tools, configurations, and workflows I use.
+        </p>
+      </section>
+      <section class="border-border rounded border p-5">
+        <h2 class="font-prose text-xl font-semibold tracking-tight">
+          Build Notes
+        </h2>
+        <p class="text-muted-foreground mt-2 leading-relaxed">
+          How things were assembled, configured, and made to work in practice.
+        </p>
+      </section>
+    </div>
+  </Main>
+
+  <Footer />
+</Layout>

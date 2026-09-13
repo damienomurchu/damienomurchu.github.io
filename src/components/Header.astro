@@ -1,14 +1,12 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
-import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
-import IconRss from "@/assets/icons/IconRss.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconX from "@/assets/icons/IconX.svg";
 import LinkButton from "./LinkButton.astro";
-import { getAssetPath, stripBase, stripLocale } from "@/utils/withBase";
+import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -64,10 +62,13 @@ const isActive = (path: string) => {
       {
         authorName && (
           <>
-            <span aria-hidden="true" class="text-border text-sm font-normal">
+            <span
+              aria-hidden="true"
+              class="text-border hidden text-sm font-normal md:inline"
+            >
               |
             </span>
-            <span class="text-muted-foreground text-[0.9375rem] font-normal tracking-tight sm:text-[1.0625rem]">
+            <span class="text-muted-foreground hidden text-[1.0625rem] font-normal tracking-tight md:inline">
               {authorName}
             </span>
           </>
@@ -104,6 +105,14 @@ const isActive = (path: string) => {
         </li>
         <li class="col-span-2">
           <a
+            href={getRelativeLocaleUrl(locale, "workbench")}
+            class:list={{ "active-nav": isActive("/workbench") }}
+          >
+            {t.nav.workbench}
+          </a>
+        </li>
+        <li class="col-span-2">
+          <a
             href={getRelativeLocaleUrl(locale, "tags")}
             class:list={{ "active-nav": isActive("/tags") }}
           >
@@ -117,39 +126,6 @@ const isActive = (path: string) => {
           >
             {t.nav.about}
           </a>
-        </li>
-        {
-          features.showArchives && (
-            <li class="col-span-2">
-              <LinkButton
-                href={getRelativeLocaleUrl(locale, "archives")}
-                class:list={[
-                  "focus-outline text-muted-foreground hover:text-accent flex size-full justify-center p-3 sm:relative sm:size-8 sm:p-0",
-                  { "active-nav": isActive("/archives") },
-                ]}
-                title={t.nav.archives}
-                aria-label={t.nav.archives}
-              >
-                <IconArchive class="hidden sm:absolute sm:top-1/2 sm:left-1/2 sm:block sm:size-6 sm:-translate-x-1/2 sm:-translate-y-1/2" />
-                <span class="sm:sr-only">{t.nav.archives}</span>
-              </LinkButton>
-            </li>
-          )
-        }
-        <li
-          class="col-span-2 flex items-center justify-center sm:col-span-1 sm:-ms-3"
-        >
-          <LinkButton
-            href={getAssetPath("rss.xml")}
-            class="focus-outline text-muted-foreground hover:text-accent flex w-full items-center justify-center gap-2 p-3 sm:relative sm:size-8 sm:p-0"
-            title={t.nav.rss}
-            aria-label={t.nav.rss}
-          >
-            <IconRss
-              class="hidden sm:absolute sm:top-1/2 sm:left-1/2 sm:block sm:size-6 sm:-translate-x-1/2 sm:-translate-y-1/2"
-            />
-            <span class="sm:sr-only">{t.nav.rss}</span>
-          </LinkButton>
         </li>
         {
           features.search !== false && (
