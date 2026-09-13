@@ -6,14 +6,17 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
+import WorkbenchCard from "@/components/WorkbenchCard.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { getSeriesMap } from "@/utils/getSeries";
 import { slugifyStr } from "@/utils/slugify";
+import {
+  getWorkbenchCategoryEntries,
+  workbenchCategories,
+} from "@/utils/workbench";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
-
-const { posts: postsConfig } = config;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
@@ -23,6 +26,11 @@ const sortedPosts = getSortedPosts(posts);
 const seriesById = getSeriesMap(sortedPosts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const latestWriting = recentPosts.slice(0, 4);
+const workbenchEntries = await getCollection("workbench");
+const selectedWorkbenchEntries = workbenchCategories.flatMap(category =>
+  getWorkbenchCategoryEntries(workbenchEntries, category.id).slice(0, 1)
+);
 const homePath = getRelativeLocaleUrl(locale, "");
 const heroTopics = [
   "Engineering",
@@ -43,7 +51,7 @@ const heroTopics = [
   >
     <section id="hero" class="border-border border-b pt-4 pb-6">
       <h2
-        class="font-prose mt-4 mb-5 inline-block text-4xl leading-tight font-bold tracking-tight sm:mt-8 sm:mb-6 sm:text-5xl"
+        class="font-prose mt-4 mb-5 inline-block text-4xl leading-tight font-bold tracking-tight sm:mb-6 sm:text-5xl"
       >
         Forged
       </h2>
@@ -77,8 +85,11 @@ const heroTopics = [
         <section
           id="featured"
           class:list={[
-            "pt-12 pb-6",
-            { "border-border border-b": recentPosts.length > 0 },
+            "pt-8 pb-6",
+            {
+              "border-border border-b":
+                latestWriting.length > 0 || selectedWorkbenchEntries.length > 0,
+            },
           ]}
         >
           <h2 class="font-prose text-2xl font-semibold tracking-tight">
@@ -102,13 +113,21 @@ const heroTopics = [
     }
 
     {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
+      latestWriting.length > 0 && (
+        <section
+          id="recent-posts"
+          class:list={[
+            "pt-8 pb-6",
+            {
+              "border-border border-b": selectedWorkbenchEntries.length > 0,
+            },
+          ]}
+        >
           <h2 class="font-prose text-2xl font-semibold tracking-tight">
             {t.home.recentPosts}
           </h2>
           <ul>
-            {recentPosts.slice(0, postsConfig.perIndex).map(data => (
+            {latestWriting.map(data => (
               <Card
                 variant="h3"
                 {...data}
@@ -120,16 +139,36 @@ const heroTopics = [
               />
             ))}
           </ul>
+          <div class="mt-4 text-end">
+            <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
+              {t.home.allPosts}
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
         </section>
       )
     }
 
-    <div class="my-8 text-center">
-      <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
-        {t.home.allPosts}
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </div>
+    {
+      selectedWorkbenchEntries.length > 0 && (
+        <section id="from-the-workbench" class="pt-8 pb-6">
+          <h2 class="font-prose text-2xl font-semibold tracking-tight">
+            {t.home.workbench}
+          </h2>
+          <ul class="mt-2">
+            {selectedWorkbenchEntries.map(entry => (
+              <WorkbenchCard {...entry} compact />
+            ))}
+          </ul>
+          <div class="mt-4 text-end">
+            <LinkButton href={getRelativeLocaleUrl(locale, "workbench")}>
+              {t.home.allWorkbench}
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
+        </section>
+      )
+    }
   </main>
   <Footer />
 </Layout>

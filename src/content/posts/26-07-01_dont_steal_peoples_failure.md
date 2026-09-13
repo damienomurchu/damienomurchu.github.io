@@ -11,8 +11,8 @@ category: engineering
 tags:
   - Work & Organisations
 
-series: 
-featured: true
+series:
+featured: false
 ---
 
 ## Managing failure for growth
