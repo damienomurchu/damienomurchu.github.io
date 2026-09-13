@@ -7,19 +7,22 @@ import { getWorkbenchCategory, getWorkbenchSlug } from "@/utils/workbench";
 import { toTransitionName } from "@/utils/toTransitionName";
 import config from "@/config";
 
-type Props = CollectionEntry<"workbench">;
+type Props = { compact?: boolean } & CollectionEntry<"workbench">;
 
-const entry = Astro.props;
+const { compact = false, ...entry } = Astro.props;
 const { title, description, pubDate, modDate, category, status, tags, sample } =
   entry.data;
 const categoryDetails = getWorkbenchCategory(category);
 const locale = Astro.currentLocale ?? config.site.lang;
 ---
 
-<li class="my-3">
+<li class:list={{ "my-3": !compact, "my-2": compact }}>
   <a
     href={getRelativeLocaleUrl(locale, `workbench/${getWorkbenchSlug(entry)}`)}
-    class="group hover:bg-muted/50 focus-visible:bg-muted/50 -mx-3 block rounded px-3 py-3"
+    class:list={[
+      "group hover:bg-muted/50 focus-visible:bg-muted/50 -mx-3 block rounded px-3",
+      { "py-3": !compact, "py-2": compact },
+    ]}
   >
     <div
       class="text-muted-foreground mb-1 flex flex-wrap items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase"
@@ -41,23 +44,33 @@ const locale = Astro.currentLocale ?? config.site.lang;
     </h3>
     <div class="mt-1 flex flex-wrap items-center gap-x-2">
       <Datetime {pubDate} {modDate} />
-      <span aria-hidden="true" class="text-muted-foreground">·</span>
-      <ReadingTime body={entry.body} />
       {
-        tags.length > 0 && (
+        !compact && (
           <>
             <span aria-hidden="true" class="text-muted-foreground">
               ·
             </span>
-            <span class="text-muted-foreground text-sm">
-              {tags.map(tag => `#${tag}`).join(" ")}
-            </span>
+            <ReadingTime body={entry.body} />
+            {tags.length > 0 && (
+              <>
+                <span aria-hidden="true" class="text-muted-foreground">
+                  ·
+                </span>
+                <span class="text-muted-foreground text-sm">
+                  {tags.map(tag => `#${tag}`).join(" ")}
+                </span>
+              </>
+            )}
           </>
         )
       }
     </div>
-    <p class="font-prose text-muted-foreground mt-1 text-base leading-relaxed">
-      {description}
-    </p>
+    {
+      !compact && (
+        <p class="font-prose text-muted-foreground mt-1 text-base leading-relaxed">
+          {description}
+        </p>
+      )
+    }
   </a>
 </li>

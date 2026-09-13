@@ -35,6 +35,8 @@ export default {
     featured: "Selected Writing",
     recentPosts: "Latest Writing",
     allPosts: "All Writing",
+    workbench: "From the Workbench",
+    allWorkbench: "Visit the Workbench",
   },
   footer: {
     copyright: "Copyright",

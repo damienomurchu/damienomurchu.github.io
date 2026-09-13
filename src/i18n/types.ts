@@ -33,6 +33,8 @@ export interface UIStrings {
     featured: string;
     recentPosts: string;
     allPosts: string;
+    workbench: string;
+    allWorkbench: string;
   };
   footer: {
     copyright: string;
