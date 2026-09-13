@@ -4,6 +4,7 @@ import { glob } from "astro/loaders";
 import config from "@/config";
 
 export const BLOG_PATH = "src/content/posts";
+export const WORKBENCH_PATH = "src/content/workbench";
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${BLOG_PATH}` }),
@@ -50,4 +51,23 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { posts, pages };
+const workbench = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: `./${WORKBENCH_PATH}`,
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    modDate: z.date().optional().nullable(),
+    category: z.enum(["experiment", "tool-note", "build-note"]),
+    status: z.string().trim().min(1),
+    tags: z.array(z.string()).default([]),
+    slug: z.string().trim().min(1).optional().nullable(),
+    draft: z.boolean().optional(),
+    sample: z.boolean().optional(),
+  }),
+});
+
+export const collections = { posts, pages, workbench };

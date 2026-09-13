@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Datetime from "./Datetime.astro";
+import ReadingTime from "./ReadingTime.astro";
+import { getWorkbenchCategory, getWorkbenchSlug } from "@/utils/workbench";
+import { toTransitionName } from "@/utils/toTransitionName";
+import config from "@/config";
+
+type Props = CollectionEntry<"workbench">;
+
+const entry = Astro.props;
+const { title, description, pubDate, modDate, category, status, tags, sample } =
+  entry.data;
+const categoryDetails = getWorkbenchCategory(category);
+const locale = Astro.currentLocale ?? config.site.lang;
+---
+
+<li class="my-3">
+  <a
+    href={getRelativeLocaleUrl(locale, `workbench/${getWorkbenchSlug(entry)}`)}
+    class="group hover:bg-muted/50 focus-visible:bg-muted/50 -mx-3 block rounded px-3 py-3"
+  >
+    <div
+      class="text-muted-foreground mb-1 flex flex-wrap items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase"
+    >
+      <span>{categoryDetails.singular}</span>
+      <span aria-hidden="true">·</span>
+      <span>{status}</span>
+      {
+        sample && (
+          <span class="border-border rounded border px-1.5 py-0.5">Sample</span>
+        )
+      }
+    </div>
+    <h3
+      class="font-prose text-accent text-lg leading-tight font-semibold tracking-tight"
+      transition:name={toTransitionName(title)}
+    >
+      {title}
+    </h3>
+    <div class="mt-1 flex flex-wrap items-center gap-x-2">
+      <Datetime {pubDate} {modDate} />
+      <span aria-hidden="true" class="text-muted-foreground">·</span>
+      <ReadingTime body={entry.body} />
+      {
+        tags.length > 0 && (
+          <>
+            <span aria-hidden="true" class="text-muted-foreground">
+              ·
+            </span>
+            <span class="text-muted-foreground text-sm">
+              {tags.map(tag => `#${tag}`).join(" ")}
+            </span>
+          </>
+        )
+      }
+    </div>
+    <p class="font-prose text-muted-foreground mt-1 text-base leading-relaxed">
+      {description}
+    </p>
+  </a>
+</li>

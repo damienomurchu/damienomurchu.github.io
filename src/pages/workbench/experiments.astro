@@ -1,0 +1,12 @@
+---
+import { getCollection } from "astro:content";
+import WorkbenchCategoryPage from "@/components/WorkbenchCategoryPage.astro";
+import { getWorkbenchCategoryEntries } from "@/utils/workbench";
+
+const entries = getWorkbenchCategoryEntries(
+  await getCollection("workbench"),
+  "experiment"
+);
+---
+
+<WorkbenchCategoryPage category="experiment" {entries} />
