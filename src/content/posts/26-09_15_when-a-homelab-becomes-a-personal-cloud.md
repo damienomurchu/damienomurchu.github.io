@@ -6,13 +6,16 @@ pubDate: 2026-09-15
 modDate: 2026-09-15
 draft: false
 
-category: engineering
+ccategory: engineering
 
 tags:
-  - tag-1
-  - tag-2
+  - Engineering
 
-series: 
+series:
+  id: "personal-cloud"
+  title: "Building a Personal Cloud"
+  description: "Field notes from building a private platform for local AI, experimentation, and self-hosting."
+  order: 2
 featured: false
 ---
 
