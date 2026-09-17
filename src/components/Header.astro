@@ -10,14 +10,10 @@ import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
-const { site, features } = config;
+const { features } = config;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
-const [publicationName, authorName] = site.title
-  .split("·")
-  .map(part => part.trim());
-
 // Strip the base prefix so isActive comparisons work regardless of deploy subdirectory.
 // e.g. with base "/blog": "/blog/posts/slug" → "/posts/slug"
 const relativePath = stripBase(Astro.url.pathname);
@@ -47,37 +43,11 @@ const isActive = (path: string) => {
   class="app-layout flex flex-col items-center justify-between sm:flex-row"
 >
   <div
-    class="border-border bg-background relative flex w-full flex-col items-center border-b py-4 sm:gap-3 sm:py-6"
+    class="border-border bg-background relative flex w-full flex-col items-center border-b py-4 sm:py-6"
   >
-    <a
-      href={getRelativeLocaleUrl(locale, "")}
-      aria-label={site.title}
-      class="absolute start-0 flex items-baseline gap-2 py-1 whitespace-nowrap sm:static sm:gap-2.5"
-    >
-      <span
-        class="font-prose text-[1.375rem] leading-none font-semibold tracking-tight sm:text-[1.625rem]"
-      >
-        {publicationName}
-      </span>
-      {
-        authorName && (
-          <>
-            <span
-              aria-hidden="true"
-              class="text-border hidden text-sm font-normal md:inline"
-            >
-              |
-            </span>
-            <span class="text-muted-foreground hidden text-[1.0625rem] font-normal tracking-tight md:inline">
-              {authorName}
-            </span>
-          </>
-        )
-      }
-    </a>
     <nav
       id="nav-menu"
-      class="flex w-full flex-col items-center sm:flex-row sm:justify-center sm:py-0"
+      class="flex w-full flex-col items-center sm:flex-row sm:py-0"
     >
       <button
         id="menu-btn"
@@ -91,84 +61,90 @@ const isActive = (path: string) => {
         <IconX id="close-icon" class="hidden" />
         <IconMenuDeep id="menu-icon" />
       </button>
-      <ul
+      <div
         id="menu-items"
-        class="[&>li>a]:hover:text-accent mt-4 hidden w-44 grid-cols-2 place-content-center gap-2 sm:mt-0 sm:flex sm:w-auto sm:gap-x-3 sm:gap-y-0 sm:[&>li]:h-8 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:text-base [&>li>a]:font-normal sm:[&>li>a]:px-2 sm:[&>li>a]:py-1"
+        class="mt-4 hidden w-44 gap-2 sm:mt-0 sm:flex sm:w-full sm:items-center sm:justify-between"
       >
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "posts")}
-            class:list={{ "active-nav": isActive("/posts") }}
-          >
-            {t.nav.posts}
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "papers")}
-            class:list={{ "active-nav": isActive("/papers") }}
-          >
-            {t.nav.papers}
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "workbench")}
-            class:list={{ "active-nav": isActive("/workbench") }}
-          >
-            {t.nav.workbench}
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "tags")}
-            class:list={{ "active-nav": isActive("/tags") }}
-          >
-            {t.nav.tags}
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "about")}
-            class:list={{ "active-nav": isActive("/about") }}
-          >
-            {t.nav.about}
-          </a>
-        </li>
-        {
-          features.search !== false && (
-            <li class="col-span-1 flex items-center justify-center sm:-ms-3">
-              <LinkButton
-                href={getRelativeLocaleUrl(locale, "search")}
-                class:list={[
-                  "focus-outline text-muted-foreground hover:text-accent relative size-8",
-                ]}
-                title={t.nav.search}
-                aria-label={t.nav.search}
-              >
-                <IconSearch class="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2" />
-                <span class="sr-only">{t.nav.search}</span>
-              </LinkButton>
-            </li>
-          )
-        }
-        {
-          features.lightAndDarkMode && (
-            <li class="col-span-1 flex items-center justify-center sm:-ms-3">
-              <button
-                id="theme-btn"
-                class="focus-outline text-muted-foreground hover:[&>svg]:stroke-accent relative size-12 p-4 sm:size-8"
-                title={t.a11y.toggleTheme}
-                aria-label="auto"
-                aria-live="polite"
-              >
-                <IconMoon class="absolute top-[50%] left-[50%] translate-[-50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-                <IconSunHigh class="absolute top-[50%] left-[50%] translate-[-50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-              </button>
-            </li>
-          )
-        }
-      </ul>
+        <ul
+          class="sm:[&>li:not(:last-child)]:after:text-muted-foreground/60 [&>li>a]:text-accent [&>li>a]:hover:text-foreground grid grid-cols-1 place-content-center gap-2 sm:flex sm:gap-0 sm:[&>li]:flex sm:[&>li]:items-center sm:[&>li:not(:last-child)]:after:mx-3 sm:[&>li:not(:last-child)]:after:content-['·'] [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:text-base [&>li>a]:font-medium [&>li>a]:tracking-tight [&>li>a]:transition-colors sm:[&>li>a]:inline-block sm:[&>li>a]:px-0 sm:[&>li>a]:py-1"
+        >
+          <li>
+            <a
+              href={getRelativeLocaleUrl(locale, "posts")}
+              class:list={{ "active-nav": isActive("/posts") }}
+            >
+              {t.nav.posts}
+            </a>
+          </li>
+          <li>
+            <a
+              href={getRelativeLocaleUrl(locale, "papers")}
+              class:list={{ "active-nav": isActive("/papers") }}
+            >
+              {t.nav.papers}
+            </a>
+          </li>
+          <li>
+            <a
+              href={getRelativeLocaleUrl(locale, "workbench")}
+              class:list={{ "active-nav": isActive("/workbench") }}
+            >
+              {t.nav.workbench}
+            </a>
+          </li>
+          <li>
+            <a
+              href={getRelativeLocaleUrl(locale, "tags")}
+              class:list={{ "active-nav": isActive("/tags") }}
+            >
+              {t.nav.tags}
+            </a>
+          </li>
+          <li>
+            <a
+              href={getRelativeLocaleUrl(locale, "about")}
+              class:list={{ "active-nav": isActive("/about") }}
+            >
+              {t.nav.about}
+            </a>
+          </li>
+        </ul>
+        <ul class="flex items-center justify-center sm:gap-1">
+          {
+            features.search !== false && (
+              <li class="flex items-center justify-center">
+                <LinkButton
+                  href={getRelativeLocaleUrl(locale, "search")}
+                  class:list={[
+                    "focus-outline text-muted-foreground hover:text-accent relative size-8",
+                  ]}
+                  title={t.nav.search}
+                  aria-label={t.nav.search}
+                >
+                  <IconSearch class="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2" />
+                  <span class="sr-only">{t.nav.search}</span>
+                </LinkButton>
+              </li>
+            )
+          }
+          {
+            features.lightAndDarkMode && (
+              <li class="flex items-center justify-center">
+                <button
+                  id="theme-btn"
+                  class="focus-outline text-muted-foreground hover:[&>svg]:stroke-accent relative size-12 p-4 sm:size-8"
+                  title={t.a11y.toggleTheme}
+                  aria-label="auto"
+                  aria-live="polite"
+                >
+                  <IconMoon class="absolute top-[50%] left-[50%] translate-[-50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+                  <IconSunHigh class="absolute top-[50%] left-[50%] translate-[-50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                </button>
+              </li>
+            )
+          }
+        </ul>
+      </div>
     </nav>
   </div>
 </header>
