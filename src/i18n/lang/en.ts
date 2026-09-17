@@ -34,8 +34,8 @@ export default {
   home: {
     socialLinks: "Social Links",
     featured: "Selected Essays",
-    recentPosts: "Latest Writing",
-    allPosts: "All Writing",
+    recentPosts: "Latest Essays",
+    allPosts: "All Essays",
     papers: "Latest Papers",
     allPapers: "All Papers",
     workbench: "From the Workbench",
