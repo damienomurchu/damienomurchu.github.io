@@ -12,7 +12,8 @@ and life.
 - Node.js 22.12 or newer is required; CI and deployment use Node.js 24.
 - Markdown and MDX content are supported.
 - Pagefind provides static search.
-- Content lives in `src/content/posts` and `src/content/pages`.
+- Content lives in `src/content/posts`, `src/content/papers`,
+  `src/content/workbench`, and `src/content/pages`.
 - Main config files:
   - `astro-paper.config.ts`: user-facing site, theme, feature, social, and content settings.
   - `src/config.ts`: resolved config with defaults.
@@ -77,6 +78,9 @@ The build rejects incomplete or conflicting series metadata.
 - `/posts/` is retained for the paginated post listing only.
 - `/tags/` is presented as Explore and contains both series and topics.
 - Series indexes are generated at `/series/[id]/`.
+- Papers are rendered at stable `/papers/[slug]/` URLs and listed at `/papers/`.
+- A paper's versioned `.md` and `.pdf` sources share a basename in
+  `src/content/papers`; HTML remains canonical and the PDF is a download.
 - Home page shows featured posts first, then recent posts from `getSortedPosts`.
 - Sorting uses `modDate` when present, otherwise `pubDate`.
 
@@ -108,6 +112,8 @@ The build rejects incomplete or conflicting series metadata.
 - The homepage shows up to 6 recent non-featured posts after all featured
   posts. Paginated post listings show 12 posts per page.
 - Dynamic OG images are generated for posts without a custom `ogImage`.
+- Papers use scheduled publication dates like posts and join the main RSS feed
+  only when published.
 - `public/default-og.jpg` is the custom static fallback image for the site.
 - GitHub Pages deployment runs on pushes to `main`, manual dispatches, and
   daily at 00:15 UTC so scheduled posts can become available without a new

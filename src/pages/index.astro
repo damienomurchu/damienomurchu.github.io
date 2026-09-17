@@ -6,10 +6,12 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
+import PaperCard from "@/components/PaperCard.astro";
 import WorkbenchCard from "@/components/WorkbenchCard.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { getSeriesMap } from "@/utils/getSeries";
+import { getSortedPapers } from "@/utils/papers";
 import { slugifyStr } from "@/utils/slugify";
 import {
   getWorkbenchCategoryEntries,
@@ -27,6 +29,7 @@ const seriesById = getSeriesMap(sortedPosts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const latestWriting = recentPosts.slice(0, 4);
+const latestPapers = getSortedPapers(await getCollection("papers")).slice(0, 2);
 const workbenchEntries = await getCollection("workbench");
 const selectedWorkbenchEntries = workbenchCategories.flatMap(category =>
   getWorkbenchCategoryEntries(workbenchEntries, category.id).slice(0, 1)
@@ -88,7 +91,9 @@ const heroTopics = [
             "pt-8 pb-6",
             {
               "border-border border-b":
-                latestWriting.length > 0 || selectedWorkbenchEntries.length > 0,
+                latestWriting.length > 0 ||
+                latestPapers.length > 0 ||
+                selectedWorkbenchEntries.length > 0,
             },
           ]}
         >
@@ -119,7 +124,8 @@ const heroTopics = [
           class:list={[
             "pt-8 pb-6",
             {
-              "border-border border-b": selectedWorkbenchEntries.length > 0,
+              "border-border border-b":
+                latestPapers.length > 0 || selectedWorkbenchEntries.length > 0,
             },
           ]}
         >
@@ -142,6 +148,33 @@ const heroTopics = [
           <div class="mt-4 text-end">
             <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
               {t.home.allPosts}
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      latestPapers.length > 0 && (
+        <section
+          id="latest-papers"
+          class:list={[
+            "pt-8 pb-6",
+            { "border-border border-b": selectedWorkbenchEntries.length > 0 },
+          ]}
+        >
+          <h2 class="font-prose text-2xl font-semibold tracking-tight">
+            {t.home.papers}
+          </h2>
+          <ul class="mt-2">
+            {latestPapers.map(paper => (
+              <PaperCard {...paper} compact />
+            ))}
+          </ul>
+          <div class="mt-4 text-end">
+            <LinkButton href={getRelativeLocaleUrl(locale, "papers")}>
+              {t.home.allPapers}
               <IconArrowRight class="inline-block rtl:-rotate-180" />
             </LinkButton>
           </div>

@@ -4,6 +4,7 @@ export default {
   nav: {
     home: "Home",
     posts: "Writing",
+    papers: "Papers",
     workbench: "Workbench",
     tags: "Explore",
     about: "About",
@@ -35,6 +36,8 @@ export default {
     featured: "Selected Writing",
     recentPosts: "Latest Writing",
     allPosts: "All Writing",
+    papers: "Latest Papers",
+    allPapers: "All Papers",
     workbench: "From the Workbench",
     allWorkbench: "Visit the Workbench",
   },
@@ -51,6 +54,9 @@ export default {
 
     postsTitle: "Writing",
     postsDesc: "All the articles I've posted.",
+
+    papersTitle: "Papers",
+    papersDesc: "Long-form technical work from Forged.",
 
     workbenchTitle: "Workbench",
     workbenchDesc:
