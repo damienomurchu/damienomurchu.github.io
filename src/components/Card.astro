@@ -8,11 +8,13 @@ import ReadingTime from "./ReadingTime.astro";
 type Props = {
   variant?: "h2" | "h3";
   seriesTitle?: string;
+  card?: boolean;
 } & CollectionEntry<"posts">;
 
 const {
   variant: Heading = "h2",
   seriesTitle,
+  card = false,
   id,
   data,
   filePath,
@@ -20,18 +22,26 @@ const {
 } = Astro.props;
 
 const { title, description, ...props } = data;
+const displayDescription =
+  card && data.series && seriesTitle
+    ? `${seriesTitle} · Part ${data.series.order}`
+    : description;
 ---
 
-<li class="my-3">
+<li class:list={{ "my-3": !card, "h-full": card }}>
   <a
     href={getPostUrl(id, filePath, Astro.currentLocale, data.slug)}
     class:list={[
-      "group -mx-3 block rounded px-3 py-3",
+      "group block rounded px-3 py-3",
       "hover:bg-muted/50 focus-visible:bg-muted/50",
+      {
+        "-mx-3": !card,
+        "border-border bg-muted/20 h-full border": card,
+      },
     ]}
   >
     {
-      data.series && seriesTitle && (
+      data.series && seriesTitle && !card && (
         <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
           {seriesTitle} · Part {data.series.order}
         </p>
@@ -66,9 +76,12 @@ const { title, description, ...props } = data;
       }
     </div>
     <p
-      class="font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal"
+      class:list={[
+        "font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal",
+        { "line-clamp-2": card },
+      ]}
     >
-      {description}
+      {displayDescription}
     </p>
   </a>
 </li>
