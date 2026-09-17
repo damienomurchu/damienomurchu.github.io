@@ -52,8 +52,9 @@ export default {
     tagsTitle: "Explore",
     tagsDesc: "Browse writing by subject or follow a series.",
 
-    postsTitle: "Writing",
-    postsDesc: "All the articles I've posted.",
+    postsTitle: "Essays",
+    postsDesc:
+      "Essays on engineering, personal systems, resilience, work and organisations.",
 
     papersTitle: "Papers",
     papersDesc: "Long-form technical work from Forged.",
