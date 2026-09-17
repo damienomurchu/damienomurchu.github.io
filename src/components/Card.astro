@@ -9,12 +9,14 @@ type Props = {
   variant?: "h2" | "h3";
   seriesTitle?: string;
   card?: boolean;
+  compact?: boolean;
 } & CollectionEntry<"posts">;
 
 const {
   variant: Heading = "h2",
   seriesTitle,
   card = false,
+  compact = false,
   id,
   data,
   filePath,
@@ -28,15 +30,17 @@ const displayDescription =
     : description;
 ---
 
-<li class:list={{ "my-3": !card, "h-full": card }}>
+<li class:list={{ "my-3": !card && !compact, "my-1": compact, "h-full": card }}>
   <a
     href={getPostUrl(id, filePath, Astro.currentLocale, data.slug)}
     class:list={[
-      "group block rounded px-3 py-3",
+      "group block rounded px-3",
       "hover:bg-muted/50 focus-visible:bg-muted/50",
       {
         "-mx-3": !card,
         "border-border bg-muted/20 h-full border": card,
+        "py-3": !compact,
+        "py-2": compact,
       },
     ]}
   >
@@ -75,13 +79,17 @@ const displayDescription =
         )
       }
     </div>
-    <p
-      class:list={[
-        "font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal",
-        { "line-clamp-2": card },
-      ]}
-    >
-      {displayDescription}
-    </p>
+    {
+      !compact && (
+        <p
+          class:list={[
+            "font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal",
+            { "line-clamp-2": card },
+          ]}
+        >
+          {displayDescription}
+        </p>
+      )
+    }
   </a>
 </li>
