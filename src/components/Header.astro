@@ -10,10 +10,11 @@ import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
-const { features } = config;
+const { site, features } = config;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
+const publicationName = site.title.split("·")[0].trim();
 // Strip the base prefix so isActive comparisons work regardless of deploy subdirectory.
 // e.g. with base "/blog": "/blog/posts/slug" → "/posts/slug"
 const relativePath = stripBase(Astro.url.pathname);
@@ -68,6 +69,14 @@ const isActive = (path: string) => {
         <ul
           class="sm:[&>li:not(:last-child)]:after:text-muted-foreground/60 [&>li>a]:text-accent [&>li>a]:hover:text-foreground grid grid-cols-1 place-content-center gap-2 sm:flex sm:gap-0 sm:[&>li]:flex sm:[&>li]:items-center sm:[&>li:not(:last-child)]:after:mx-3 sm:[&>li:not(:last-child)]:after:content-['·'] [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:text-base [&>li>a]:font-semibold [&>li>a]:tracking-tight [&>li>a]:transition-colors sm:[&>li>a]:inline-block sm:[&>li>a]:px-0 sm:[&>li>a]:py-1"
         >
+          <li>
+            <a
+              href={getRelativeLocaleUrl(locale, "")}
+              class:list={{ "active-nav": currentPath === "/" }}
+            >
+              {publicationName}
+            </a>
+          </li>
           <li>
             <a
               href={getRelativeLocaleUrl(locale, "posts")}
