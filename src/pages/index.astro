@@ -186,7 +186,7 @@ const heroTopics = [
 
     {
       selectedWorkbenchEntries.length > 0 && (
-        <section id="from-the-workbench" class="pt-8 pb-6">
+        <section id="from-the-workbench" class="pt-3 pb-5">
           <h2 class="font-prose text-2xl font-semibold tracking-tight">
             {t.home.workbench}
           </h2>
@@ -195,7 +195,7 @@ const heroTopics = [
               <WorkbenchCard {...entry} compact />
             ))}
           </ul>
-          <div class="mt-4 text-end">
+          <div class="mt-2 text-end">
             <LinkButton href={getRelativeLocaleUrl(locale, "workbench")}>
               {t.home.allWorkbench}
               <IconArrowRight class="inline-block rtl:-rotate-180" />

@@ -38,8 +38,8 @@ export default {
     allPosts: "All Essays",
     papers: "Latest Papers",
     allPapers: "All Papers",
-    workbench: "From the Workbench",
-    allWorkbench: "Visit the Workbench",
+    workbench: "Latest Lab Notes",
+    allWorkbench: "All Lab Notes",
   },
   footer: {
     copyright: "Copyright",
