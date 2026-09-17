@@ -36,3 +36,102 @@
 :target {
   scroll-margin-block: 1rem;
 }
+
+.paper-diagram {
+  @apply border-border my-8 break-inside-avoid border px-3 py-4;
+}
+
+.paper-diagram .mermaid {
+  @apply m-0 flex min-h-32 items-center justify-center overflow-x-auto bg-transparent p-0 text-center;
+}
+
+.paper-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.paper-diagram figcaption {
+  @apply font-prose text-muted-foreground mx-auto mt-3 max-w-[75ch] text-center text-sm leading-relaxed italic;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 17mm 20mm;
+  }
+
+  :root,
+  [data-theme="dark"] {
+    --background: #ffffff;
+    --foreground: #202628;
+    --accent: #006b78;
+    --muted: #f1f3f2;
+    --muted-foreground: #536064;
+    --border: #bbc2c2;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #202628 !important;
+    font-size: 10pt;
+  }
+
+  .paper-screen-only,
+  .progress-container {
+    display: none !important;
+  }
+
+  .paper-page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .paper-title-block {
+    padding-top: 18mm;
+    padding-bottom: 10mm;
+    page-break-after: avoid;
+  }
+
+  .paper-title-block h1 {
+    font-size: 30pt;
+  }
+
+  .paper-abstract {
+    margin-top: 10mm;
+    page-break-inside: avoid;
+  }
+
+  .paper-prose {
+    max-width: none;
+    font-size: 10pt;
+    line-height: 1.55;
+  }
+
+  .paper-prose h2,
+  .paper-prose h3,
+  .paper-prose h4 {
+    break-after: avoid;
+  }
+
+  .paper-prose table,
+  .paper-prose pre,
+  .paper-diagram {
+    break-inside: avoid;
+  }
+
+  .paper-diagram .mermaid {
+    min-height: 0;
+  }
+
+  .paper-diagram svg {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 170mm;
+  }
+
+  .paper-prose a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

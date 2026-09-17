@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Datetime from "./Datetime.astro";
+import ReadingTime from "./ReadingTime.astro";
+import { getPaperUrl } from "@/utils/papers";
+
+type Props = CollectionEntry<"papers"> & {
+  compact?: boolean;
+};
+
+const { compact = false, ...paper } = Astro.props;
+const { title, subtitle, description, pubDate, modDate, version, series } =
+  paper.data;
+---
+
+<li class="my-3">
+  <a
+    href={getPaperUrl(paper, Astro.currentLocale)}
+    class="group hover:bg-muted/50 focus-visible:bg-muted/50 -mx-3 block rounded px-3 py-3"
+  >
+    <p
+      class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase"
+    >
+      {series ?? "Forged Papers"} · Version {version}
+    </p>
+    <h3
+      class="font-prose text-accent text-lg leading-tight font-semibold tracking-tight"
+    >
+      {title}
+    </h3>
+    <p class="font-prose text-foreground/90 mt-0.5 leading-relaxed italic">
+      {subtitle}
+    </p>
+    <div class="mt-1 flex flex-wrap items-center gap-x-2">
+      <Datetime {pubDate} {modDate} />
+      <span aria-hidden="true" class="text-muted-foreground">·</span>
+      <ReadingTime body={paper.body} />
+    </div>
+    {
+      !compact && (
+        <p class="font-prose text-muted-foreground mt-2 text-base leading-relaxed">
+          {description}
+        </p>
+      )
+    }
+  </a>
+</li>

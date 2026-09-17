@@ -4,6 +4,7 @@ import { glob } from "astro/loaders";
 import config from "@/config";
 
 export const BLOG_PATH = "src/content/posts";
+export const PAPERS_PATH = "src/content/papers";
 export const WORKBENCH_PATH = "src/content/workbench";
 
 const posts = defineCollection({
@@ -51,6 +52,38 @@ const pages = defineCollection({
   }),
 });
 
+const papers = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${PAPERS_PATH}` }),
+  schema: z.object({
+    author: z.string().default(config.site.author),
+    title: z.string().trim().min(1),
+    subtitle: z.string().trim().min(1),
+    description: z.string().trim().min(1),
+    abstract: z.string().trim().min(1),
+    pubDate: z.date(),
+    modDate: z.date().optional().nullable(),
+    version: z
+      .string()
+      .trim()
+      .regex(
+        /^\d+\.\d+(?:\.\d+)?$/,
+        "Paper versions must resemble 1.0 or 1.0.1."
+      ),
+    status: z.enum(["published", "revised", "superseded"]),
+    slug: z
+      .string()
+      .trim()
+      .regex(
+        /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+        "Paper slugs must use lowercase letters, numbers, and hyphens."
+      ),
+    series: z.string().trim().min(1).optional(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().optional(),
+    canonicalURL: z.string().optional(),
+  }),
+});
+
 const workbench = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
@@ -70,4 +103,4 @@ const workbench = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, workbench };
+export const collections = { posts, pages, papers, workbench };

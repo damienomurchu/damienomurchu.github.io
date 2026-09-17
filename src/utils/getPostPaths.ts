@@ -7,6 +7,7 @@ const RESERVED_TOP_LEVEL_ROUTES = new Set([
   "404",
   "about",
   "archives",
+  "papers",
   "posts",
   "privacy",
   "robots.txt",

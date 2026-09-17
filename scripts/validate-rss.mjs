@@ -16,7 +16,7 @@ assert.equal(document?.rss?.["@_version"], "2.0", "RSS version must be 2.0");
 assert.ok(channel?.title, "Feed must have a title");
 assert.ok(channel?.description, "Feed must have a description");
 assert.ok(channel?.["dc:creator"], "Feed must identify its author");
-assert.ok(items.length > 0, "Feed must contain at least one published post");
+assert.ok(items.length > 0, "Feed must contain at least one published item");
 
 for (const item of items) {
   assert.ok(item.title, "Every item must have a title");
@@ -28,5 +28,5 @@ for (const item of items) {
 }
 
 process.stdout.write(
-  `Validated RSS 2.0 feed with ${items.length} published post(s).\n`
+  `Validated RSS 2.0 feed with ${items.length} published item(s).\n`
 );
