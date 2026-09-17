@@ -162,7 +162,7 @@ const heroTopics = [
         <section
           id="latest-papers"
           class:list={[
-            "pt-8 pb-6",
+            "pt-3 pb-5",
             { "border-border border-b": selectedWorkbenchEntries.length > 0 },
           ]}
         >
@@ -174,7 +174,7 @@ const heroTopics = [
               <PaperCard {...paper} compact />
             ))}
           </ul>
-          <div class="mt-4 text-end">
+          <div class="mt-2 text-end">
             <LinkButton href={getRelativeLocaleUrl(locale, "papers")}>
               {t.home.allPapers}
               <IconArrowRight class="inline-block rtl:-rotate-180" />
