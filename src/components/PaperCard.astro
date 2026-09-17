@@ -13,10 +13,13 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
   paper.data;
 ---
 
-<li class="my-3">
+<li class:list={{ "my-3": !compact, "my-1": compact }}>
   <a
     href={getPaperUrl(paper, Astro.currentLocale)}
-    class="group hover:bg-muted/50 focus-visible:bg-muted/50 -mx-3 block rounded px-3 py-3"
+    class:list={[
+      "group hover:bg-muted/50 focus-visible:bg-muted/50 -mx-3 block rounded px-3",
+      { "py-3": !compact, "py-2": compact },
+    ]}
   >
     <p
       class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase"
@@ -28,9 +31,13 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
     >
       {title}
     </h3>
-    <p class="font-prose text-foreground/90 mt-0.5 leading-relaxed italic">
-      {subtitle}
-    </p>
+    {
+      !compact && (
+        <p class="font-prose text-foreground/90 mt-0.5 leading-relaxed italic">
+          {subtitle}
+        </p>
+      )
+    }
     <div class="mt-1 flex flex-wrap items-center gap-x-2">
       <Datetime {pubDate} {modDate} />
       <span aria-hidden="true" class="text-muted-foreground">·</span>
