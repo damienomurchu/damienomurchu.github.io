@@ -20,11 +20,12 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
     href={getPaperUrl(paper, Astro.currentLocale)}
     class:list={[
       "group block rounded",
-      "hover:bg-muted/50 focus-visible:bg-muted/50",
+      "hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2",
       {
         "-mx-3 px-3": !card,
-        "border-border/70 bg-muted/10 h-full border": card && !lead,
-        "border-border/80 border-l-accent bg-muted/20 border border-l-2 px-5 py-4":
+        "flex h-full flex-col": card,
+        "border-border/70 bg-muted/10 border sm:min-h-[120px]": card && !lead,
+        "border-border/80 border-l-accent bg-muted/20 border border-l-2 px-5 py-3.5":
           lead,
         "px-3": !lead,
       },
@@ -34,14 +35,18 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
     <p
       class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase"
     >
-      {card ? "Paper" : (series ?? "Forged Papers")} · Version {version}
+      {
+        card
+          ? `Paper · ${series ?? "Forged Papers"} · V${version}`
+          : `${series ?? "Forged Papers"} · Version ${version}`
+      }
     </p>
     <h3
       class:list={[
         "font-prose text-accent leading-tight font-semibold tracking-tight",
         {
           "text-xl": lead,
-          "text-[1.05rem]": card && !lead,
+          "text-base": card && !lead,
           "text-lg": !card && !lead,
         },
       ]}
@@ -60,7 +65,12 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
         </p>
       )
     }
-    <div class="mt-1 flex flex-wrap items-center gap-x-2">
+    <div
+      class:list={[
+        "flex flex-wrap items-center gap-x-2",
+        { "mt-1": !card || lead, "mt-auto pt-3": card && !lead },
+      ]}
+    >
       <Datetime {pubDate} {modDate} />
       <span aria-hidden="true" class="text-muted-foreground">·</span>
       <ReadingTime body={paper.body} />
