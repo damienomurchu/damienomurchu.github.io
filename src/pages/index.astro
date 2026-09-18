@@ -31,23 +31,18 @@ const workbenchEntries = await getCollection("workbench");
 const sortedWorkbenchEntries = workbenchCategories.flatMap(category =>
   getWorkbenchCategoryEntries(workbenchEntries, category.id)
 );
+const selectedEssay = sortedPosts.find(({ data }) => data.featured);
+const selectedPaper = papers.find(({ data }) => data.featured);
+const selectedLabNote = sortedWorkbenchEntries.find(
+  ({ data }) => data.featured
+);
 const selectedWork = [
-  ...sortedPosts
-    .filter(({ data }) => data.featured)
-    .map(entry => ({ kind: "essay" as const, entry })),
-  ...papers
-    .filter(({ data }) => data.featured)
-    .map(entry => ({ kind: "paper" as const, entry })),
-  ...sortedWorkbenchEntries
-    .filter(({ data }) => data.featured)
-    .map(entry => ({ kind: "lab-note" as const, entry })),
-]
-  .toSorted((a, b) => {
-    const aDate = a.entry.data.modDate ?? a.entry.data.pubDate;
-    const bDate = b.entry.data.modDate ?? b.entry.data.pubDate;
-    return bDate.getTime() - aDate.getTime();
-  })
-  .slice(0, 3);
+  ...(selectedEssay ? [{ kind: "essay" as const, entry: selectedEssay }] : []),
+  ...(selectedPaper ? [{ kind: "paper" as const, entry: selectedPaper }] : []),
+  ...(selectedLabNote
+    ? [{ kind: "lab-note" as const, entry: selectedLabNote }]
+    : []),
+];
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const latestWriting = recentPosts.slice(0, 4);
 const latestPapers = papers.filter(({ data }) => !data.featured).slice(0, 2);

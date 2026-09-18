@@ -39,6 +39,8 @@ const locale = Astro.currentLocale ?? config.site.lang;
     <div
       class="text-muted-foreground mb-1 flex flex-wrap items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase"
     >
+      {card && <span>Lab Note</span>}
+      {card && <span aria-hidden="true">·</span>}
       <span>{categoryDetails.singular}</span>
       <span aria-hidden="true">·</span>
       <span>{status}</span>
@@ -85,7 +87,7 @@ const locale = Astro.currentLocale ?? config.site.lang;
       }
     </div>
     {
-      !compact && (
+      !compact && (!card || lead) && (
         <p
           class:list={[
             "font-prose text-muted-foreground mt-1 text-base leading-relaxed",

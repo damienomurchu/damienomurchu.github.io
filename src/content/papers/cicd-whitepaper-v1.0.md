@@ -8,6 +8,7 @@ author: "Damien Murphy"
 pubDate: 2026-09-17
 version: "1.0"
 status: published
+featured: true
 slug: unpacking-cicd
 series: "Unpacking Systems"
 tags:

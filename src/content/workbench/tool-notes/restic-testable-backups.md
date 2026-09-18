@@ -4,10 +4,10 @@ description: "Why encrypted snapshots, repository checks, and routine restores m
 pubDate: 2026-09-12
 category: tool-note
 status: In use
+featured: true
 tags:
   - Engineering
   - Resilience
-sample: true
 ---
 
 <p class="standfirst">A successful backup command is evidence that data was written somewhere. It is not evidence that recovery will work when the original system has disappeared.</p>

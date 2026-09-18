@@ -49,6 +49,13 @@ const displayDescription =
     ]}
   >
     {
+      card && (
+        <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
+          Essay
+        </p>
+      )
+    }
+    {
       data.series && seriesTitle && !card && (
         <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
           {seriesTitle} · Part {data.series.order}
@@ -91,7 +98,7 @@ const displayDescription =
       }
     </div>
     {
-      !compact && (
+      !compact && (!card || lead) && (
         <p
           class:list={[
             "font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal",
