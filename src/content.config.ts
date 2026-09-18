@@ -78,6 +78,7 @@ const papers = defineCollection({
         "Paper slugs must use lowercase letters, numbers, and hyphens."
       ),
     series: z.string().trim().min(1).optional(),
+    featured: z.boolean().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().optional(),
     canonicalURL: z.string().optional(),
@@ -98,6 +99,7 @@ const workbench = defineCollection({
     status: z.string().trim().min(1),
     tags: z.array(z.string()).default([]),
     slug: z.string().trim().min(1).optional().nullable(),
+    featured: z.boolean().optional(),
     draft: z.boolean().optional(),
     sample: z.boolean().optional(),
   }),
