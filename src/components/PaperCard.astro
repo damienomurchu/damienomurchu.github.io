@@ -34,7 +34,7 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
     <p
       class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase"
     >
-      {series ?? "Forged Papers"} · Version {version}
+      {card ? "Paper" : (series ?? "Forged Papers")} · Version {version}
     </p>
     <h3
       class:list={[
@@ -49,7 +49,7 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
       {title}
     </h3>
     {
-      !compact && (
+      !compact && (!card || lead) && (
         <p
           class:list={[
             "font-prose text-foreground/90 mt-0.5 leading-relaxed italic",
@@ -66,7 +66,7 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
       <ReadingTime body={paper.body} />
     </div>
     {
-      !compact && (
+      !compact && (!card || lead) && (
         <p
           class:list={[
             "font-prose text-muted-foreground mt-2 text-base leading-relaxed",
