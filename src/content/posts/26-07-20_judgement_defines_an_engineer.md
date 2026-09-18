@@ -12,8 +12,8 @@ tags:
   - Engineering
   - Work & Organisations
 
-series:
-featured: false
+series: 
+featured: true
 ---
 
 ## Seniority begins where certainty ends

@@ -1,6 +1,6 @@
 ---
 title: "Every GitHub Action is a Supply Chain Decision"
-description: ""
+description: "Every GitHub Action you add extends your software supply chain. Here’s how to reason about trust, dependencies, privilege, and blast radius."
 slug: "every-github-action-is-a-supply-chain-decision"
 pubDate: 2026-09-21
 modDate: 2026-09-21

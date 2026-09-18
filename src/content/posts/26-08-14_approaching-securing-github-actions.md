@@ -16,7 +16,7 @@ series:
   title: "Securing GitHub Actions in the Enterprise"
   description: "A practical examination of the supply-chain, execution, identity and governance risks created by GitHub Actions—and how enterprises can control them without destroying developer agility."
   order: 1
-featured: false
+featured: true
 ---
 
 ## The power—and hidden risk—of GitHub Actions

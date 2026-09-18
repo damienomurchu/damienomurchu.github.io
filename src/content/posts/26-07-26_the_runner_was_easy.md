@@ -12,8 +12,8 @@ tags:
   - Engineering
   - Tools & Automation
 
-series:
-featured: false
+series: 
+featured: true
 ---
 
 ## Simplicity can be deceptive
