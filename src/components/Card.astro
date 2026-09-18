@@ -9,6 +9,7 @@ type Props = {
   variant?: "h2" | "h3";
   seriesTitle?: string;
   card?: boolean;
+  lead?: boolean;
   compact?: boolean;
 } & CollectionEntry<"posts">;
 
@@ -16,6 +17,7 @@ const {
   variant: Heading = "h2",
   seriesTitle,
   card = false,
+  lead = false,
   compact = false,
   id,
   data,
@@ -34,13 +36,15 @@ const displayDescription =
   <a
     href={getPostUrl(id, filePath, Astro.currentLocale, data.slug)}
     class:list={[
-      "group block rounded px-3",
+      "group block rounded",
       "hover:bg-muted/50 focus-visible:bg-muted/50",
       {
-        "-mx-3": !card,
-        "border-border bg-muted/20 h-full border": card,
-        "py-3": !compact,
-        "py-2": compact,
+        "-mx-3 px-3": !card,
+        "border-border/70 bg-muted/10 h-full border": card && !lead,
+        "border-border/80 border-l-accent bg-muted/20 border border-l-2 px-5 py-4":
+          lead,
+        "px-3 py-3": !lead && !compact,
+        "px-3 py-2": compact,
       },
     ]}
   >
@@ -52,7 +56,14 @@ const displayDescription =
       )
     }
     <Heading
-      class="font-prose text-accent text-lg leading-tight font-semibold tracking-tight"
+      class:list={[
+        "font-prose text-accent leading-tight font-semibold tracking-tight",
+        {
+          "text-xl": lead,
+          "text-[1.05rem]": card && !lead,
+          "text-lg": !card && !lead,
+        },
+      ]}
       transition:name={toTransitionName(title)}
     >
       {title}
@@ -84,7 +95,11 @@ const displayDescription =
         <p
           class:list={[
             "font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal",
-            { "line-clamp-2": card },
+            {
+              "max-w-[70ch]": lead,
+              "text-[0.95rem]": card && !lead,
+              "line-clamp-2": card && !lead,
+            },
           ]}
         >
           {displayDescription}
