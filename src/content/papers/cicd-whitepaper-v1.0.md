@@ -8,7 +8,6 @@ author: "Damien Murphy"
 pubDate: 2026-09-17
 version: "1.0"
 status: published
-featured: true
 slug: unpacking-cicd
 series: "Unpacking Systems"
 tags:
@@ -46,7 +45,7 @@ The terms begin as practices. **Continuous Integration** means integrating chang
 
 **Continuous Delivery** means keeping software in a state from which it can be released reliably when required. **Continuous Deployment** takes qualifying changes into production automatically. A manual approval can be a deliberate policy choice. It cannot, by itself, establish whether the software behind the button is actually ready to release. [Fowler, Continuous Delivery][cd]
 
-Deployment and release also need explicit meanings. In this paper, _deployment_ changes software or configuration in a target environment. _Release_ makes a selected capability or version available to its intended consumers. These can happen together, but mechanisms such as feature flags can separate them. For a library or desktop application, publication and distribution may be more relevant than deploying a service.
+Deployment and release also need explicit meanings. In this paper, *deployment* changes software or configuration in a target environment. *Release* makes a selected capability or version available to its intended consumers. These can happen together, but mechanisms such as feature flags can separate them. For a library or desktop application, publication and distribution may be more relevant than deploying a service.
 
 An organisation can run thousands of automated jobs and still integrate late or spend weeks making a release safe. DORA's account of Continuous Delivery includes testing, architecture and organisational capabilities alongside automation. Where the bottleneck is batch size, testability or release policy, adding more workflow machinery will have limited effect. [DORA, Continuous delivery][dora-cd]
 
@@ -54,16 +53,16 @@ An organisation can run thousands of automated jobs and still integrate late or 
 
 The questions below pull apart concerns often compressed into “CI/CD.” They are different views of a delivery system, rather than successive layers of one technology stack. A practice, a stored definition, a running process and an observed outcome cannot be diagnosed or owned in quite the same way.
 
-| Concern                | Question it answers                                    | Examples                                                                       |
-| ---------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| Practice and policy    | How do we integrate, validate and release changes?     | Integration frequency, readiness criteria, release decisions                   |
-| Workflow definition    | What work should occur, and under what conditions?     | Workflow YAML, pipeline configuration, buildspecs, reusable components         |
-| Workflow execution     | Which instance of that work are we observing?          | A run, its jobs, inputs, attempts, results and timestamps                      |
-| Control plane          | What interprets intent and coordinates work?           | Events, conditions, dependencies, scheduling, dispatch and run state           |
-| Execution provisioning | How does suitable capacity become available?           | Worker allocation, runner scaling, VM or pod creation                          |
-| Execution environment  | What resources and authority does the work receive?    | Runner, runtime, workspace, network access, credentials and isolation          |
-| Invoked capability     | What specialised tool or service performs an activity? | Compiler, test framework, scanner, registry, signing or deployment service     |
-| Delivery outcome       | What changed, and what evidence establishes it?        | Validated source, published artifact, approved promotion or healthy deployment |
+| Concern | Question it answers | Examples |
+| --- | --- | --- |
+| Practice and policy | How do we integrate, validate and release changes? | Integration frequency, readiness criteria, release decisions |
+| Workflow definition | What work should occur, and under what conditions? | Workflow YAML, pipeline configuration, buildspecs, reusable components |
+| Workflow execution | Which instance of that work are we observing? | A run, its jobs, inputs, attempts, results and timestamps |
+| Control plane | What interprets intent and coordinates work? | Events, conditions, dependencies, scheduling, dispatch and run state |
+| Execution provisioning | How does suitable capacity become available? | Worker allocation, runner scaling, VM or pod creation |
+| Execution environment | What resources and authority does the work receive? | Runner, runtime, workspace, network access, credentials and isolation |
+| Invoked capability | What specialised tool or service performs an activity? | Compiler, test framework, scanner, registry, signing or deployment service |
+| Delivery outcome | What changed, and what evidence establishes it? | Validated source, published artifact, approved promotion or healthy deployment |
 
 The wider **software delivery system** also includes source control, artifact management, environments, operational feedback, governance and people. A change may cross several automation engines on its way to users. The work can continue long after an individual workflow reports success.
 
@@ -80,7 +79,7 @@ flowchart TD
     O --> S
 ```
 
-_Figure 1. A map of concepts, not a mandatory sequence of services. A run can invoke several capabilities, produce several outputs and participate in a delivery path that continues beyond it._
+*Figure 1. A map of concepts, not a mandatory sequence of services. A run can invoke several capabilities, produce several outputs and participate in a delivery path that continues beyond it.*
 
 ### Define the platform boundary
 
@@ -129,7 +128,7 @@ flowchart TD
     J -->|invokes| T["Engineering capabilities"]
 ```
 
-_Figure 2. Logical platform responsibilities. Provisioning can contain control logic of its own, while the execution environment supplies the resources and authority available to a running job._
+*Figure 2. Logical platform responsibilities. Provisioning can contain control logic of its own, while the execution environment supplies the resources and authority available to a running job.*
 
 Figure 2 draws the narrower automation boundary. A capability invoked by a job may run inside its environment or in another service altogether. The broader platform offering may include that capability, while identity, governance and observability still cross the boxes in the diagram.
 
@@ -161,13 +160,13 @@ The relevant trust boundary may extend beyond an individual service or team. SLS
 
 GitHub Actions, Jenkins, GitLab CI/CD, Azure Pipelines and a composition of AWS CodePipeline and CodeBuild all perform some version of these responsibilities. Their boundaries and terminology differ, so product names alone are a poor substitute for the model. The table shows representative configurations; runner, agent and integration choices vary by installation.
 
-| System                       | Definition and coordination                                                                                               | Provisioning and execution                                                                                                                   |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| GitHub Actions               | Workflow YAML under `.github/workflows/`; the Actions service evaluates triggers and coordinates runs and jobs            | GitHub-hosted or self-hosted runners execute jobs; Actions Runner Controller (ARC) can manage self-hosted runner capacity on Kubernetes      |
-| Jenkins                      | A `Jenkinsfile` can define a Pipeline in source control; the Jenkins controller coordinates its execution                 | Jenkins agents supply executors and workspaces; infrastructure that supplies agents depends on the installation and its integrations         |
-| GitLab CI/CD                 | `.gitlab-ci.yml` defines jobs and stages; GitLab creates pipelines and makes jobs available to matching runners           | GitLab Runner prepares job environments and executes commands, using hosted or self-managed runner arrangements                              |
-| Azure Pipelines              | YAML or Classic definitions describe stages, jobs and steps; Azure Pipelines coordinates runs                             | Jobs generally run on agents in pools, using Microsoft-hosted agents in Azure DevOps Services or self-hosted agents; some jobs are agentless |
-| AWS CodePipeline / CodeBuild | A CodePipeline definition coordinates stages and actions; a CodeBuild `buildspec.yml` defines commands for a build action | CodeBuild creates its configured build environment and executes commands; CodeBuild can also be used without CodePipeline                    |
+| System | Definition and coordination | Provisioning and execution |
+| --- | --- | --- |
+| GitHub Actions | Workflow YAML under `.github/workflows/`; the Actions service evaluates triggers and coordinates runs and jobs | GitHub-hosted or self-hosted runners execute jobs; Actions Runner Controller (ARC) can manage self-hosted runner capacity on Kubernetes |
+| Jenkins | A `Jenkinsfile` can define a Pipeline in source control; the Jenkins controller coordinates its execution | Jenkins agents supply executors and workspaces; infrastructure that supplies agents depends on the installation and its integrations |
+| GitLab CI/CD | `.gitlab-ci.yml` defines jobs and stages; GitLab creates pipelines and makes jobs available to matching runners | GitLab Runner prepares job environments and executes commands, using hosted or self-managed runner arrangements |
+| Azure Pipelines | YAML or Classic definitions describe stages, jobs and steps; Azure Pipelines coordinates runs | Jobs generally run on agents in pools, using Microsoft-hosted agents in Azure DevOps Services or self-hosted agents; some jobs are agentless |
+| AWS CodePipeline / CodeBuild | A CodePipeline definition coordinates stages and actions; a CodeBuild `buildspec.yml` defines commands for a build action | CodeBuild creates its configured build environment and executes commands; CodeBuild can also be used without CodePipeline |
 
 The rows identify responsibilities, not interchangeable products. A Jenkins controller may coordinate agents supplied by another platform; the AWS example combines two services; GitLab Runner both prepares an environment and executes work. An organisation that operates its own runners also owns work that a hosted service might otherwise absorb. [Understanding GitHub Actions][github] [Using a Jenkinsfile][jenkinsfile] [Using Jenkins agents][jenkinsagents] [Get started with GitLab CI/CD][gitlabci] [GitLab runners][gitlabrunners] [Azure Pipelines concepts][azureconcepts] [Azure Pipelines agents][azureagents] [CodePipeline concepts][codepipeline] [CodeBuild concepts][codebuild]
 
@@ -206,7 +205,7 @@ flowchart TB
     R1 --> R2 --> R3 --> R4 --> R5 --> R6
 ```
 
-_Figure 3. Each numbered stage contains the corresponding Blackbird and GitHub Actions components. The downward arrows show the progression from reusable material to running work; either implementation may invoke build, scan, artifact and deployment capabilities._
+*Figure 3. Each numbered stage contains the corresponding Blackbird and GitHub Actions components. The downward arrows show the progression from reusable material to running work; either implementation may invoke build, scan, artifact and deployment capabilities.*
 
 The diagram describes one internal design, not every way either technology can be deployed. CodePipeline coordinates stages and actions; CodeBuild establishes a build environment and executes its commands. On the other side, GitHub Actions coordinates jobs while ARC manages capacity for the self-hosted runners that execute them. [CodePipeline concepts][codepipeline] [CodeBuild concepts][codebuild] [Actions Runner Controller][arc]
 
@@ -233,7 +232,7 @@ flowchart TD
     C -->|reports| H["Sync and health evidence"]
 ```
 
-_Figure 4. A representative Git-sourced Kubernetes delivery path. Artifact publication and a change to desired state can finish before the controller reconciles the environment and reports the observed result. Flux can also consume desired state from an OCI registry._
+*Figure 4. A representative Git-sourced Kubernetes delivery path. Artifact publication and a change to desired state can finish before the controller reconciles the environment and reports the observed result. Flux can also consume desired state from an OCI registry.*
 
 Any of the five CI/CD implementations can publish an artifact and update desired state for Argo CD or Flux. Three separate questions follow: was the artifact published, did the controller reconcile the intended state, and is the application ready? If reconciliation stalls, rebuilding an artifact that was already published is unlikely to help.
 
@@ -245,13 +244,13 @@ The in-toto model addresses another part of this problem by linking supply chain
 
 For a particular delivery path, distinguish the questions explicitly:
 
-| Question                                               | Evidence needed                                                                      |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| Did the automation complete as configured?             | Run and job results, including skipped work, attempts and relevant inputs            |
+| Question | Evidence needed |
+| --- | --- |
+| Did the automation complete as configured? | Run and job results, including skipped work, attempts and relevant inputs |
 | Which artifact resulted from which source and process? | Identified inputs and outputs, with provenance appropriate to the trust requirements |
-| Was that artifact authorised for promotion?            | A policy decision tied to the artifact's identity                                    |
-| Did the environment reach the intended state?          | Deployment observations and application-specific readiness checks                    |
-| Is the capability available to its intended users?     | Release configuration and relevant service or product observations                   |
+| Was that artifact authorised for promotion? | A policy decision tied to the artifact's identity |
+| Did the environment reach the intended state? | Deployment observations and application-specific readiness checks |
+| Is the capability available to its intended users? | Release configuration and relevant service or product observations |
 
 These observations depend on the delivery architecture. A signature authenticates a statement under a particular identity and trust model; it says only what that statement and its scope support. Provenance and authenticated test results can make the delivery path more trustworthy without proving that the software is correct in every circumstance.
 
@@ -265,13 +264,13 @@ CDEvents is one effort to give delivery tools a shared event vocabulary. That ca
 
 The model earns its keep when it changes what someone investigates or which decision they make. The table turns familiar claims into questions about a particular responsibility or handoff.
 
-| Statement                       | Questions to ask before acting                                                                                                    |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| “CI/CD is slow.”                | Where is time spent: event processing, queueing, provisioning, active work, remote services, approvals or deployment convergence? |
-| “CI/CD is down.”                | Which service or transition is unavailable, and which delivery paths are affected?                                                |
-| “We need to secure CI/CD.”      | Who can influence execution, what authority does it receive, and how are outputs verified before use?                             |
-| “We need to migrate CI/CD.”     | Which definitions, execution services, capabilities, policies and integrations are changing?                                      |
-| “CI/CD deployed a bad release.” | Which component selected the artifact, authorised promotion, changed state and checked the result?                                |
+| Statement | Questions to ask before acting |
+| --- | --- |
+| “CI/CD is slow.” | Where is time spent: event processing, queueing, provisioning, active work, remote services, approvals or deployment convergence? |
+| “CI/CD is down.” | Which service or transition is unavailable, and which delivery paths are affected? |
+| “We need to secure CI/CD.” | Who can influence execution, what authority does it receive, and how are outputs verified before use? |
+| “We need to migrate CI/CD.” | Which definitions, execution services, capabilities, policies and integrations are changing? |
+| “CI/CD deployed a bad release.” | Which component selected the artifact, authorised promotion, changed state and checked the result? |
 
 ### Measure time at meaningful boundaries
 
@@ -293,7 +292,7 @@ sequenceDiagram
     J-->>C: Job complete
 ```
 
-_Figure 5. One sequential critical path, not timings measured from a particular platform. Dependency retrieval accounts for half the elapsed time in this example._
+*Figure 5. One sequential critical path, not timings measured from a particular platform. Dependency retrieval accounts for half the elapsed time in this example.*
 
 Measure event acceptance, job eligibility, queue entry, environment readiness and downstream completion as distinct boundaries. Provisioning can overlap with queueing, and parallel jobs overlap one another, so adding every job duration together will misstate elapsed time. In Figure 5, dependency retrieval is the largest term on the critical path. Faster runners would not necessarily fix it.
 
@@ -337,16 +336,16 @@ Syntax translation covers only part of the first category. If the rest are unnam
 
 Take one delivery path that matters to your team and follow it from the initiating change to an observable outcome. At each handoff, record the input, responsible component, identity, output, evidence and repair owner. A real path will reveal more than a diagram of products assembled from memory.
 
-| Record                        | What to capture                                                       |
-| ----------------------------- | --------------------------------------------------------------------- |
-| Practice and intent           | The delivery objective and conditions for proceeding                  |
-| Definition                    | The workflow, reusable components, relevant versions and owner        |
-| Execution                     | Run, job and attempt identities, with resolved inputs                 |
-| Coordination and provisioning | The services that schedule work and allocate capacity                 |
-| Environment                   | Runtime, isolation, identity, network access and resource constraints |
-| Capabilities and interfaces   | Local tools, remote services and their completion semantics           |
-| Artifacts and decisions       | Identified outputs, evidence and promotion authorisation              |
-| Outcome                       | Intended state, observed state and responsibility for verification    |
+| Record | What to capture |
+| --- | --- |
+| Practice and intent | The delivery objective and conditions for proceeding |
+| Definition | The workflow, reusable components, relevant versions and owner |
+| Execution | Run, job and attempt identities, with resolved inputs |
+| Coordination and provisioning | The services that schedule work and allocate capacity |
+| Environment | Runtime, isolation, identity, network access and resource constraints |
+| Capabilities and interfaces | Local tools, remote services and their completion semantics |
+| Artifacts and decisions | Identified outputs, evidence and promotion authorisation |
+| Outcome | Intended state, observed state and responsibility for verification |
 
 That record may expose a job that was dispatched but never obtained an environment, an artifact whose origin cannot be established, or desired state that changed without the environment converging. Use it during an incident, a security review or a migration plan. When the real path differs from the model, update the model.
 
@@ -359,7 +358,7 @@ Foundational publications and versioned specifications support the conceptual mo
 1. Fatih Degirmenci. [How the CDF is Establishing a Shared Vocabulary for the Industry][cdf]. Continuous Delivery Foundation, 24 April 2020. The product mapping is historical.
 2. Martin Fowler. [Continuous Integration][ci]. Article originally published in 2001; consulted revision dated 18 January 2024.
 3. Martin Fowler. [Continuous Delivery][cd]. 30 May 2013; updated 12 August 2014.
-4. Jez Humble and David Farley. _Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation_. Addison-Wesley, 2010. [Chapter 5 excerpt: What Is a Deployment Pipeline?][delivery-book]
+4. Jez Humble and David Farley. *Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation*. Addison-Wesley, 2010. [Chapter 5 excerpt: What Is a Deployment Pipeline?][delivery-book]
 5. DORA. [Continuous delivery][dora-cd]. Living capability guide and research synthesis.
 6. David Hollingsworth. [The Workflow Reference Model][wfmc]. Workflow Management Coalition, TC00-1003, Issue 1.1. Consulted University of Edinburgh archive copy dated 29 November 1994.
 7. SLSA project. [SLSA v1.2: Build terminology and model][slsa]. Approved specification.
@@ -368,7 +367,7 @@ Foundational publications and versioned specifications support the conceptual mo
 10. Amazon Web Services. [AWS CodeBuild concepts][codebuild]. Build definitions and execution environments.
 11. Amazon Web Services. [CodePipeline concepts][codepipeline]. Pipelines, stages, actions and executions.
 12. GitHub. [Actions Runner Controller][arc]. Runner provisioning, scaling and dispatch architecture.
-13. Dinah McNutt. [Release Engineering][sre]. Chapter 8 of _Site Reliability Engineering_, O'Reilly, 2016.
+13. Dinah McNutt. [Release Engineering][sre]. Chapter 8 of *Site Reliability Engineering*, O'Reilly, 2016.
 14. OpenGitOps. [Principles][gitops], [version 1.0.0 release][gitops-release].
 15. Argo CD project. [Automated Sync Policy][argo]. Living implementation documentation.
 16. Santiago Torres-Arias, Hammad Afzali, Trishank Karthik Kuppusamy, Reza Curtmola and Justin Cappos. [in-toto: Providing farm-to-table guarantees for bits and bytes][intoto]. USENIX Security, 2019, pp. 1393–1410.
@@ -416,4 +415,4 @@ Foundational publications and versioned specifications support the conceptual mo
 
 ## Suggested citation
 
-Murphy, Damien. _Unpacking CI/CD: A Systems Model for Software Delivery Automation_. Version 1.0, 17 September 2026.
+Murphy, Damien. *Unpacking CI/CD: A Systems Model for Software Delivery Automation*. Version 1.0, 17 September 2026.
