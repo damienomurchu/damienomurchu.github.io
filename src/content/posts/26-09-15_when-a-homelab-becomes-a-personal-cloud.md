@@ -9,10 +9,11 @@ draft: false
 category: engineering
 
 tags:
-  - tag-1
-  - tag-2
+  - Engineering
 
-series: 
+series:
+  id: "personal-cloud"
+  order: 2
 featured: false
 ---
 
