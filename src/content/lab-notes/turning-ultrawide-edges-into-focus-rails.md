@@ -5,6 +5,7 @@ pubDate: 2026-09-22
 tags:
   - Personal Systems
   - Focus
+featured: true
 ---
 
 *Using peripheral screen space to support focused work without competing with the work itself.*

@@ -1,10 +1,12 @@
 ---
 title: Using `just` Instead of `make` for My Writing Workflow
 description: Why a command runner fits my document pipeline better than a dependency-oriented build system.
-pubDate: 2026-09-19
+pubDate: 2026-09-17
 tags:
   - Tools & Automation
   - Writing
+featured: true
+
 ---
 
 My writing repository has accumulated enough automation to need a stable interface. Producing a PDF now involves rendering Mermaid diagrams, generating intermediate Markdown, invoking Pandoc with Typst, managing temporary files and running the same process locally and in CI.
