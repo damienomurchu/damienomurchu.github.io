@@ -25,9 +25,17 @@ const sortedPosts = getSortedPosts(posts);
 const seriesById = getSeriesMap(sortedPosts);
 const papers = getSortedPapers(await getCollection("papers"));
 const sortedLabNotes = getSortedLabNotes(await getCollection("labNotes"));
-const selectedEssay = sortedPosts.find(({ data }) => data.featured);
-const selectedPaper = papers.find(({ data }) => data.featured);
-const selectedLabNote = sortedLabNotes.find(({ data }) => data.featured);
+const getMostRecentFeatured = <
+  T extends { data: { featured?: boolean; pubDate: Date } },
+>(
+  entries: T[]
+) =>
+  entries
+    .filter(({ data }) => data.featured)
+    .toSorted((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())[0];
+const selectedEssay = getMostRecentFeatured(sortedPosts);
+const selectedPaper = getMostRecentFeatured(papers);
+const selectedLabNote = getMostRecentFeatured(sortedLabNotes);
 const selectedWork = [
   ...(selectedEssay ? [{ kind: "essay" as const, entry: selectedEssay }] : []),
   ...(selectedPaper ? [{ kind: "paper" as const, entry: selectedPaper }] : []),
@@ -35,11 +43,13 @@ const selectedWork = [
     ? [{ kind: "lab-note" as const, entry: selectedLabNote }]
     : []),
 ];
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const recentPosts = sortedPosts.filter(({ id }) => id !== selectedEssay?.id);
 const latestWriting = recentPosts.slice(0, 4);
-const latestPapers = papers.filter(({ data }) => !data.featured).slice(0, 2);
+const latestPapers = papers
+  .filter(({ id }) => id !== selectedPaper?.id)
+  .slice(0, 2);
 const latestLabNotes = sortedLabNotes
-  .filter(({ data }) => !data.featured)
+  .filter(({ id }) => id !== selectedLabNote?.id)
   .slice(0, 3);
 const homePath = getRelativeLocaleUrl(locale, "");
 const heroTopics = [
