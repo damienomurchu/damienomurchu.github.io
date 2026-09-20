@@ -14,7 +14,7 @@ tags:
 series:
   id: "personal-cloud"
   order: 2
-featured: false
+featured: true
 ---
 
 ## Where the personal cloud begins

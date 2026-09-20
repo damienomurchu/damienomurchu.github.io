@@ -5,8 +5,6 @@ pubDate: 2026-09-17
 tags:
   - Tools & Automation
   - Writing
-featured: true
-
 ---
 
 My writing repository has accumulated enough automation to need a stable interface. Producing a PDF now involves rendering Mermaid diagrams, generating intermediate Markdown, invoking Pandoc with Typst, managing temporary files and running the same process locally and in CI.
