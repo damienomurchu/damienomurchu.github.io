@@ -246,6 +246,4 @@ The taxonomy in this paper is a working synthesis rather than an industry standa
 10. SLSA. [Provenance specification, version 1.2](https://slsa.dev/spec/v1.2/provenance/). The build-side evidence boundary; it is not a statement about runtime health.
 11. Ramaswamy Chandramouli. [*Security Assurance Requirements for Linux Application Container Deployments*](https://csrc.nist.gov/pubs/ir/8176/final). NIST IR 8176, October 2017. Further reading on establishing what security controls actually assure.
 
-## Suggested citation
-
-Murphy, Damien. *Unpacking the Container Stack: A Working Model for Images, Running Containers, Orchestration and Hosts*. Version 1.0, 17 September 2026.
+**Suggested citation.** Murphy, Damien. *Unpacking the Container Stack: A Working Model for Images, Running Containers, Orchestration and Hosts*. Version 1.0, 24 September 2026.
