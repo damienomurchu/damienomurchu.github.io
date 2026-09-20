@@ -5,7 +5,7 @@ export default defineAstroPaperConfig({
     url: "https://forged.damienmurphy.net/",
     title: "Forged · Damien Murphy",
     description:
-      "Essays, papers and lab notes on building systems that hold up under pressure — in software, engineering practice, and the way we work.",
+      "Essays, technical papers and lab notes on software, engineering practice, organisations, and personal systems.",
     author: "Damien Murphy",
     profile: "https://www.linkedin.com/in/damienmurphy/",
     ogImage: "default-og.jpg",

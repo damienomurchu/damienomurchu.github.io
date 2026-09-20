@@ -75,11 +75,15 @@ const heroTopics = [
       >
         Forged
       </h2>
-      <p
-        class="font-prose text-foreground/90 max-w-[75ch] text-lg leading-relaxed font-normal"
-      >
-        {config.site.description}
-      </p>
+      <div class="font-prose max-w-[75ch] text-lg">
+        <p class="text-foreground/90 leading-relaxed font-normal">
+          Exploring how systems are built, where they break, and what makes them
+          endure.
+        </p>
+        <p class="text-foreground/65 mt-2 text-base leading-relaxed">
+          {config.site.description}
+        </p>
+      </div>
       <p class="mt-4 flex flex-wrap gap-x-2 gap-y-1 text-sm">
         {
           heroTopics.map((topic, index) => (
