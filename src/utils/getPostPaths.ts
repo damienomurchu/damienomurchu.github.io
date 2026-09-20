@@ -7,6 +7,7 @@ const RESERVED_TOP_LEVEL_ROUTES = new Set([
   "404",
   "about",
   "archives",
+  "papers",
   "posts",
   "privacy",
   "robots.txt",
@@ -14,6 +15,7 @@ const RESERVED_TOP_LEVEL_ROUTES = new Set([
   "search",
   "series",
   "tags",
+  "lab-notes",
 ]);
 
 function getPostPathSegments(filePath: string | undefined): string[] {

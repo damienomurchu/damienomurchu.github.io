@@ -1,0 +1,118 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import Datetime from "@/components/Datetime.astro";
+import ReadingTime from "@/components/ReadingTime.astro";
+import Tag from "@/components/Tag.astro";
+import PostLayout from "@/layouts/PostLayout.astro";
+import { getLabNoteSlug, getSortedLabNotes } from "@/utils/labNotes";
+import { slugifyStr } from "@/utils/slugify";
+import { toTransitionName } from "@/utils/toTransitionName";
+import config from "@/config";
+
+export const getStaticPaths = (async () => {
+  const entries = getSortedLabNotes(await getCollection("labNotes"));
+  return entries.map(entry => ({
+    params: { slug: getLabNoteSlug(entry) },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, pubDate, modDate, tags, sample } = entry.data;
+const locale = Astro.currentLocale ?? config.site.lang;
+---
+
+<PostLayout
+  title={`${title} | ${config.site.title}`}
+  {description}
+  {pubDate}
+  {modDate}
+>
+  <Header />
+
+  <div class="app-layout flex items-center justify-start">
+    <LinkButton
+      href={getRelativeLocaleUrl(locale, "lab-notes")}
+      class="focus-outline hover:text-foreground/75 -ms-2 mt-8 mb-2"
+    >
+      <IconChevronLeft class="inline-block size-6 rtl:rotate-180" />
+      <span>Back to Lab Notes</span>
+    </LinkButton>
+  </div>
+
+  <main id="main-content" class="app-layout" data-pagefind-body>
+    <div
+      class="text-muted-foreground mb-2 flex flex-wrap items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase"
+    >
+      <span>Lab Note</span>
+      {
+        sample && (
+          <span class="border-border rounded border px-1.5 py-0.5">Sample</span>
+        )
+      }
+    </div>
+
+    <h1
+      style={{ viewTransitionName: toTransitionName(title) }}
+      class="font-prose text-accent inline-block text-2xl leading-tight font-bold tracking-tight sm:text-3xl"
+    >
+      {title}
+    </h1>
+
+    <p
+      class="font-prose text-foreground/90 mt-3 max-w-[68ch] text-lg leading-relaxed"
+    >
+      {description}
+    </p>
+
+    <div class="my-3 flex flex-wrap items-center gap-2">
+      <Datetime {pubDate} {modDate} size="lg" />
+      <span aria-hidden="true" class="text-muted-foreground">·</span>
+      <ReadingTime body={entry.body} class="sm:text-base" />
+      {
+        tags.length > 0 && (
+          <>
+            <span aria-hidden="true" class="text-muted-foreground">
+              ·
+            </span>
+            <ul class="flex flex-wrap gap-x-2 gap-y-1" aria-label="Topics">
+              {tags.map(tag => (
+                <Tag
+                  tag={slugifyStr(tag)}
+                  tagName={tag}
+                  size="sm"
+                  variant="metadata"
+                />
+              ))}
+            </ul>
+          </>
+        )
+      }
+    </div>
+
+    {
+      sample && (
+        <aside class="border-border bg-muted/30 mt-6 border px-4 py-3 text-sm">
+          Sample entry with placeholder content for previewing the Lab Notes
+          design.
+        </aside>
+      )
+    }
+
+    <article
+      id="article"
+      class="app-prose prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg) mt-8 w-full"
+    >
+      <Content />
+    </article>
+  </main>
+
+  <Footer />
+</PostLayout>

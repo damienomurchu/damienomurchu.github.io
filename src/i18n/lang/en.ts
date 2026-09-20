@@ -3,7 +3,9 @@ import type { UIStrings } from "../types";
 export default {
   nav: {
     home: "Home",
-    posts: "Posts",
+    posts: "Essays",
+    papers: "Papers",
+    labNotes: "Lab Notes",
     tags: "Explore",
     about: "About",
     archives: "Archives",
@@ -31,9 +33,13 @@ export default {
   },
   home: {
     socialLinks: "Social Links",
-    featured: "Selected Writing",
-    recentPosts: "Latest Posts",
-    allPosts: "All Posts",
+    selectedWork: "Selected Work",
+    recentPosts: "Latest Essays",
+    allPosts: "All Essays",
+    papers: "Latest Papers",
+    allPapers: "All Papers",
+    labNotes: "Latest Lab Notes",
+    allLabNotes: "All Lab Notes",
   },
   footer: {
     copyright: "Copyright",
@@ -46,8 +52,16 @@ export default {
     tagsTitle: "Explore",
     tagsDesc: "Browse writing by subject or follow a series.",
 
-    postsTitle: "Posts",
-    postsDesc: "All the articles I've posted.",
+    postsTitle: "Essays",
+    postsDesc:
+      "Essays on engineering, personal systems, resilience, work and organisations.",
+
+    papersTitle: "Papers",
+    papersDesc: "Long-form technical work from Forged.",
+
+    labNotesTitle: "Lab Notes",
+    labNotesDesc:
+      "Short, practical notes from ongoing experiments, builds, and investigations.",
 
     archivesTitle: "Archives",
     archivesDesc: "All the articles I've archived.",

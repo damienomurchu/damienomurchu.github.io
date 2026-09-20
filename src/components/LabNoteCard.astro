@@ -1,40 +1,26 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getPostUrl } from "@/utils/getPostPaths";
-import { toTransitionName } from "@/utils/toTransitionName";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Datetime from "./Datetime.astro";
 import ReadingTime from "./ReadingTime.astro";
+import { getLabNoteSlug } from "@/utils/labNotes";
+import { toTransitionName } from "@/utils/toTransitionName";
+import config from "@/config";
 
 type Props = {
-  variant?: "h2" | "h3";
-  seriesTitle?: string;
+  compact?: boolean;
   card?: boolean;
   lead?: boolean;
-  compact?: boolean;
-} & CollectionEntry<"posts">;
+} & CollectionEntry<"labNotes">;
 
-const {
-  variant: Heading = "h2",
-  seriesTitle,
-  card = false,
-  lead = false,
-  compact = false,
-  id,
-  data,
-  filePath,
-  body,
-} = Astro.props;
-
-const { title, description, ...props } = data;
-const displayDescription =
-  card && data.series && seriesTitle
-    ? `${seriesTitle} · Part ${data.series.order}`
-    : description;
+const { compact = false, card = false, lead = false, ...entry } = Astro.props;
+const { title, description, pubDate, modDate, tags, sample } = entry.data;
+const locale = Astro.currentLocale ?? config.site.lang;
 ---
 
 <li class:list={{ "my-3": !card && !compact, "my-1": compact, "h-full": card }}>
   <a
-    href={getPostUrl(id, filePath, Astro.currentLocale, data.slug)}
+    href={getRelativeLocaleUrl(locale, `lab-notes/${getLabNoteSlug(entry)}`)}
     class:list={[
       "group block rounded",
       "hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2",
@@ -44,26 +30,22 @@ const displayDescription =
         "border-border/70 bg-muted/10 border sm:min-h-[120px]": card && !lead,
         "border-border/80 border-l-accent bg-muted/20 border border-l-2 px-5 py-3.5":
           lead,
-        "px-3 py-3": !lead && !compact,
-        "px-3 py-2": compact,
+        "px-3": !lead,
       },
+      { "py-3": !lead && !compact, "py-2": compact },
     ]}
   >
-    {
-      card && (
-        <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
-          Essay
-        </p>
-      )
-    }
-    {
-      data.series && seriesTitle && !card && (
-        <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
-          {seriesTitle} · Part {data.series.order}
-        </p>
-      )
-    }
-    <Heading
+    <div
+      class="text-muted-foreground mb-1 flex flex-wrap items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase"
+    >
+      <span>Lab Note</span>
+      {
+        sample && (
+          <span class="border-border rounded border px-1.5 py-0.5">Sample</span>
+        )
+      }
+    </div>
+    <h3
       class:list={[
         "font-prose text-accent leading-tight font-semibold tracking-tight",
         {
@@ -75,30 +57,31 @@ const displayDescription =
       transition:name={toTransitionName(title)}
     >
       {title}
-    </Heading>
+    </h3>
     <div
       class:list={[
         "flex flex-wrap items-center gap-x-2",
         { "mt-1": !card || lead, "mt-auto pt-3": card && !lead },
       ]}
     >
-      <Datetime {...props} />
-      <span aria-hidden="true" class="text-muted-foreground">·</span>
-      <ReadingTime {body} />
+      <Datetime {pubDate} {modDate} />
       {
-        data.tags.length > 0 && (
+        !compact && (
           <>
             <span aria-hidden="true" class="text-muted-foreground">
               ·
             </span>
-            <span
-              class="text-muted-foreground flex flex-wrap gap-x-2 text-sm"
-              aria-label={`Topics: ${data.tags.join(", ")}`}
-            >
-              {data.tags.map(tag => (
-                <span aria-hidden="true">#{tag}</span>
-              ))}
-            </span>
+            <ReadingTime body={entry.body} />
+            {tags.length > 0 && !card && (
+              <>
+                <span aria-hidden="true" class="text-muted-foreground">
+                  ·
+                </span>
+                <span class="text-muted-foreground text-sm">
+                  {tags.map(tag => `#${tag}`).join(" ")}
+                </span>
+              </>
+            )}
           </>
         )
       }
@@ -107,7 +90,7 @@ const displayDescription =
       !compact && (!card || lead) && (
         <p
           class:list={[
-            "font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal",
+            "font-prose text-muted-foreground mt-1 text-base leading-relaxed",
             {
               "max-w-[70ch]": lead,
               "text-[0.95rem]": card && !lead,
@@ -115,7 +98,7 @@ const displayDescription =
             },
           ]}
         >
-          {displayDescription}
+          {description}
         </p>
       )
     }

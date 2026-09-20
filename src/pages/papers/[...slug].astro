@@ -1,0 +1,157 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import Datetime from "@/components/Datetime.astro";
+import ReadingTime from "@/components/ReadingTime.astro";
+import PaperLayout from "@/layouts/PaperLayout.astro";
+import {
+  getPaperPdf,
+  getSortedPapers,
+  validatePaperSlugs,
+} from "@/utils/papers";
+import config from "@/config";
+
+export const getStaticPaths = (async () => {
+  const papers = getSortedPapers(await getCollection("papers"));
+  validatePaperSlugs(papers);
+
+  return papers.map(paper => ({
+    params: { slug: paper.data.slug },
+    props: { paper },
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = { paper: CollectionEntry<"papers"> };
+
+const { paper } = Astro.props as Props;
+const { Content } = await render(paper);
+const {
+  title,
+  subtitle,
+  description,
+  abstract,
+  pubDate,
+  modDate,
+  version,
+  status,
+  tags,
+  series,
+  canonicalURL,
+  author,
+} = paper.data;
+const locale = Astro.currentLocale ?? config.site.lang;
+const pdf = await getPaperPdf(paper);
+---
+
+<PaperLayout
+  {title}
+  {subtitle}
+  {description}
+  {canonicalURL}
+  {pubDate}
+  {modDate}
+  {version}
+  {status}
+  {tags}
+>
+  <div class="paper-screen-only">
+    <Header />
+  </div>
+
+  <div class="paper-screen-only app-layout flex items-center justify-start">
+    <LinkButton
+      href={getRelativeLocaleUrl(locale, "papers")}
+      class="focus-outline hover:text-foreground/75 -ms-2 mt-8 mb-2"
+    >
+      <IconChevronLeft class="inline-block size-6 rtl:rotate-180" />
+      <span>Back to Papers</span>
+    </LinkButton>
+  </div>
+
+  <main
+    id="main-content"
+    class="paper-page app-layout"
+    data-pagefind-body
+    data-pagefind-meta={`type:paper,version:${version}`}
+  >
+    <header class="paper-title-block border-border border-b pb-7">
+      <p
+        class="text-muted-foreground mb-3 text-xs font-medium tracking-[0.12em] uppercase"
+      >
+        Forged Papers{series ? ` · ${series}` : ""}
+      </p>
+      <h1
+        class="font-prose text-accent text-3xl leading-[1.08] font-bold tracking-tight sm:text-5xl"
+      >
+        {title}
+      </h1>
+      <p
+        class="font-prose text-foreground/90 mt-3 max-w-[70ch] text-xl leading-relaxed italic sm:text-2xl"
+      >
+        {subtitle}
+      </p>
+      <p class="text-muted-foreground mt-4 text-sm">{author}</p>
+
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <Datetime {pubDate} {modDate} size="lg" />
+        <span aria-hidden="true" class="text-muted-foreground">·</span>
+        <span class="text-muted-foreground text-sm sm:text-base">
+          Version {version}
+        </span>
+        <span aria-hidden="true" class="text-muted-foreground">·</span>
+        <ReadingTime body={paper.body} class="sm:text-base" />
+        {
+          pdf && (
+            <>
+              <span
+                aria-hidden="true"
+                class="paper-screen-only text-muted-foreground"
+              >
+                ·
+              </span>
+              <a
+                href={pdf.href}
+                download={pdf.filename}
+                class="paper-screen-only border-border hover:border-accent hover:text-accent focus-outline rounded border px-3 py-1.5 text-sm font-medium"
+              >
+                Download PDF
+              </a>
+            </>
+          )
+        }
+      </div>
+    </header>
+
+    <section
+      class="paper-abstract border-border bg-muted/30 mt-8 border px-5 py-5 sm:px-7"
+    >
+      <h2
+        class="font-app text-sm font-semibold tracking-[0.12em] uppercase not-italic"
+      >
+        Abstract
+      </h2>
+      <p class="font-prose text-foreground/90 mt-3 text-lg leading-relaxed">
+        {abstract}
+      </p>
+    </section>
+
+    <article
+      id="article"
+      class="paper-prose app-prose prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg) mt-10 w-full"
+    >
+      <Content />
+    </article>
+  </main>
+
+  <Footer class="paper-screen-only" />
+</PaperLayout>
+
+<script>
+  import "@/scripts/paperDiagrams";
+</script>

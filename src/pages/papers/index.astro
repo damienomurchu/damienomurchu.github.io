@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import PaperCard from "@/components/PaperCard.astro";
+import { getSortedPapers, validatePaperSlugs } from "@/utils/papers";
+import { useTranslations } from "@/i18n";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const t = useTranslations(locale);
+const papers = getSortedPapers(await getCollection("papers"));
+validatePaperSlugs(papers);
+---
+
+<Layout
+  title={`${t.pages.papersTitle} | ${config.site.title}`}
+  description={t.pages.papersDesc}
+>
+  <Header />
+  <Breadcrumb />
+
+  <Main pageTitle={t.pages.papersTitle} pageDesc={t.pages.papersDesc}>
+    <p
+      class="font-prose text-foreground/90 mb-8 max-w-[68ch] text-lg leading-relaxed"
+    >
+      Longer-form, evidence-backed work: explicit models, cited sources, and
+      practical guidance intended to remain useful beyond the moment of
+      publication.
+    </p>
+    {
+      papers.length > 0 ? (
+        <ul>
+          {papers.map(paper => (
+            <PaperCard {...paper} />
+          ))}
+        </ul>
+      ) : (
+        <p class="text-muted-foreground">No papers have been published yet.</p>
+      )
+    }
+  </Main>
+
+  <Footer />
+</Layout>
