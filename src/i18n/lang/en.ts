@@ -5,7 +5,7 @@ export default {
     home: "Home",
     posts: "Essays",
     papers: "Papers",
-    workbench: "Lab Notes",
+    labNotes: "Lab Notes",
     tags: "Explore",
     about: "About",
     archives: "Archives",
@@ -38,8 +38,8 @@ export default {
     allPosts: "All Essays",
     papers: "Latest Papers",
     allPapers: "All Papers",
-    workbench: "Latest Lab Notes",
-    allWorkbench: "All Lab Notes",
+    labNotes: "Latest Lab Notes",
+    allLabNotes: "All Lab Notes",
   },
   footer: {
     copyright: "Copyright",
@@ -59,9 +59,9 @@ export default {
     papersTitle: "Papers",
     papersDesc: "Long-form technical work from Forged.",
 
-    workbenchTitle: "Workbench",
-    workbenchDesc:
-      "Experiments, tool notes, and build notes from work in progress.",
+    labNotesTitle: "Lab Notes",
+    labNotesDesc:
+      "Short, practical notes from ongoing experiments, builds, and investigations.",
 
     archivesTitle: "Archives",
     archivesDesc: "All the articles I've archived.",

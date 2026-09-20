@@ -3,7 +3,7 @@ export interface UIStrings {
     home: string;
     posts: string;
     papers: string;
-    workbench: string;
+    labNotes: string;
     tags: string;
     about: string;
     archives: string;
@@ -36,8 +36,8 @@ export interface UIStrings {
     allPosts: string;
     papers: string;
     allPapers: string;
-    workbench: string;
-    allWorkbench: string;
+    labNotes: string;
+    allLabNotes: string;
   };
   footer: {
     copyright: string;
@@ -56,8 +56,8 @@ export interface UIStrings {
     papersTitle: string;
     papersDesc: string;
 
-    workbenchTitle: string;
-    workbenchDesc: string;
+    labNotesTitle: string;
+    labNotesDesc: string;
 
     archivesTitle: string;
     archivesDesc: string;

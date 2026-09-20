@@ -13,7 +13,7 @@ and life.
 - Markdown and MDX content are supported.
 - Pagefind provides static search.
 - Content lives in `src/content/posts`, `src/content/papers`,
-  `src/content/workbench`, and `src/content/pages`.
+  `src/content/lab-notes`, and `src/content/pages`.
 - Main config files:
   - `astro-paper.config.ts`: user-facing site, theme, feature, social, and content settings.
   - `src/config.ts`: resolved config with defaults.

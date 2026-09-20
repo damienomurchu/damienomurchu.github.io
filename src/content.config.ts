@@ -5,7 +5,7 @@ import config from "@/config";
 
 export const BLOG_PATH = "src/content/posts";
 export const PAPERS_PATH = "src/content/papers";
-export const WORKBENCH_PATH = "src/content/workbench";
+export const LAB_NOTES_PATH = "src/content/lab-notes";
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${BLOG_PATH}` }),
@@ -85,18 +85,16 @@ const papers = defineCollection({
   }),
 });
 
-const workbench = defineCollection({
+const labNotes = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
-    base: `./${WORKBENCH_PATH}`,
+    base: `./${LAB_NOTES_PATH}`,
   }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     pubDate: z.date(),
     modDate: z.date().optional().nullable(),
-    category: z.enum(["experiment", "tool-note", "build-note"]),
-    status: z.string().trim().min(1),
     tags: z.array(z.string()).default([]),
     slug: z.string().trim().min(1).optional().nullable(),
     featured: z.boolean().optional(),
@@ -105,4 +103,4 @@ const workbench = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, papers, workbench };
+export const collections = { posts, pages, papers, labNotes };

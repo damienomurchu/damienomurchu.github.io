@@ -7,16 +7,13 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
 import PaperCard from "@/components/PaperCard.astro";
-import WorkbenchCard from "@/components/WorkbenchCard.astro";
+import LabNoteCard from "@/components/LabNoteCard.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { getSeriesMap } from "@/utils/getSeries";
 import { getSortedPapers } from "@/utils/papers";
 import { slugifyStr } from "@/utils/slugify";
-import {
-  getWorkbenchCategoryEntries,
-  workbenchCategories,
-} from "@/utils/workbench";
+import { getSortedLabNotes } from "@/utils/labNotes";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -27,15 +24,10 @@ const posts = await getCollection("posts");
 const sortedPosts = getSortedPosts(posts);
 const seriesById = getSeriesMap(sortedPosts);
 const papers = getSortedPapers(await getCollection("papers"));
-const workbenchEntries = await getCollection("workbench");
-const sortedWorkbenchEntries = workbenchCategories.flatMap(category =>
-  getWorkbenchCategoryEntries(workbenchEntries, category.id)
-);
+const sortedLabNotes = getSortedLabNotes(await getCollection("labNotes"));
 const selectedEssay = sortedPosts.find(({ data }) => data.featured);
 const selectedPaper = papers.find(({ data }) => data.featured);
-const selectedLabNote = sortedWorkbenchEntries.find(
-  ({ data }) => data.featured
-);
+const selectedLabNote = sortedLabNotes.find(({ data }) => data.featured);
 const selectedWork = [
   ...(selectedEssay ? [{ kind: "essay" as const, entry: selectedEssay }] : []),
   ...(selectedPaper ? [{ kind: "paper" as const, entry: selectedPaper }] : []),
@@ -46,11 +38,9 @@ const selectedWork = [
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const latestWriting = recentPosts.slice(0, 4);
 const latestPapers = papers.filter(({ data }) => !data.featured).slice(0, 2);
-const selectedWorkbenchEntries = workbenchCategories.flatMap(category =>
-  getWorkbenchCategoryEntries(workbenchEntries, category.id)
-    .filter(({ data }) => !data.featured)
-    .slice(0, 1)
-);
+const latestLabNotes = sortedLabNotes
+  .filter(({ data }) => !data.featured)
+  .slice(0, 3);
 const homePath = getRelativeLocaleUrl(locale, "");
 const heroTopics = [
   "Engineering",
@@ -110,7 +100,7 @@ const heroTopics = [
               "border-border border-b":
                 latestWriting.length > 0 ||
                 latestPapers.length > 0 ||
-                selectedWorkbenchEntries.length > 0,
+                latestLabNotes.length > 0,
             },
           ]}
         >
@@ -126,7 +116,7 @@ const heroTopics = [
               }
 
               if (item.kind === "lab-note") {
-                return <WorkbenchCard {...item.entry} card {lead} />;
+                return <LabNoteCard {...item.entry} card {lead} />;
               }
 
               return (
@@ -156,7 +146,7 @@ const heroTopics = [
             "pt-5 pb-5",
             {
               "border-border border-b":
-                latestPapers.length > 0 || selectedWorkbenchEntries.length > 0,
+                latestPapers.length > 0 || latestLabNotes.length > 0,
             },
           ]}
         >
@@ -196,7 +186,7 @@ const heroTopics = [
           id="latest-papers"
           class:list={[
             "pt-3 pb-5",
-            { "border-border border-b": selectedWorkbenchEntries.length > 0 },
+            { "border-border border-b": latestLabNotes.length > 0 },
           ]}
         >
           <div class="flex items-baseline justify-between gap-4">
@@ -221,23 +211,23 @@ const heroTopics = [
     }
 
     {
-      selectedWorkbenchEntries.length > 0 && (
-        <section id="from-the-workbench" class="pt-3 pb-5">
+      latestLabNotes.length > 0 && (
+        <section id="lab-notes" class="pt-3 pb-5">
           <div class="flex items-baseline justify-between gap-4">
             <h2 class="font-prose text-2xl font-semibold tracking-tight">
-              {t.home.workbench}
+              {t.home.labNotes}
             </h2>
             <LinkButton
-              href={getRelativeLocaleUrl(locale, "workbench")}
+              href={getRelativeLocaleUrl(locale, "lab-notes")}
               class="shrink-0 text-sm sm:text-base"
             >
-              {t.home.allWorkbench}
+              {t.home.allLabNotes}
               <IconArrowRight class="inline-block rtl:-rotate-180" />
             </LinkButton>
           </div>
           <ul class="mt-2">
-            {selectedWorkbenchEntries.map(entry => (
-              <WorkbenchCard {...entry} compact />
+            {latestLabNotes.map(entry => (
+              <LabNoteCard {...entry} compact />
             ))}
           </ul>
         </section>
