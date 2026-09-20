@@ -15,6 +15,7 @@ tags:
   - Software Delivery
   - Platform Engineering
   - Security
+featured: true
 ---
 
 ## 1. The problem with saying “CI/CD”
