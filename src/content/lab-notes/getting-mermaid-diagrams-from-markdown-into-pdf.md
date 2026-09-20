@@ -1,6 +1,11 @@
-# Getting Mermaid Diagrams From Markdown Into PDF
-
-*Why my Pandoc pipeline needed an explicit diagram-rendering stage.*
+---
+title: Getting Mermaid Diagrams From Markdown Into PDF
+description: Why my Pandoc pipeline needed an explicit diagram-rendering stage.
+pubDate: 2026-09-17
+tags:
+  - Tools & Automation
+  - Writing
+---
 
 I write my technical papers in Markdown.
 

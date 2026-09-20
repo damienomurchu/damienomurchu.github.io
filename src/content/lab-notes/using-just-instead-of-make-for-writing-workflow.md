@@ -1,6 +1,11 @@
-# Using `just` Instead of `make` for My Writing Workflow
-
-*The workflow looks like a build system, but I am not actually building software.*
+---
+title: Using `just` Instead of `make` for My Writing Workflow
+description: The workflow looks like a build system, but I am not actually building software.
+pubDate: 2026-09-19
+tags:
+  - Tools & Automation
+  - Writing
+---
 
 My writing repository has gradually accumulated automation.
 
@@ -35,7 +40,7 @@ just clean
 just doctor
 ```
 
-`paper` means *run my paper publishing pipeline*.
+`paper` means _run my paper publishing pipeline_.
 
 That pipeline happens to produce a PDF, but the useful abstraction for me is the operation rather than the dependency graph.
 

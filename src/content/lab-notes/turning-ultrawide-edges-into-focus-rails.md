@@ -1,6 +1,11 @@
-# Turning the Edges of an Ultrawide Into Focus Rails
-
-*A small experiment in using otherwise wasted screen space to hold context without competing with the work itself.*
+---
+title: Turning the Edges of an Ultrawide Into Focus Rails
+description: A small experiment in using otherwise wasted screen space to hold context without competing with the work itself.
+pubDate: 2026-09-22
+tags:
+  - Personal Systems
+  - Focus
+---
 
 I use a 34-inch ultrawide, but I rarely use it in the way ultrawide screenshots tend to suggest.
 
@@ -43,7 +48,7 @@ An ultrawide makes it very easy to increase the amount of information visible at
 
 The rails are almost the opposite approach. They constrain what the peripheral space is allowed to contain.
 
-The left side answers *what am I doing and why?*
+The left side answers _what am I doing and why?_
 
 The right side catches things that would otherwise interrupt me.
 
