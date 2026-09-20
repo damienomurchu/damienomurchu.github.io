@@ -8,53 +8,35 @@ tags:
 featured: true
 ---
 
-I write my technical papers in Markdown.
+I write my technical papers in Markdown and use Mermaid for diagrams. That works until I need a PDF: a Mermaid block contains diagram source, not a rendered diagram, and Pandoc does not execute it automatically.
 
-That works well until the paper contains Mermaid diagrams and I want to publish a PDF.
+My first attempts therefore produced PDFs containing either the Mermaid source or no diagram at all. The fix was to stop treating diagram rendering as an incidental part of document conversion and make it an explicit build stage.
 
-A Mermaid block such as:
+## The pipeline
 
-````markdown
-```mermaid
-flowchart LR
-    A[Source] --> B[Build]
-    B --> C[Artifact]
-```
-````
-
-contains the description of a diagram, not the diagram itself.
-
-Pandoc understands the fenced code block, but it does not automatically run Mermaid and turn that block into an image.
-
-My first PDFs therefore contained either Mermaid source or missing diagrams.
-
-The solution I settled on was to make diagram rendering an explicit stage in the publishing pipeline.
-
-The flow is now roughly:
+The workflow now has three distinct transformations:
 
 ```text
-Markdown
-   │
-   ▼
+Markdown source
+      │
+      ▼
 Mermaid CLI (mmdc)
-   │
-   ├── SVG diagrams
-   │
-   ▼
+      │
+      ├── SVG diagrams
+      │
+      ▼
 Rendered Markdown
-   │
-   ▼
+      │
+      ▼
 Pandoc + Typst
-   │
-   ▼
+      │
+      ▼
 PDF
 ```
 
-The source Markdown remains canonical.
+The original Markdown remains the canonical source. Mermaid CLI processes it and produces an intermediate Markdown file in which each Mermaid block has been replaced by a reference to a rendered SVG.
 
-I run Mermaid CLI against it to produce an intermediate Markdown document where the Mermaid blocks have been replaced with references to rendered SVG files.
-
-Conceptually, that stage looks like:
+Conceptually, the rendering stage is:
 
 ```bash
 mmdc \
@@ -62,7 +44,7 @@ mmdc \
   -o paper.rendered.md
 ```
 
-Pandoc then receives the rendered version rather than the original source:
+Pandoc then converts the rendered document rather than the source document:
 
 ```bash
 pandoc \
@@ -72,25 +54,15 @@ pandoc \
   -o paper.pdf
 ```
 
-That separation solved more than the immediate problem.
+This creates useful diagnostic boundaries. If a diagram is wrong, I inspect the generated SVG. If the document points to the wrong asset, I inspect the rendered Markdown. If both are correct but the PDF is not, the fault is in the Pandoc or Typst stage.
 
-It gives the publishing pipeline a very obvious boundary.
+That is easier to operate than hiding every transformation behind a single Pandoc filter. Each intermediate artifact is inspectable, and each failure can be isolated to one stage.
 
-If a diagram is wrong, I can inspect the SVG.
+## Making Mermaid output compatible with Typst
 
-If the rendered Markdown is wrong, I can inspect that.
+The next problem was more specific. Mermaid can render node labels as HTML inside SVG `foreignObject` elements. Browsers handle these elements, but the SVG-to-Typst path does not always preserve them. In my PDFs, some diagram labels disappeared even though the SVG looked correct in a browser.
 
-If both are correct but the PDF is wrong, the problem is somewhere in the Pandoc/Typst stage.
-
-That is considerably easier to reason about than putting everything behind a Pandoc filter and debugging the entire transformation as one opaque operation.
-
-There was one additional complication.
-
-Mermaid can render some node labels using HTML inside SVG `foreignObject` elements. Browsers handle these perfectly well, but the SVG-to-Typst path does not necessarily do the same.
-
-The result was diagrams where some text disappeared from the final PDF.
-
-I fixed that in my Mermaid configuration by disabling HTML labels:
+I disabled HTML labels in the Mermaid configuration:
 
 ```json
 {
@@ -100,38 +72,23 @@ I fixed that in my Mermaid configuration by disabling HTML labels:
 }
 ```
 
-That forces Mermaid towards SVG-native text that survives the rest of the rendering pipeline.
+This makes Mermaid use SVG-native text, which survives the remaining conversion stages.
 
-I also run `mmdc` in a container rather than making its Node and browser dependencies part of my local machine configuration. My current Podman invocation mounts the writing repository into the container and preserves my user IDs so that generated files do not end up owned by root.
+## Containing the rendering dependencies
 
-The exact container command is an implementation detail I can now hide behind:
+`mmdc` depends on Node and a browser runtime. I run it in a Podman container rather than make those dependencies part of my workstation configuration. The writing repository is mounted into the container, and the process runs with my user and group IDs so generated files are not owned by root.
+
+The container invocation is hidden behind a stable repository command:
 
 ```bash
 just paper papers/unpacking-cicd/cicd-whitepaper-v1.0.md
 ```
 
-That gives the overall workflow a useful property:
+The implementation behind that command can change without changing how I use the workflow locally or in CI. The Justfile is the interface; the rendering script and container are implementation details.
 
-```text
-source.md
-    ↓
-deterministic rendering pipeline
-    ↓
-publishable PDF
-```
+## Result
 
-The lesson for me was broader than Mermaid.
+The useful pattern extends beyond Mermaid. When a document contains source formats that must be rendered or executed, those transformations should be modelled as real build stages with explicit inputs, outputs and failure boundaries.
 
-When a document contains executable or renderable source formats, it helps to treat those transformations as real build stages rather than expecting the final document renderer to understand everything.
+In this pipeline, Mermaid owns diagram rendering, Pandoc owns document conversion, Typst owns PDF typesetting, and the Justfile provides the operator interface. The result is not the shortest possible command. It is a repeatable workflow that produces a publishable PDF and makes failures straightforward to locate.
 
-Mermaid owns diagrams.
-
-Pandoc owns document conversion.
-
-Typst owns PDF typesetting.
-
-The Justfile owns the interface between me and the pipeline.
-
-Each component has one fairly obvious responsibility, and when something breaks I know which boundary to inspect.
-
-That is a much better property for a writing workflow than a clever one-line command.
