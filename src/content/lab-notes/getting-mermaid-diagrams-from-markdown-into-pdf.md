@@ -5,6 +5,7 @@ pubDate: 2026-09-17
 tags:
   - Tools & Automation
   - Writing
+featured: true
 ---
 
 I write my technical papers in Markdown.
