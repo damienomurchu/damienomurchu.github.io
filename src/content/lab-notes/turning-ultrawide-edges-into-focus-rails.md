@@ -1,7 +1,7 @@
 ---
 title: Turning the Edges of an Ultrawide Into Focus Rails
 description: A small experiment in using otherwise wasted screen space to hold context without competing with the work itself.
-pubDate: 2026-09-22
+pubDate: 2026-09-15
 tags:
   - Personal Systems
   - Focus
