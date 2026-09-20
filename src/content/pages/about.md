@@ -9,27 +9,20 @@ I’m a platform and DevSecOps engineer based in Ireland. My work sits at the in
 
 Much of my career has involved turning technical components into dependable organisational capabilities: secure delivery systems, developer platforms, infrastructure, automation, and the operating practices around them.
 
-I’m interested in how complex systems behave, especially under pressure. That includes technical systems, but also teams, organisations, habits, environments, careers, and lives.
+I’m particularly interested in what happens when systems meet reality: changing requirements, organisational constraints, failure, accumulated friction, and the people operating them. The same patterns turn up surprisingly often across software, organisations, careers, habits, and everyday life.
 
-Across these domains, the same forces keep recurring: incentives, constraints, feedback loops, trade-offs, accumulated friction, and hidden points of failure.
+Forged is where I work through those patterns in public.
 
-This blog is where I examine those patterns.
+Some pieces come directly from engineering practice. Others explore tools, personal systems, resilience, learning, and the design of better ways of working. The subjects vary, but the underlying questions tend to be the same: where is the constraint, what actually matters, what fails under pressure, and what can be designed once so that future work becomes easier?
 
-Some posts come directly from engineering work. Others explore personal systems, learning, resilience, tools, and the design of everyday life. The subjects vary, but the underlying questions are usually the same:
+I write partly to make my own thinking more precise. Publishing forces ideas to survive contact with explanation, criticism, and time. Essays let me develop an argument, papers let me examine technical subjects more rigorously, and lab notes capture experiments while they are still in motion.
 
-- What makes a system dependable?
-- What causes it to degrade?
-- Where is the real leverage?
-- What can be designed once so that future work becomes easier?
+I tend to favour durable capability over local optimisation: useful tools, sound judgement, recoverable failure, maintainable systems, and small improvements that compound.
 
-I’m less interested in optimisation for its own sake than in durable capability: useful tools, sound judgement, recoverable failure, maintainable systems, and small changes that compound over time.
+The principles behind the site are simple:
 
-These posts are field notes rather than final answers. They capture what I currently believe, what experience has taught me, and what I am still trying to understand.
-
-The philosophy behind the site is simple:  
-
-Build useful things.  
-Design for pressure, not ideal conditions.  
-Make failure recoverable.  
-Look for patterns across domains.  
-Leave the system better than you found it.  
+**Build useful things.**  
+**Design for pressure, not ideal conditions.**  
+**Make failure recoverable.**  
+**Look for patterns across domains.**  
+**Leave the system better than you found it.**  
