@@ -80,7 +80,7 @@
       }
 
       th {
-        @apply font-app py-1.5;
+        @apply font-app text-foreground py-1.5;
       }
     }
 
