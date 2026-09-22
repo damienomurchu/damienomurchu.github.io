@@ -5,8 +5,8 @@ description: "A practical model for separating CI/CD practices, workflow orchest
 abstract: >-
   CI/CD is often used as though it names one system. Depending on who is speaking, it may mean an engineering practice, a workflow, the service that runs it, the machines underneath it, the tools it calls, or the path by which software reaches users. That ambiguity matters when a team needs to diagnose a failure, assign ownership, assess a security risk or plan a migration. People can agree that “CI/CD is the problem” while describing different problems. This paper offers a working model for separating those concerns. It distinguishes practices from workflow definitions and executions, then separates orchestration from provisioning and the environments where work runs. It places those responsibilities in the wider software delivery system. The model draws on workflow reference models, Continuous Delivery literature, platform engineering and software supply chain guidance. The aim is practical: identify where work or authority crosses a boundary, what each component can establish, and where to look when the observed result differs from the intended one.
 author: "Damien Murphy"
-pubDate: 2026-09-17
-version: "1.0"
+pubDate: 2026-09-22
+version: "1.1"
 status: published
 slug: unpacking-cicd
 series: "Unpacking Systems"
@@ -171,42 +171,42 @@ GitHub Actions, Jenkins, GitLab CI/CD, Azure Pipelines and a composition of AWS 
 
 The rows identify responsibilities, not interchangeable products. A Jenkins controller may coordinate agents supplied by another platform; the AWS example combines two services; GitLab Runner both prepares an environment and executes work. An organisation that operates its own runners also owns work that a hosted service might otherwise absorb. [Understanding GitHub Actions][github] [Using a Jenkinsfile][jenkinsfile] [Using Jenkins agents][jenkinsagents] [Get started with GitLab CI/CD][gitlabci] [GitLab runners][gitlabrunners] [Azure Pipelines concepts][azureconcepts] [Azure Pipelines agents][azureagents] [CodePipeline concepts][codepipeline] [CodeBuild concepts][codebuild]
 
-### An applied comparison: GitHub Actions and Blackbird
+### An applied comparison: two internal delivery offerings
 
-**Blackbird is a bespoke internal CI/CD service built around AWS services.** In the architecture shown here, it combines Blackbird templates with AWS CodePipeline and CodeBuild to provide an organisation-specific delivery offering. The comparison uses an internally operated GitHub Actions configuration with GitHub Enterprise Server (GHES) and Actions Runner Controller (ARC).
+One offering combines organisation-specific templates with AWS CodePipeline and CodeBuild. The other uses an internally operated GitHub Actions configuration with GitHub Enterprise Server (GHES) and Actions Runner Controller (ARC).
 
-This comparison developed from an architecture diagram I created to explain the responsibilities within the two internal offerings. The technologies differ, but both need reusable components, definitions, orchestration, capacity, an execution environment and running work. Figure 3 puts each corresponding responsibility on the same row, with Blackbird on the left and GitHub Actions on the right:
+This comparison developed from an architecture diagram I created to explain the responsibilities within the two internal offerings. The technologies differ, but both need reusable components, definitions, orchestration, capacity, an execution environment and running work. Figure 3 puts each corresponding responsibility on the same row, with the AWS-based offering on the left and GitHub Actions on the right:
 
 ```mermaid
 flowchart TB
     subgraph R1["1. Reusable components"]
         direction LR
-        B1["Blackbird: templates"] ~~~ G1["GitHub Actions: actions and reusable workflows"]
+        B1["AWS-based offering: templates"] ~~~ G1["GitHub Actions: actions and reusable workflows"]
     end
     subgraph R2["2. Workflow definition"]
         direction LR
-        B2["Blackbird: CodePipeline definition and buildspec.yml"] ~~~ G2["GitHub Actions: workflow YAML"]
+        B2["AWS-based offering: CodePipeline definition and buildspec.yml"] ~~~ G2["GitHub Actions: workflow YAML"]
     end
     subgraph R3["3. Job orchestration"]
         direction LR
-        B3["Blackbird: CodePipeline"] ~~~ G3["GitHub Actions: Actions service in GHES"]
+        B3["AWS-based offering: CodePipeline"] ~~~ G3["GitHub Actions: Actions service in GHES"]
     end
     subgraph R4["4. Execution provisioning"]
         direction LR
-        B4["Blackbird: CodeBuild capacity"] ~~~ G4["GitHub Actions: ARC runner capacity"]
+        B4["AWS-based offering: CodeBuild capacity"] ~~~ G4["GitHub Actions: ARC runner capacity"]
     end
     subgraph R5["5. Execution environment"]
         direction LR
-        B5["Blackbird: CodeBuild build environment"] ~~~ G5["GitHub Actions: Kubernetes runner environment"]
+        B5["AWS-based offering: CodeBuild build environment"] ~~~ G5["GitHub Actions: Kubernetes runner environment"]
     end
     subgraph R6["6. Running work"]
         direction LR
-        B6["Blackbird: CodeBuild commands"] ~~~ G6["GitHub Actions: runner job steps"]
+        B6["AWS-based offering: CodeBuild commands"] ~~~ G6["GitHub Actions: runner job steps"]
     end
     R1 --> R2 --> R3 --> R4 --> R5 --> R6
 ```
 
-*Figure 3. Each numbered stage contains the corresponding Blackbird and GitHub Actions components. The downward arrows show the progression from reusable material to running work; either implementation may invoke build, scan, artifact and deployment capabilities.*
+*Figure 3. Each numbered stage contains the corresponding AWS-based and GitHub Actions components. The downward arrows show the progression from reusable material to running work; either implementation may invoke build, scan, artifact and deployment capabilities.*
 
 The diagram describes one internal design, not every way either technology can be deployed. CodePipeline coordinates stages and actions; CodeBuild establishes a build environment and executes its commands. On the other side, GitHub Actions coordinates jobs while ARC manages capacity for the self-hosted runners that execute them. [CodePipeline concepts][codepipeline] [CodeBuild concepts][codebuild] [Actions Runner Controller][arc]
 
@@ -352,6 +352,13 @@ That record may expose a job that was dispatched but never obtained an environme
 
 CI/CD is useful shorthand when everyone means roughly the same thing. When a decision matters, be more specific: **which responsibility or boundary are we discussing, who can act there, and what evidence would establish the intended outcome?** The model earns its place when those questions lead to better engineering decisions.
 
+## Revision history
+
+| Version | Date | Summary |
+| --- | --- | --- |
+| 1.1 | 22 September 2026 | Replaced an internal product name with a neutral architectural description. The model and conclusions are unchanged. |
+| 1.0 | 17 September 2026 | Initial published version. |
+
 ## References
 
 Foundational publications and versioned specifications support the conceptual model. Living documentation supports specific implementation details. Online sources were consulted on 16 September 2026; versions are identified where material.
@@ -416,4 +423,4 @@ Foundational publications and versioned specifications support the conceptual mo
 
 ## Suggested citation
 
-Murphy, Damien. *Unpacking CI/CD: A Systems Model for Software Delivery Automation*. Version 1.0, 17 September 2026.
+Murphy, Damien. *Unpacking CI/CD: A Systems Model for Software Delivery Automation*. Version 1.1, 22 September 2026.
