@@ -34,11 +34,11 @@ export default {
   home: {
     socialLinks: "Social Links",
     recentPosts: "Selected Essays",
-    allPosts: "All Essays",
+    allPosts: "All",
     papers: "Selected Papers",
-    allPapers: "All Papers",
+    allPapers: "All",
     labNotes: "Selected Lab Notes",
-    allLabNotes: "All Lab Notes",
+    allLabNotes: "All",
   },
   footer: {
     copyright: "Copyright",
