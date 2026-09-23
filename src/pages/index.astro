@@ -12,7 +12,6 @@ import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { getSeriesMap } from "@/utils/getSeries";
 import { getSortedPapers } from "@/utils/papers";
-import { slugifyStr } from "@/utils/slugify";
 import { getSortedLabNotes } from "@/utils/labNotes";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
@@ -33,13 +32,6 @@ const selectedLabNotes = sortedLabNotes
   .filter(({ data }) => data.featured)
   .slice(0, 2);
 const homePath = getRelativeLocaleUrl(locale, "");
-const heroTopics = [
-  "Engineering",
-  "Personal Systems",
-  "Work & Organisations",
-  "Resilience",
-  "Tools & Automation",
-];
 ---
 
 <Layout>
@@ -65,24 +57,6 @@ const heroTopics = [
           {config.site.description}
         </p>
       </div>
-      <p class="mt-4 flex flex-wrap gap-x-2 gap-y-1 text-sm">
-        {
-          heroTopics.map((topic, index) => (
-            <>
-              {index > 0 && <span aria-hidden="true">·</span>}
-              <a
-                href={getRelativeLocaleUrl(
-                  locale,
-                  `tags/${slugifyStr(topic)}/`
-                )}
-                class="hover:text-accent focus-visible:text-accent underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
-              >
-                {topic}
-              </a>
-            </>
-          ))
-        }
-      </p>
     </section>
 
     {

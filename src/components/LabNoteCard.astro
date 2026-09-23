@@ -35,16 +35,13 @@ const locale = Astro.currentLocale ?? config.site.lang;
       { "py-3": !lead && !compact, "py-2": compact },
     ]}
   >
-    <div
-      class="text-muted-foreground mb-1 flex flex-wrap items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase"
-    >
-      <span>Lab Note</span>
-      {
-        sample && (
+    {
+      sample && (
+        <div class="text-muted-foreground mb-1 flex text-xs font-medium tracking-[0.1em] uppercase">
           <span class="border-border rounded border px-1.5 py-0.5">Sample</span>
-        )
-      }
-    </div>
+        </div>
+      )
+    }
     <h3
       class:list={[
         "font-prose text-accent leading-tight font-semibold tracking-tight",
