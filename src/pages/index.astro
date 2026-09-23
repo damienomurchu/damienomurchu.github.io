@@ -133,7 +133,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
 
     {
       selectedLabNotes.length > 0 && (
-        <section id="lab-notes" class="pt-3 pb-5">
+        <section id="lab-notes" class="pt-3 pb-3">
           <div class="flex items-baseline justify-between gap-4">
             <h2 class="font-prose text-2xl font-semibold tracking-tight">
               {t.home.labNotes}
@@ -155,7 +155,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
       )
     }
   </main>
-  <Footer />
+  <Footer class="[&>div]:pt-4 sm:[&>div]:pt-2" />
 </Layout>
 
 <script>
