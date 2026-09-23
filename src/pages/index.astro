@@ -42,9 +42,9 @@ const homePath = getRelativeLocaleUrl(locale, "");
     data-home-path={homePath}
     class="app-layout"
   >
-    <section id="hero" class="border-border border-b pt-3 pb-6">
+    <section id="hero" class="border-border border-b pt-2 pb-4">
       <h2
-        class="font-prose mt-2 mb-4 inline-block text-4xl leading-tight font-bold tracking-tight sm:mb-5 sm:text-5xl"
+        class="font-prose mt-1 mb-3 inline-block text-4xl leading-tight font-bold tracking-tight sm:mb-4 sm:text-5xl"
       >
         Forged
       </h2>
@@ -64,7 +64,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
         <section
           id="recent-posts"
           class:list={[
-            "pt-5 pb-5",
+            "pt-3 pb-5",
             {
               "border-border border-b":
                 selectedPapers.length > 0 || selectedLabNotes.length > 0,
