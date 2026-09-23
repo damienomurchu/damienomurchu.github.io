@@ -25,32 +25,13 @@ const sortedPosts = getSortedPosts(posts);
 const seriesById = getSeriesMap(sortedPosts);
 const papers = getSortedPapers(await getCollection("papers"));
 const sortedLabNotes = getSortedLabNotes(await getCollection("labNotes"));
-const getMostRecentFeatured = <
-  T extends { data: { featured?: boolean; pubDate: Date } },
->(
-  entries: T[]
-) =>
-  entries
-    .filter(({ data }) => data.featured)
-    .toSorted((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())[0];
-const selectedEssay = getMostRecentFeatured(sortedPosts);
-const selectedPaper = getMostRecentFeatured(papers);
-const selectedLabNote = getMostRecentFeatured(sortedLabNotes);
-const selectedWork = [
-  ...(selectedEssay ? [{ kind: "essay" as const, entry: selectedEssay }] : []),
-  ...(selectedPaper ? [{ kind: "paper" as const, entry: selectedPaper }] : []),
-  ...(selectedLabNote
-    ? [{ kind: "lab-note" as const, entry: selectedLabNote }]
-    : []),
-];
-const recentPosts = sortedPosts.filter(({ id }) => id !== selectedEssay?.id);
-const latestWriting = recentPosts.slice(0, 4);
-const latestPapers = papers
-  .filter(({ id }) => id !== selectedPaper?.id)
-  .slice(0, 2);
-const latestLabNotes = sortedLabNotes
-  .filter(({ id }) => id !== selectedLabNote?.id)
+const selectedEssays = sortedPosts
+  .filter(({ data }) => data.featured)
   .slice(0, 3);
+const selectedPapers = papers.filter(({ data }) => data.featured).slice(0, 2);
+const selectedLabNotes = sortedLabNotes
+  .filter(({ data }) => data.featured)
+  .slice(0, 2);
 const homePath = getRelativeLocaleUrl(locale, "");
 const heroTopics = [
   "Engineering",
@@ -105,62 +86,14 @@ const heroTopics = [
     </section>
 
     {
-      selectedWork.length > 0 && (
-        <section
-          id="selected-work"
-          class:list={[
-            "pt-5 pb-6",
-            {
-              "border-border border-b":
-                latestWriting.length > 0 ||
-                latestPapers.length > 0 ||
-                latestLabNotes.length > 0,
-            },
-          ]}
-        >
-          <h2 class="font-prose text-2xl font-semibold tracking-tight">
-            {t.home.selectedWork}
-          </h2>
-          <ul class="mt-3 grid gap-4 sm:grid-cols-2 sm:[&>li:first-child]:col-span-2">
-            {selectedWork.map((item, index) => {
-              const lead = index === 0;
-
-              if (item.kind === "paper") {
-                return <PaperCard {...item.entry} card {lead} />;
-              }
-
-              if (item.kind === "lab-note") {
-                return <LabNoteCard {...item.entry} card {lead} />;
-              }
-
-              return (
-                <Card
-                  variant="h3"
-                  card
-                  {lead}
-                  {...item.entry}
-                  seriesTitle={
-                    item.entry.data.series
-                      ? seriesById.get(item.entry.data.series.id)?.title
-                      : undefined
-                  }
-                />
-              );
-            })}
-          </ul>
-        </section>
-      )
-    }
-
-    {
-      latestWriting.length > 0 && (
+      selectedEssays.length > 0 && (
         <section
           id="recent-posts"
           class:list={[
             "pt-5 pb-5",
             {
               "border-border border-b":
-                latestPapers.length > 0 || latestLabNotes.length > 0,
+                selectedPapers.length > 0 || selectedLabNotes.length > 0,
             },
           ]}
         >
@@ -177,7 +110,7 @@ const heroTopics = [
             </LinkButton>
           </div>
           <ul>
-            {latestWriting.map(data => (
+            {selectedEssays.map(data => (
               <Card
                 variant="h3"
                 compact
@@ -195,12 +128,12 @@ const heroTopics = [
     }
 
     {
-      latestPapers.length > 0 && (
+      selectedPapers.length > 0 && (
         <section
           id="latest-papers"
           class:list={[
             "pt-3 pb-5",
-            { "border-border border-b": latestLabNotes.length > 0 },
+            { "border-border border-b": selectedLabNotes.length > 0 },
           ]}
         >
           <div class="flex items-baseline justify-between gap-4">
@@ -216,7 +149,7 @@ const heroTopics = [
             </LinkButton>
           </div>
           <ul class="mt-2">
-            {latestPapers.map(paper => (
+            {selectedPapers.map(paper => (
               <PaperCard {...paper} compact />
             ))}
           </ul>
@@ -225,7 +158,7 @@ const heroTopics = [
     }
 
     {
-      latestLabNotes.length > 0 && (
+      selectedLabNotes.length > 0 && (
         <section id="lab-notes" class="pt-3 pb-5">
           <div class="flex items-baseline justify-between gap-4">
             <h2 class="font-prose text-2xl font-semibold tracking-tight">
@@ -240,7 +173,7 @@ const heroTopics = [
             </LinkButton>
           </div>
           <ul class="mt-2">
-            {latestLabNotes.map(entry => (
+            {selectedLabNotes.map(entry => (
               <LabNoteCard {...entry} compact />
             ))}
           </ul>

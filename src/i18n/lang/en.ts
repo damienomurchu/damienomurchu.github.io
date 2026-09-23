@@ -33,12 +33,11 @@ export default {
   },
   home: {
     socialLinks: "Social Links",
-    selectedWork: "Selected Work",
-    recentPosts: "Latest Essays",
+    recentPosts: "Selected Essays",
     allPosts: "All Essays",
-    papers: "Latest Papers",
+    papers: "Selected Papers",
     allPapers: "All Papers",
-    labNotes: "Latest Lab Notes",
+    labNotes: "Selected Lab Notes",
     allLabNotes: "All Lab Notes",
   },
   footer: {

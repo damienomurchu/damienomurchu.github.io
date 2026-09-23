@@ -31,7 +31,6 @@ export interface UIStrings {
   };
   home: {
     socialLinks: string;
-    selectedWork: string;
     recentPosts: string;
     allPosts: string;
     papers: string;
