@@ -12,6 +12,7 @@ type Props = {
   card?: boolean;
   lead?: boolean;
   showType?: boolean;
+  showDescription?: boolean;
 } & CollectionEntry<"labNotes">;
 
 const {
@@ -19,6 +20,7 @@ const {
   card = false,
   lead = false,
   showType = false,
+  showDescription = false,
   ...entry
 } = Astro.props;
 const { title, description, pubDate, modDate, tags, sample } = entry.data;
@@ -98,7 +100,7 @@ const locale = Astro.currentLocale ?? config.site.lang;
       }
     </div>
     {
-      !compact && (!card || lead) && (
+      ((!compact && (!card || lead)) || showDescription) && (
         <p
           class:list={[
             "font-prose text-muted-foreground mt-1 text-base leading-relaxed",
@@ -106,6 +108,7 @@ const locale = Astro.currentLocale ?? config.site.lang;
               "max-w-[70ch]": lead,
               "text-[0.95rem]": card && !lead,
               "line-clamp-2": card && !lead,
+              "line-clamp-1 text-sm leading-snug": showDescription,
             },
           ]}
         >

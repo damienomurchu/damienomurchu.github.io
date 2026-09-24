@@ -9,6 +9,7 @@ type Props = CollectionEntry<"papers"> & {
   card?: boolean;
   lead?: boolean;
   showType?: boolean;
+  showDescription?: boolean;
 };
 
 const {
@@ -16,6 +17,7 @@ const {
   card = false,
   lead = false,
   showType = false,
+  showDescription = false,
   ...paper
 } = Astro.props;
 const { title, subtitle, description, pubDate, modDate, version, series } =
@@ -83,7 +85,7 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
       <ReadingTime body={paper.body} />
     </div>
     {
-      !compact && (!card || lead) && (
+      ((!compact && (!card || lead)) || showDescription) && (
         <p
           class:list={[
             "font-prose text-muted-foreground mt-2 text-base leading-relaxed",
@@ -91,6 +93,7 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
               "max-w-[70ch]": lead,
               "text-[0.95rem]": card && !lead,
               "line-clamp-2": card && !lead,
+              "mt-1 line-clamp-1 text-sm leading-snug": showDescription,
             },
           ]}
         >

@@ -124,6 +124,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
               <Card
                 variant="h3"
                 compact
+                showDescription
                 {...data}
                 seriesTitle={
                   data.data.series
@@ -160,7 +161,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
           </div>
           <ul class="mt-2">
             {selectedPapers.map(paper => (
-              <PaperCard {...paper} compact />
+              <PaperCard {...paper} compact showDescription />
             ))}
           </ul>
         </section>
@@ -184,7 +185,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
           </div>
           <ul class="mt-2">
             {selectedLabNotes.map(entry => (
-              <LabNoteCard {...entry} compact />
+              <LabNoteCard {...entry} compact showDescription />
             ))}
           </ul>
         </section>

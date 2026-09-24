@@ -12,6 +12,7 @@ type Props = {
   lead?: boolean;
   compact?: boolean;
   showType?: boolean;
+  showDescription?: boolean;
 } & CollectionEntry<"posts">;
 
 const {
@@ -21,6 +22,7 @@ const {
   lead = false,
   compact = false,
   showType = false,
+  showDescription = false,
   id,
   data,
   filePath,
@@ -109,7 +111,7 @@ const displayDescription =
       }
     </div>
     {
-      !compact && (!card || lead) && (
+      ((!compact && (!card || lead)) || showDescription) && (
         <p
           class:list={[
             "font-prose text-muted-foreground mt-1 text-base leading-relaxed font-normal",
@@ -117,6 +119,7 @@ const displayDescription =
               "max-w-[70ch]": lead,
               "text-[0.95rem]": card && !lead,
               "line-clamp-2": card && !lead,
+              "line-clamp-1 text-sm leading-snug": showDescription,
             },
           ]}
         >
