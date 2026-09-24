@@ -1,7 +1,7 @@
 ---
 title: "Unpacking the Container Stack"
 subtitle: "A Working Model for Images, Running Containers, Orchestration and Hosts"
-description: "A practical model for distinguishing container images, running instances, orchestrated workloads, runtimes, and the hosts beneath them."
+description: "A practical model separating container images, running instances, workloads, runtimes, and hosts."
 abstract: >-
   “Container” often stands in for several different things: build instructions, an image, a running process, a Kubernetes Pod, a cluster, or the machine on which that process eventually runs. The shorthand is convenient until an incident, a vulnerability or an architecture decision requires precision. Teams can agree that “the containers need patching” while having entirely different work in mind. This paper offers a working model of a typical container system. It separates the artifact from its execution, the execution from the workload an orchestrator manages, and that workload from the host that supplies compute and a kernel. It then applies the model to patching, resource allocation, availability and security. Kubernetes provides a concrete example, but the distinctions do not depend on Kubernetes or Docker. The point is to make a recurring engineering question easier to answer: which component has the property, failure or responsibility we are discussing?
 author: "Damien Murphy"

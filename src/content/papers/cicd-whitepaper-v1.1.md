@@ -1,7 +1,7 @@
 ---
 title: "Unpacking CI/CD"
 subtitle: "A Systems Model for Software Delivery Automation"
-description: "A practical model for separating CI/CD practices, workflow orchestration, execution environments, engineering capabilities, and delivery outcomes."
+description: "A practical model separating CI/CD practices, orchestration, execution, capabilities, and outcomes."
 abstract: >-
   CI/CD is often used as though it names one system. Depending on who is speaking, it may mean an engineering practice, a workflow, the service that runs it, the machines underneath it, the tools it calls, or the path by which software reaches users. That ambiguity matters when a team needs to diagnose a failure, assign ownership, assess a security risk or plan a migration. People can agree that “CI/CD is the problem” while describing different problems. This paper offers a working model for separating those concerns. It distinguishes practices from workflow definitions and executions, then separates orchestration from provisioning and the environments where work runs. It places those responsibilities in the wider software delivery system. The model draws on workflow reference models, Continuous Delivery literature, platform engineering and software supply chain guidance. The aim is practical: identify where work or authority crosses a boundary, what each component can establish, and where to look when the observed result differs from the intended one.
 author: "Damien Murphy"
