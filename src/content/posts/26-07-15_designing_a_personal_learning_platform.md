@@ -1,6 +1,6 @@
 ---
 title: Designing a personal learning platform 
-description: What if you approached learning like a platform engineer—building a system that makes every future capability easier to acquire?
+description: How a platform approach to learning makes every future capability easier to acquire.
 slug: personal-learning-platform 
 pubDate: 2026-07-15
 modDate: 2026-07-15

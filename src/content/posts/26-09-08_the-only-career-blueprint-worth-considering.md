@@ -1,6 +1,6 @@
 ---
 title: "The only career blueprint worth considering"
-description: "Why career resilience matters more than job security, and how engineers can build the capability, relationships, visibility and optionality to adapt and remain effective as companies, teams and technologies change."
+description: "How engineers build career resilience through capability, relationships, visibility, and optionality."
 slug: "the-only-career-blueprint"
 pubDate: 2026-09-08
 modDate: 2026-09-08

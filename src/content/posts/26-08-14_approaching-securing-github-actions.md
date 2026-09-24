@@ -1,6 +1,6 @@
 ---
 title: "Securing GitHub Actions Is a Hard Problem"
-description: "GitHub Actions combines third-party executable code, privileged CI/CD environments and complex event-driven behaviour. Securing it requires far more than pinning versions or restricting the Marketplace."
+description: "Why securing GitHub Actions demands control of code, events, identities, and execution."
 slug: "securing-github-actions-is-a-hard-problem"
 pubDate: 2026-08-13
 modDate: 2026-08-13

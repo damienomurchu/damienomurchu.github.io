@@ -1,6 +1,6 @@
 ---
 title: "When a Homelab Becomes a Personal Cloud"
-description: "A personal cloud is not an alternative to a homelab. It is what a homelab can evolve into when the things running on it become persistent capabilities you actually depend on."
+description: "How a homelab becomes a personal cloud when its services become capabilities you depend on."
 slug: "when-a-homelab-becomes-a-personal-cloud"
 pubDate: 2026-09-15
 modDate: 2026-09-15

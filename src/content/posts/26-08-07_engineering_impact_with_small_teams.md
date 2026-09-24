@@ -1,6 +1,6 @@
 ---
 title: "Engineering for outsized impact with small teams"
-description: How small platform teams use constraints, automation, self-service, reliability, and careful technology choices to create disproportionate organisational impact.
+description: How small platform teams use constraints, automation, and self-service to create outsized impact.
 slug: "building-and-managing-platforms-with-a-small-team"
 pubDate: 2026-08-07
 modDate: 2026-08-07
