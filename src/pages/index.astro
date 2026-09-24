@@ -31,6 +31,17 @@ const selectedPapers = papers.filter(({ data }) => data.featured).slice(0, 2);
 const selectedLabNotes = sortedLabNotes
   .filter(({ data }) => data.featured)
   .slice(0, 2);
+const latestItems = [
+  ...sortedPosts.map(entry => ({ type: "essay" as const, entry })),
+  ...papers.map(entry => ({ type: "paper" as const, entry })),
+  ...sortedLabNotes.map(entry => ({ type: "labNote" as const, entry })),
+]
+  .toSorted((a, b) => {
+    const aDate = a.entry.data.modDate ?? a.entry.data.pubDate;
+    const bDate = b.entry.data.modDate ?? b.entry.data.pubDate;
+    return bDate.getTime() - aDate.getTime();
+  })
+  .slice(0, 4);
 const homePath = getRelativeLocaleUrl(locale, "");
 ---
 
@@ -58,6 +69,36 @@ const homePath = getRelativeLocaleUrl(locale, "");
         </p>
       </div>
     </section>
+
+    {
+      latestItems.length > 0 && (
+        <section id="latest" class="border-border border-b pt-3 pb-3">
+          <h2 class="font-prose text-2xl font-semibold tracking-tight">
+            {t.home.latest}
+          </h2>
+          <ul class="mt-2">
+            {latestItems.map(item =>
+              item.type === "essay" ? (
+                <Card
+                  variant="h3"
+                  compact
+                  {...item.entry}
+                  seriesTitle={
+                    item.entry.data.series
+                      ? seriesById.get(item.entry.data.series.id)?.title
+                      : undefined
+                  }
+                />
+              ) : item.type === "paper" ? (
+                <PaperCard {...item.entry} compact />
+              ) : (
+                <LabNoteCard {...item.entry} compact />
+              )
+            )}
+          </ul>
+        </section>
+      )
+    }
 
     {
       selectedEssays.length > 0 && (

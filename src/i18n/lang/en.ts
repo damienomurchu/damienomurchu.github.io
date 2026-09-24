@@ -33,6 +33,7 @@ export default {
   },
   home: {
     socialLinks: "Social Links",
+    latest: "Latest",
     recentPosts: "Selected Essays",
     allPosts: "All",
     papers: "Selected Papers",
