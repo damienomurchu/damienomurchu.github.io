@@ -8,6 +8,7 @@ import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
 import PaperCard from "@/components/PaperCard.astro";
 import LabNoteCard from "@/components/LabNoteCard.astro";
+import LatestItem from "@/components/LatestItem.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { getSeriesMap } from "@/utils/getSeries";
@@ -72,29 +73,23 @@ const homePath = getRelativeLocaleUrl(locale, "");
 
     {
       latestItems.length > 0 && (
-        <section id="latest" class="border-border border-b pt-3 pb-3">
-          <h2 class="font-prose text-2xl font-semibold tracking-tight">
-            {t.home.latest}
-          </h2>
-          <ul class="mt-2">
-            {latestItems.map(item =>
-              item.type === "essay" ? (
-                <Card
-                  variant="h3"
-                  compact
-                  {...item.entry}
-                  seriesTitle={
-                    item.entry.data.series
-                      ? seriesById.get(item.entry.data.series.id)?.title
-                      : undefined
-                  }
-                />
-              ) : item.type === "paper" ? (
-                <PaperCard {...item.entry} compact />
-              ) : (
-                <LabNoteCard {...item.entry} compact />
-              )
-            )}
+        <section id="latest" class="border-border border-b py-4">
+          <div class="flex items-baseline justify-between gap-4">
+            <h2 class="font-prose text-2xl font-semibold tracking-tight">
+              {t.home.latest}
+            </h2>
+            <LinkButton
+              href={getRelativeLocaleUrl(locale, "archives")}
+              class="shrink-0 text-sm sm:text-base"
+            >
+              {t.home.latestArchive}
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
+          <ul class="before:bg-border relative mt-4 before:absolute before:top-2 before:bottom-2 before:left-20 before:w-px before:content-['']">
+            {latestItems.map(item => (
+              <LatestItem {...item} />
+            ))}
           </ul>
         </section>
       )

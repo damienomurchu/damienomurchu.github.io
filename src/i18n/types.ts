@@ -32,6 +32,7 @@ export interface UIStrings {
   home: {
     socialLinks: string;
     latest: string;
+    latestArchive: string;
     recentPosts: string;
     allPosts: string;
     papers: string;

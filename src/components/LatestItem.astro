@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import { getPostUrl } from "@/utils/getPostPaths";
+import { getLabNoteSlug } from "@/utils/labNotes";
+import { getPaperUrl } from "@/utils/papers";
+import config from "@/config";
+
+dayjs.extend(utc);
+
+type Props =
+  | { type: "essay"; entry: CollectionEntry<"posts"> }
+  | { type: "paper"; entry: CollectionEntry<"papers"> }
+  | { type: "labNote"; entry: CollectionEntry<"labNotes"> };
+
+const { type, entry } = Astro.props;
+const locale = Astro.currentLocale ?? config.site.lang;
+const date = entry.data.modDate ?? entry.data.pubDate;
+const formattedDate = dayjs(date).utc().format("DD MMM");
+
+const details =
+  type === "essay"
+    ? {
+        label: "Essay",
+        href: getPostUrl(entry.id, entry.filePath, locale, entry.data.slug),
+      }
+    : type === "paper"
+      ? { label: "Paper", href: getPaperUrl(entry, locale) }
+      : {
+          label: "Lab note",
+          href: getRelativeLocaleUrl(
+            locale,
+            `lab-notes/${getLabNoteSlug(entry)}`
+          ),
+        };
+
+const context = type === "paper" ? entry.data.series : undefined;
+---
+
+<li class="min-w-0 pb-5 last:pb-0">
+  <a
+    href={details.href}
+    class="group focus-visible:outline-muted-foreground -mx-2 grid grid-cols-[4.25rem_1.5rem_minmax(0,1fr)] items-start rounded px-2 focus-visible:outline-2 focus-visible:outline-offset-2"
+  >
+    <time
+      datetime={dayjs(date).utc().toISOString()}
+      class="text-foreground/75 pt-0.5 text-xs font-semibold tracking-[0.08em] whitespace-nowrap uppercase tabular-nums"
+    >
+      {formattedDate}
+    </time>
+    <span
+      aria-hidden="true"
+      class="bg-foreground/80 ring-background relative z-10 mt-1.5 size-2 justify-self-center rounded-full ring-[3px]"
+    ></span>
+    <span class="min-w-0">
+      <span
+        class="font-prose text-accent block text-lg leading-tight font-semibold tracking-tight"
+      >
+        {entry.data.title}
+      </span>
+      <span
+        class="text-muted-foreground mt-1 block text-xs font-medium tracking-[0.1em] uppercase"
+      >
+        {details.label}{context && ` · ${context}`}
+      </span>
+    </span>
+  </a>
+</li>
