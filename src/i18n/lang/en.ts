@@ -33,8 +33,8 @@ export default {
   },
   home: {
     socialLinks: "Social Links",
-    latest: "Recently Published",
-    latestArchive: "All Publications",
+    latest: "Recent",
+    latestArchive: "All",
     recentPosts: "Essays",
     allPosts: "All",
     papers: "Papers",
