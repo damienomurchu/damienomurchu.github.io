@@ -8,9 +8,16 @@ type Props = CollectionEntry<"papers"> & {
   compact?: boolean;
   card?: boolean;
   lead?: boolean;
+  showType?: boolean;
 };
 
-const { compact = false, card = false, lead = false, ...paper } = Astro.props;
+const {
+  compact = false,
+  card = false,
+  lead = false,
+  showType = false,
+  ...paper
+} = Astro.props;
 const { title, subtitle, description, pubDate, modDate, version, series } =
   paper.data;
 ---
@@ -36,7 +43,7 @@ const { title, subtitle, description, pubDate, modDate, version, series } =
       class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase"
     >
       {
-        card
+        card || showType
           ? `Paper · ${series ?? "Forged Papers"} · V${version}`
           : `${series ?? "Forged Papers"} · Version ${version}`
       }

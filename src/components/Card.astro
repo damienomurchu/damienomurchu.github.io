@@ -11,6 +11,7 @@ type Props = {
   card?: boolean;
   lead?: boolean;
   compact?: boolean;
+  showType?: boolean;
 } & CollectionEntry<"posts">;
 
 const {
@@ -19,6 +20,7 @@ const {
   card = false,
   lead = false,
   compact = false,
+  showType = false,
   id,
   data,
   filePath,
@@ -50,14 +52,17 @@ const displayDescription =
     ]}
   >
     {
-      card && (
+      (card || showType) && (
         <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
           Essay
+          {showType && data.series && seriesTitle
+            ? ` · ${seriesTitle} · Part ${data.series.order}`
+            : ""}
         </p>
       )
     }
     {
-      data.series && seriesTitle && !card && (
+      data.series && seriesTitle && !card && !showType && (
         <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
           {seriesTitle} · Part {data.series.order}
         </p>

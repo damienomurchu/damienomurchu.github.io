@@ -11,9 +11,16 @@ type Props = {
   compact?: boolean;
   card?: boolean;
   lead?: boolean;
+  showType?: boolean;
 } & CollectionEntry<"labNotes">;
 
-const { compact = false, card = false, lead = false, ...entry } = Astro.props;
+const {
+  compact = false,
+  card = false,
+  lead = false,
+  showType = false,
+  ...entry
+} = Astro.props;
 const { title, description, pubDate, modDate, tags, sample } = entry.data;
 const locale = Astro.currentLocale ?? config.site.lang;
 ---
@@ -35,6 +42,13 @@ const locale = Astro.currentLocale ?? config.site.lang;
       { "py-3": !lead && !compact, "py-2": compact },
     ]}
   >
+    {
+      showType && (
+        <p class="text-muted-foreground mb-1 text-xs font-medium tracking-[0.1em] uppercase">
+          Lab Note
+        </p>
+      )
+    }
     {
       sample && (
         <div class="text-muted-foreground mb-1 flex text-xs font-medium tracking-[0.1em] uppercase">

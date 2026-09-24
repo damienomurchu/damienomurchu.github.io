@@ -7,8 +7,13 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import Main from "@/components/Main.astro";
 import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
-import { postFilter } from "@/utils/postFilter";
-import { getPostsByGroupCondition } from "./_utils/getPostsByGroupCondition";
+import PaperCard from "@/components/PaperCard.astro";
+import LabNoteCard from "@/components/LabNoteCard.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+import { getSeriesMap } from "@/utils/getSeries";
+import { getSortedPapers } from "@/utils/papers";
+import { getSortedLabNotes } from "@/utils/labNotes";
+import { getItemsByGroupCondition } from "./_utils/getPostsByGroupCondition";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -22,8 +27,19 @@ if (!config.features.showArchives && notFoundUrl) {
 
 const t = useTranslations(locale);
 
-const posts = await getCollection("posts");
-const filteredPosts = posts.filter(postFilter);
+const posts = getSortedPosts(await getCollection("posts"));
+const seriesById = getSeriesMap(posts);
+const archiveItems = [
+  ...posts.map(entry => ({ type: "essay" as const, entry })),
+  ...getSortedPapers(await getCollection("papers")).map(entry => ({
+    type: "paper" as const,
+    entry,
+  })),
+  ...getSortedLabNotes(await getCollection("labNotes")).map(entry => ({
+    type: "labNote" as const,
+    entry,
+  })),
+];
 const monthFormatter = new Intl.DateTimeFormat(locale, { month: "long" });
 ---
 
@@ -35,8 +51,8 @@ const monthFormatter = new Intl.DateTimeFormat(locale, { month: "long" });
   <Main pageTitle={t.pages.archivesTitle} pageDesc={t.pages.archivesDesc}>
     {
       Object.entries(
-        getPostsByGroupCondition(filteredPosts, post =>
-          post.data.pubDate.getUTCFullYear()
+        getItemsByGroupCondition(archiveItems, item =>
+          item.entry.data.pubDate.getUTCFullYear()
         )
       )
         .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
@@ -45,9 +61,9 @@ const monthFormatter = new Intl.DateTimeFormat(locale, { month: "long" });
             <span class="text-2xl font-bold">{year}</span>
             <sup class="text-muted-foreground text-sm">{yearGroup.length}</sup>
             {Object.entries(
-              getPostsByGroupCondition(
+              getItemsByGroupCondition(
                 yearGroup,
-                post => post.data.pubDate.getUTCMonth() + 1
+                item => item.entry.data.pubDate.getUTCMonth() + 1
               )
             )
               .sort(([monthA], [monthB]) => Number(monthB) - Number(monthA))
@@ -68,13 +84,30 @@ const monthFormatter = new Intl.DateTimeFormat(locale, { month: "long" });
                       .sort(
                         (a, b) =>
                           Math.floor(
-                            new Date(b.data.pubDate).getTime() / 1000
+                            new Date(b.entry.data.pubDate).getTime() / 1000
                           ) -
-                          Math.floor(new Date(a.data.pubDate).getTime() / 1000)
+                          Math.floor(
+                            new Date(a.entry.data.pubDate).getTime() / 1000
+                          )
                       )
-                      .map(data => (
-                        <Card {...data} />
-                      ))}
+                      .map(item =>
+                        item.type === "essay" ? (
+                          <Card
+                            {...item.entry}
+                            showType
+                            seriesTitle={
+                              item.entry.data.series
+                                ? seriesById.get(item.entry.data.series.id)
+                                    ?.title
+                                : undefined
+                            }
+                          />
+                        ) : item.type === "paper" ? (
+                          <PaperCard {...item.entry} showType />
+                        ) : (
+                          <LabNoteCard {...item.entry} showType />
+                        )
+                      )}
                   </ul>
                 </div>
               ))}

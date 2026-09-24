@@ -8,7 +8,7 @@ export default {
     labNotes: "Lab Notes",
     tags: "Explore",
     about: "About",
-    archives: "Archives",
+    archives: "Publication Index",
     rss: "RSS feed",
     search: "Search",
   },
@@ -34,7 +34,7 @@ export default {
   home: {
     socialLinks: "Social Links",
     latest: "Recently Published",
-    latestArchive: "Archive",
+    latestArchive: "All Publications",
     recentPosts: "Selected Essays",
     allPosts: "All",
     papers: "Selected Papers",
@@ -64,8 +64,9 @@ export default {
     labNotesDesc:
       "Short, practical notes from ongoing experiments, builds, and investigations.",
 
-    archivesTitle: "Archives",
-    archivesDesc: "All the articles I've archived.",
+    archivesTitle: "Publication Index",
+    archivesDesc:
+      "Every published essay, paper, and lab note, in chronological order.",
 
     searchTitle: "Search",
     searchDesc: "Search any article ...",
