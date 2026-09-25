@@ -13,7 +13,7 @@ tags:
   - Work & Organisations
 
 series: 
-featured: false
+featured: true
 ---
 
 # Designing the Engineering Conditions
