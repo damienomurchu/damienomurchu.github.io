@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
+import IconGhost from "@/assets/icons/IconGhost.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
@@ -129,6 +130,17 @@ const isActive = (path: string) => {
               </li>
             )
           }
+          <li class="flex items-center justify-center">
+            <button
+              type="button"
+              class="focus-outline text-muted-foreground hover:text-accent relative size-12 p-3 transition-colors sm:size-8 sm:p-1"
+              title="Analytics preference"
+              aria-label="Analytics preference"
+              data-analytics-toggle
+            >
+              <IconGhost class="size-full" />
+            </button>
+          </li>
           {
             features.lightAndDarkMode && (
               <li class="flex items-center justify-center">
@@ -150,6 +162,15 @@ const isActive = (path: string) => {
     </nav>
   </div>
 </header>
+
+<div
+  class="bg-foreground text-background pointer-events-none fixed right-4 bottom-4 z-50 translate-y-2 px-3 py-2 text-sm opacity-0 shadow-sm transition-[opacity,transform] duration-200"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+  data-analytics-toast
+>
+</div>
 
 <script>
   function toggleNav() {
@@ -179,4 +200,70 @@ const isActive = (path: string) => {
   toggleNav();
 
   document.addEventListener("astro:after-swap", toggleNav);
+</script>
+
+<script>
+  import {
+    ANALYTICS_PREFERENCE_EVENT,
+    analyticsDisabled,
+    toggleAnalytics,
+    type AnalyticsPreference,
+  } from "@/scripts/analyticsPreference";
+
+  let toastTimer: number | undefined;
+
+  function reflectAnalyticsToggle(disabled = analyticsDisabled()): void {
+    const button = document.querySelector<HTMLButtonElement>(
+      "[data-analytics-toggle]"
+    );
+    if (!button) return;
+
+    const label = disabled
+      ? "Analytics disabled — click to enable"
+      : "Analytics enabled — click to disable";
+
+    button.title = label;
+    button.setAttribute("aria-label", label);
+    button.dataset.analyticsDisabled = String(disabled);
+    button.classList.toggle("text-accent", disabled);
+    button.classList.toggle("text-muted-foreground", !disabled);
+    button
+      .querySelector("[data-analytics-disabled-mark]")
+      ?.classList.toggle("hidden", !disabled);
+  }
+
+  function showAnalyticsToast(disabled: boolean): void {
+    const toast = document.querySelector<HTMLElement>("[data-analytics-toast]");
+    if (!toast) return;
+
+    window.clearTimeout(toastTimer);
+    toast.textContent = disabled ? "Analytics disabled" : "Analytics enabled";
+    toast.classList.remove("translate-y-2", "opacity-0");
+
+    toastTimer = window.setTimeout(() => {
+      toast.classList.add("translate-y-2", "opacity-0");
+    }, 1800);
+  }
+
+  function setupAnalyticsToggle(): void {
+    reflectAnalyticsToggle();
+
+    const button = document.querySelector<HTMLButtonElement>(
+      "[data-analytics-toggle]"
+    );
+    if (!button || button.dataset.preferenceBound === "true") return;
+
+    button.dataset.preferenceBound = "true";
+    button.addEventListener("click", () => {
+      showAnalyticsToast(toggleAnalytics());
+    });
+  }
+
+  setupAnalyticsToggle();
+  document.addEventListener("astro:after-swap", setupAnalyticsToggle);
+  window.addEventListener(ANALYTICS_PREFERENCE_EVENT, event => {
+    reflectAnalyticsToggle(
+      (event as CustomEvent<AnalyticsPreference>).detail.disabled
+    );
+  });
 </script>

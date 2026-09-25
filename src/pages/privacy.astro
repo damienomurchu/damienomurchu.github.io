@@ -5,6 +5,7 @@ import Header from "@/components/Header.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Main from "@/components/Main.astro";
 import Footer from "@/components/Footer.astro";
+import AnalyticsPreferenceControl from "@/components/AnalyticsPreferenceControl.astro";
 import config from "@/config";
 
 const privacy = await getEntry("pages", "privacy");
@@ -30,6 +31,7 @@ const { Content } = await render(privacy);
 
   <Main pageTitle={privacy.data.title} class="app-prose">
     <Content />
+    <AnalyticsPreferenceControl />
   </Main>
 
   <Footer />
