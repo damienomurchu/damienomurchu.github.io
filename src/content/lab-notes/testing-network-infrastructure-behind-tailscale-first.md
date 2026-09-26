@@ -16,7 +16,7 @@ I wanted to try AdGuard Home on my network, but I did not want an experiment to 
 
 The obvious approach would have been to deploy AdGuard, update the router or DHCP configuration, and make every device in the house start using it for DNS. That would work, but it would also immediately widen the blast radius. A problem with AdGuard, Docker, or the host running it could suddenly become a household networking problem.
 
-Instead, I deployed AdGuard Home on `mgt-1`, a small Debian host I use for personal infrastructure, and made it available only through Tailscale. The implementation lives in my [`personal-cloud`](https://github.com/damienomurchu/personal-cloud/tree/main/compose/adguard) repository.
+Instead, I deployed AdGuard Home on `mgt-1`, a small Debian host I use for personal infrastructure, and made it available only through Tailscale. The implementation lives in my <a href="https://github.com/damienomurchu/personal-cloud/tree/main/compose/adguard" data-umami-event="github-click" data-umami-event-content="adguard"><code>personal-cloud</code></a> repository.
 
 Tailscale already provides private connectivity between the devices I care about, so I could configure the tailnet to use AdGuard for DNS without changing anything on the wider LAN. Devices outside the tailnet continue using their existing DNS configuration.
 

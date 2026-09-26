@@ -27,7 +27,7 @@
     </div>
     <button
       type="button"
-      class="border-border text-foreground hover:border-accent hover:text-accent focus-outline min-w-fit border px-4 py-2 text-sm font-semibold transition-colors disabled:cursor-wait disabled:opacity-60"
+      class="border-border text-foreground hover:border-accent hover:text-accent focus-outline min-w-fit border px-4 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60"
       disabled
       data-analytics-preference-button
     >
@@ -35,53 +35,3 @@
     </button>
   </div>
 </section>
-
-<script>
-  import {
-    ANALYTICS_PREFERENCE_EVENT,
-    analyticsDisabled,
-    toggleAnalytics,
-    type AnalyticsPreference,
-  } from "@/scripts/analyticsPreference";
-
-  function reflectAnalyticsPreference(disabled = analyticsDisabled()): void {
-    const control = document.querySelector<HTMLElement>(
-      "[data-analytics-preference-control]"
-    );
-    const status = control?.querySelector<HTMLElement>(
-      "[data-analytics-preference-status]"
-    );
-    const button = control?.querySelector<HTMLButtonElement>(
-      "[data-analytics-preference-button]"
-    );
-
-    if (!status || !button) return;
-
-    status.textContent = disabled ? "Analytics disabled" : "Analytics enabled";
-    button.textContent = disabled ? "Re-enable analytics" : "Disable analytics";
-    button.disabled = false;
-  }
-
-  function setupAnalyticsPreferenceControl(): void {
-    reflectAnalyticsPreference();
-
-    const button = document.querySelector<HTMLButtonElement>(
-      "[data-analytics-preference-button]"
-    );
-    if (!button || button.dataset.preferenceBound === "true") return;
-
-    button.dataset.preferenceBound = "true";
-    button.addEventListener("click", () => toggleAnalytics());
-  }
-
-  setupAnalyticsPreferenceControl();
-  document.addEventListener(
-    "astro:after-swap",
-    setupAnalyticsPreferenceControl
-  );
-  window.addEventListener(ANALYTICS_PREFERENCE_EVENT, event => {
-    reflectAnalyticsPreference(
-      (event as CustomEvent<AnalyticsPreference>).detail.disabled
-    );
-  });
-</script>

@@ -8,7 +8,7 @@ tags:
 featured: true
 ---
 
-*Using peripheral screen space to support focused work without competing with the work itself.*
+_Using peripheral screen space to support focused work without competing with the work itself._
 
 ## The problem
 
@@ -57,4 +57,4 @@ The useful idea was not the HTML. It was treating peripheral screen space as **e
 
 An ultrawide makes it easy to increase how much information is visible at once. The rails impose the opposite constraint: only information that supports the current task belongs at the edges. In practice, that means I can recover the objective, see the next action or capture a thought with a glance, while the application in the centre remains dominant.
 
-The implementation is available in my [`personal-automation`](https://github.com/damienomurchu/personal-automation/tree/main/desktop/focus-rails) repository.
+The implementation is available in my <a href="https://github.com/damienomurchu/personal-automation/tree/main/desktop/focus-rails" data-umami-event="github-click" data-umami-event-content="focus-rails"><code>personal-automation</code></a> repository.

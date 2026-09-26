@@ -86,15 +86,10 @@ const rssHref = getAssetPath("rss.xml");
     <!-- Filled at runtime by theme.ts to match the current background colour -->
     <meta name="theme-color" content="" />
 
-    <!-- Umami analytics -->
-    <script
-      is:inline
-      defer
-      src="https://analytics.damienmurphy.net/script.js"
-      data-website-id="c6e51cce-feaa-429f-a2fb-cebabf8d8c08"
-      data-domains="forged.damienmurphy.net"
-      data-do-not-track="true"
-      data-exclude-search="true"></script>
+    <script>
+      import { setupAnalytics } from "@/scripts/analyticsPreference";
+      setupAnalytics();
+    </script>
 
     <!-- Extra head content injected by child layouts (e.g. JSON-LD, article meta) -->
     <slot name="head" />

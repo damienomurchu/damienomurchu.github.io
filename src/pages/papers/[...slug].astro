@@ -118,6 +118,8 @@ const pdf = await getPaperPdf(paper);
               <a
                 href={pdf.href}
                 download={pdf.filename}
+                data-umami-event="paper-download"
+                data-umami-event-paper={paper.data.slug}
                 class="paper-screen-only border-border hover:border-accent hover:text-accent focus-outline rounded border px-3 py-1.5 text-sm font-medium"
               >
                 Download PDF

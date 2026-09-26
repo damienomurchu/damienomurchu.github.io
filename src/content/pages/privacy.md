@@ -22,7 +22,9 @@ Umami does not use analytics cookies and does not store visitor IP addresses.
 
 Forged does not use advertising trackers, cross-site behavioural tracking, or persistent visitor identifiers.
 
-Browser Do Not Track preferences are respected.
+Global Privacy Control (GPC) and Do Not Track (DNT) browser preferences prevent the analytics script from loading, even if analytics was previously enabled here. Analytics also stays off when browser storage is unavailable.
+
+Only three content interactions are recorded: paper PDF downloads, selected content repository links, and the primary RSS link. Event metadata describes the content, never the reader.
 
 ## Purpose
 

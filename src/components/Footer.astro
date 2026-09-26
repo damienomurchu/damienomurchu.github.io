@@ -41,7 +41,11 @@ const locale = Astro.currentLocale ?? config.site.lang;
           </>
         )
       }
-      <a href={getAssetPath("rss.xml")} class="hover:text-accent focus-outline">
+      <a
+        data-umami-event="rss-click"
+        href={getAssetPath("rss.xml")}
+        class="hover:text-accent focus-outline"
+      >
         RSS
       </a>
       <span aria-hidden="true">·</span>
