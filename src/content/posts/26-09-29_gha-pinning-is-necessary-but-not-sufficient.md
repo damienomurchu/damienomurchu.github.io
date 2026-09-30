@@ -330,32 +330,20 @@ But the security property comes from the system around the SHA, not from the pre
 
 I think third-party GitHub Actions should generally be pinned to full commit SHAs.
 
-A mutable tag allows the code referenced by your workflow to change without any corresponding change in your own repository. Pinning removes that behaviour and makes top-level dependency changes visible again.
+A mutable tag allows the code referenced by your workflow to change without any corresponding change in your own repository. Pinning removes that behaviour and makes top-level dependency changes visible again. That is a significant improvement.
 
-That is a significant improvement.
+But it is worth being precise about what that actually gives you.
 
-But it is worth being precise about the claim.
-
-Pinning tells you which Action revision you decided to invoke.
-
-It does not necessarily guarantee that every transitive dependency beneath that Action is equally immutable.
-
-It does not tell you that the resulting execution is safe.
-
-It does not maintain the dependency for you.
-
-And it does not control what the Action can reach once it starts running.
+Pinning tells you which Action revision you decided to invoke. It does not necessarily guarantee that every transitive dependency beneath that Action is equally immutable, or that the resulting execution is reproducible. It also does not tell you that the code is safe, maintain the dependency for you, or control what the Action can reach once it starts running.
 
 Those are separate problems.
 
-A useful way to think about pinning is therefore this:
+A useful way to think about pinning is that it gives you an immutable entry point into the execution graph. That is valuable because it prevents the top-level dependency from changing underneath you without an explicit change in your own repository.
 
-It gives you an immutable entry point into the execution graph.
+But it does not make the entire graph immutable, and it does not tell you whether that graph should be trusted.
 
-It does not make the entire graph immutable, and it does not tell you whether the graph should be trusted.
+That distinction is important because it keeps the control in proportion. SHA pinning solves a real problem, but only one part of the larger problem of allowing third-party code to execute inside CI/CD.
 
-And that last part leads directly into the next boundary in the system.
+And that leads directly into the next boundary in the system.
 
-Even perfectly selected, perfectly pinned code still has to execute somewhere.
-
-The runner determines what that code can actually reach, steal or change.
+Even perfectly selected, perfectly pinned code still has to execute somewhere. The runner determines what that code can actually reach, steal or change.
