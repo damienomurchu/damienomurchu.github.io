@@ -3,7 +3,7 @@ title: "Why Pinning GitHub Actions Is Necessary — but Not Sufficient"
 description: "Pinning GitHub Actions prevents silent changes, but does not guarantee reproducible execution."
 slug: "gha-pinning-is-necessary-but-not-sufficient"
 pubDate: 2026-09-29
-modDate: 2026-09-29
+modDate: 2026-10-02
 draft: false
 
 category: engineering
@@ -136,6 +136,22 @@ But recognising the distinction is important.
 SHA pinning gives you an immutable entry point into the dependency graph.
 
 It does not automatically give you an immutable dependency graph.
+
+## Towards Locking the Dependency Graph
+
+One interesting development in this area is GitHub's [gh-actions-lock](https://github.com/github/gh-actions-lock) project, part of its Workflow Dependency Pinning initiative.
+
+The approach is similar to dependency lockfiles in other software ecosystems. Rather than relying on engineers to independently identify and pin every Action reference, it introduces a repository-level lockfile (`.github/workflows/actions.lock`) which records the resolved Action dependency graph, including transitive dependencies, against specific commits.
+
+This matters particularly for composite Actions. These allow multiple workflow steps, including references to other Actions, to be packaged into a single reusable Action. A consuming workflow might reference a composite Action pinned to a full commit SHA, while that Action internally invokes other Actions through mutable tags.
+
+The top-level reference is immutable, but the Actions it invokes may not be. Those nested dependencies are not immediately visible in the consuming workflow, yet they remain part of what eventually executes.
+
+Resolving and locking those references starts to address that problem without expecting every consuming organisation to manually discover and maintain the dependency graph.
+
+The project is still a technical preview, and there are limits to what it can guarantee. Arbitrary runtime downloads, external packages and mutable container images can still sit outside the graph represented in the lockfile.
+
+Nevertheless, I think it is an interesting direction. It moves GitHub Actions dependency management away from treating individual `uses:` statements in isolation and towards treating the dependency graph as something which should be resolved, recorded and controlled.
 
 ## Pinning Gives You Identity, Not Trust
 
@@ -347,3 +363,9 @@ That distinction is important because it keeps the control in proportion. SHA pi
 And that leads directly into the next boundary in the system.
 
 Even perfectly selected, perfectly pinned code still has to execute somewhere. The runner determines what that code can actually reach, steal or change.
+
+---
+
+### Revision History
+
+**2 October 2026** — Added coverage of GitHub's `gh-actions-lock` project and its approach to locking transitive GitHub Actions dependencies.
