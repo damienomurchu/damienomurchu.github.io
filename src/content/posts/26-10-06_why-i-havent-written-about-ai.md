@@ -4,7 +4,7 @@ description: "Why I’m letting my view of AI emerge through use, experimentatio
 slug: "why-i-havent-written-much-about-ai-yet"
 pubDate: 2026-10-06
 modDate: 2026-10-06
-draft: true
+draft: false
 
 category: engineering
 
