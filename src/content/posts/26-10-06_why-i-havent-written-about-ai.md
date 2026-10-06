@@ -2,8 +2,8 @@
 title: "Why I Haven’t Written Much About AI Yet"
 description: "Why I’m letting my view of AI emerge through use, experimentation, and time."
 slug: "why-i-havent-written-much-about-ai-yet"
-pubDate: 2029-10-06
-modDate: 2029-10-06
+pubDate: 2026-10-06
+modDate: 2026-10-06
 draft: true
 
 category: engineering
